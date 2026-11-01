@@ -194,7 +194,7 @@ def vignette():
 @lru_cache(maxsize=1)
 def grains():
     rng = np.random.default_rng(7)
-    return [rng.normal(0, 5.5, (H, W, 1)).astype(np.float32) for _ in range(6)]
+    return [rng.normal(0, 3.0, (H, W, 1)).astype(np.float32) for _ in range(6)]
 
 
 def neon(img, polylines, color=NEON, width=4, glow=10, core=(255, 150, 140), alpha=1.0):
@@ -1061,8 +1061,11 @@ def render_frame(i):
     rnd = random.Random(i)
     sx = (rnd.random() - 0.5) * 2 * shake * 10 * K
     sy = (rnd.random() - 0.5) * 2 * shake * 10 * K
-    x0 = (W * K - cw) / 2 + sx
-    y0 = (H * K - ch) / 2 + sy
+    if shake:
+        z = max(z, 1 + 2 * shake * 10 * K / (W * K))
+        cw, ch = W * K / z, H * K / z
+    x0 = min(max(0, (W * K - cw) / 2 + sx), W * K - cw)
+    y0 = min(max(0, (H * K - ch) / 2 + sy), H * K - ch)
     frame = img2x.resize((W, H), Image.LANCZOS, box=(x0, y0, x0 + cw, y0 + ch))
     # scene-change fades / flashes
     flash = glitch = fade = 0.0
@@ -1100,7 +1103,7 @@ def main():
     n = int(DURATION * FPS)
     ff = subprocess.Popen(["ffmpeg", "-y", "-v", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
                            "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-c:v", "libx264",
-                           "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", out],
+                           "-preset", "medium", "-crf", "23", "-pix_fmt", "yuv420p", out],
                           stdin=subprocess.PIPE)
     with Pool(os.cpu_count()) as pool:
         for k, fr in enumerate(pool.imap(render_frame, range(n), chunksize=8)):
