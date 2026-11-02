@@ -635,7 +635,6 @@ def sc_bed_side(t, lt, mood="worried", neon_k=1.0, snore=True, day=False, line_k
               [(445, 600), (445, 572)]]
     br = 1 + 0.04 * math.sin(t * 2.2)
     figure = [[(x, 600 - (600 - y) * br) for x, y in pl] for pl in figure]
-    lines = [partial(wl, line_k)] + (figure if neon_k > 0 else [])
     img = neon(img, [partial(wl, line_k)], width=3.5, glow=8)
     if neon_k > 0:
         img = neon(img, figure, width=3.5, glow=9, alpha=neon_k)
@@ -724,7 +723,6 @@ def sc_handle(t, lt):
 def sc_cave(t, lt, marks=0, knock=0.0):
     img = Image.new("RGB", (W * K, H * K), (6, 5, 5))
     d = D(img)
-    vp = (360, 700)
     d.poly([(0, 0), (252, 504), (252, 882), (0, H)], fill=(30, 24, 18))
     d.poly([(W, 0), (468, 504), (468, 882), (W, H)], fill=(26, 20, 16))
     d.poly([(0, H), (252, 882), (468, 882), (W, H)], fill=(52, 34, 24))
@@ -912,32 +910,31 @@ def scene_at(t):
 
 CAPTIONS = [
     (0, 2, "*IMAGINE...*"), (2, 3, "TON ~TÉLÉPHONE~"), (3, 4, "*VIBRE.*"),
-    (4, 5, "IL EST *TROIS*"), (5, 7, "MATIN."),
+    (4, 5.3, "IL EST *TROIS HEURES*"), (5.3, 7, "SEPT DU MATIN."),
     (7, 9, "UN MESSAGE *VOCAL...*"), (9, 10, "DE TA *MÈRE.*"),
     (10, 11.5, "« NE DESCENDS *PAS...* »"),
     (12, 13, "« JE SUIS *ENFERMÉE* »"), (13, 14, "« DANS LA *CAVE.* »"), (14, 16, "SAUF ~QUE...~"),
     (16, 18, "TU L'ENTENDS *RONFLER.*"), (18, 19, "*À CÔTÉ.*"),
     (22, 23, "TON ~TÉLÉPHONE~"), (23, 24, "*VIBRE* ENCORE."), (24, 26, "UN *DEUXIÈME VOCAL.*"),
-    (26, 28, "« *À CÔTÉ...* »"),
-    (28, 29.6, "« ~CE N'EST~ *PAS* »"), (29.6, 31, "SURTOUT... »"), (31, 32, "« NE LA *RÉVEILLE* »"),
-    (32, 33, "*PAS.* »"), (33, 34, "TU RETIENS ~TON~"), (34, 35, "*SOUFFLE.*"),
+    (26, 28, "« CELLE QUI DORT *À CÔTÉ...* »"),
+    (28, 29.4, "« CE N'EST *PAS MOI.* »"), (29.4, 30.4, "« SURTOUT... »"), (30.4, 32, "« NE LA *RÉVEILLE* PAS. »"), (33, 34, "TU RETIENS ~TON~"), (34, 35, "*SOUFFLE.*"),
     (35, 36, "ET ~DERRIÈRE~ LE"), (36, 37, "MUR..."), (37, 38, "LE *RONFLEMENT*"), (38, 39, "S'ARRÊTE."),
     (39, 40, "UNE *PORTE GRINCE*", "top"), (40, 42, "DANS LE COULOIR.", "top"),
     (42, 43, "DES *PAS.*", "top"), (43, 44, "*LENTS.*", "top"), (44, 45, "*LENTS.*"),
     (45, 46, "ILS S'ARRÊTENT...", "top"), (46, 47, "DEVANT TA *PORTE.*", "top"),
     (48, 49, "« MON *CHÉRI ?* »"), (49, 50, "« TU *DORS ?* »"),
     (51, 53, "LA *POIGNÉE* TOURNE..."), (53, 54.5, "DOUCEMENT."),
-    (55, 56, "BAS,"), (56, 57, "DANS LA *CAVE...*"), (57, 59, "QUELQU'UN *FRAPPE.*"),
+    (55, 56, "ET TOUT EN *BAS,*"), (56, 57, "DANS LA *CAVE...*"), (57, 59, "QUELQU'UN *FRAPPE.*"),
     (59, 60.5, "*TROIS COUPS.*"),
     (61, 62, "TON ~TÉLÉPHONE~"), (62, 63, "*VIBRE* UNE DERNIÈRE"), (63, 64, "FOIS."),
     (64, 66, "UN *TROISIÈME VOCAL.*"), (66, 68, "MAIS CETTE VOIX-LÀ..."), (68, 69, "C'EST LA *TIENNE.*"),
-    (70, 72, "« *AUCUNE* DES DEUX. »"),
+    (69.7, 72, "« NE RÉPONDS À *AUCUNE* DES DEUX ! »"),
     (75, 76, "ALORS TU NE"), (76, 77, "RÉPONDS *PAS.*"), (77, 78, "TU NE BOUGES"), (78, 79, "PLUS."),
     (79, 80, "TU NE RESPIRES"), (80, 81, "PLUS."), (81, 82, "JUSQU'AU ~LEVER~"), (82, 84, "DU *SOLEIL.*"),
     (87, 88, "« MON *CHÉRI ?* »", "phone"), (88, 89, "« C'EST *MAMAN.* »", "phone"),
     (89, 90, "« MON *AVION* VIENT »", "phone"), (90, 91, "D'ATTERRIR. »", "phone"),
-    (91, 92, "« DANS UNE ~HEURE.~ »", "phone"),
-    (93, 94, "TA *MÈRE* ÉTAIT"), (94, 96, "PARTIE TOUTE LA"), (96, 98, "CHAMBRE D'À *CÔTÉ...*"),
+    (91, 92.6, "« JE SERAI LÀ DANS UNE ~HEURE.~ »", "phone"),
+    (93, 94, "TA *MÈRE* ÉTAIT"), (94, 96, "PARTIE TOUTE LA *SEMAINE.*"), (96, 98, "ET DANS LA CHAMBRE D'À *CÔTÉ...*"),
     (99, 100, "LE *RONFLEMENT*"), (100, 101, "*REPREND.*"),
 ]
 PHONE_SCENES = [(7, 12), (21, 28), (69, 70), (84, 93)]

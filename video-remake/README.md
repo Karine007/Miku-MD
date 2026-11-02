@@ -7,14 +7,16 @@ image or video assets:
 | file        | what it does |
 |-------------|--------------|
 | `render.py` | Draws every scene with Pillow (2× supersampled): bedroom, phone UI, hooded masked character, door, handle, cellar corridor, time-lapse, phone call, daylight ending, title/end cards, captions with red/grey keywords, the running `NUIT 1 · CHAMBRE` clock, neon glow, zoom/shake, flashes, vignette and grain. Pipes raw frames to ffmpeg. |
+| `voices.py` | Voice-over with **Gemini TTS**, 3 voices: male narrator (Charon), the "mother" voice for the fake voicemails, the thing at the door and the real mom on the phone (Sulafat; phone / through-the-door effects), and *your* own voice in the third voicemail (Enceladus). Each role is recorded in one request (free tier = 10 TTS requests/day/model), then cut into lines by matching each line's length to its syllable count at the nearest real pauses. Recordings are cached in `voices/`. |
 | `audio.py`  | Synthesizes the sound design with numpy: drone, phone buzzes, muffled voice messages, snoring, heartbeat, door creak, footsteps, knocks, ringtone, booms/stings. |
-| `make.sh`   | Builds `nuit1_le_vocal.mp4`. Pass the original video as an argument to also get a version with the original narration track (the timeline matches it second for second). |
+| `make.sh`   | Builds `nuit1_le_vocal_remake.mp4` (voice-over + sound design, effects ducked under the voices). Pass the original video as an argument to also get a version with the original soundtrack. |
 
 Requirements: Python 3, `pillow`, `numpy`, `ffmpeg`, Inter fonts (`/usr/share/fonts/opentype/inter/`).
+Re-recording voices (delete files in `voices/`) needs `GEMINI_API_KEY`.
 
 ```bash
-./make.sh                      # synthesized sound
-./make.sh path/to/original.mp4 # + original narration version
+./make.sh                      # voice-over + sound design
+./make.sh path/to/original.mp4 # + version with the original soundtrack
 python3 render.py --still 42.5 frame.png   # preview a single frame
 ```
 

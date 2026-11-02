@@ -1,0 +1,76 @@
+{
+ "lines": [
+  {
+   "i": 0,
+   "start": 6.65,
+   "end": 10.45
+  },
+  {
+   "i": 1,
+   "start": 10.72,
+   "end": 11.85
+  },
+  {
+   "i": 2,
+   "start": 12.25,
+   "end": 14.65
+  },
+  {
+   "i": 3,
+   "start": 15.0,
+   "end": 16.8
+  },
+  {
+   "i": 4,
+   "start": 17.2,
+   "end": 18.95
+  },
+  {
+   "i": 5,
+   "start": 19.35,
+   "end": 20.6
+  },
+  {
+   "i": 6,
+   "start": 20.8,
+   "end": 22.5
+  },
+  {
+   "i": 7,
+   "start": 22.8,
+   "end": 24.0
+  },
+  {
+   "i": 8,
+   "start": 24.2,
+   "end": 25.75
+  },
+  {
+   "i": 9,
+   "start": 26.1,
+   "end": 27.75
+  },
+  {
+   "i": 10,
+   "start": 28.1,
+   "end": 30.35
+  },
+  {
+   "i": 11,
+   "start": 30.7,
+   "end": 32.45
+  },
+  {
+   "i": 12,
+   "start": 32.6,
+   "end": 34.4
+  }
+ ],
+ "extra": [
+  {
+   "start": 0.0,
+   "end": 6.25,
+   "text": "D'une voix grave, basse, lente et posée de conteur, presque chuchotée."
+  }
+ ]
+}
