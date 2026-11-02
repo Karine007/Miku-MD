@@ -1,0 +1,262 @@
+{
+ "duration": 123.17,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "door_keys",
+   "start": 0.6,
+   "speech_end": 5.64,
+   "end": 6.84,
+   "overlay": [
+    "time",
+    "DAY 10 - 3:15 AM"
+   ],
+   "text": "Rule five says move only at dawn. You break it at three fifteen AM.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "lot_walk",
+   "start": 6.84,
+   "speech_end": 10.47,
+   "end": 12.07,
+   "overlay": null,
+   "text": "The pickup is forty steps away. You count every one.",
+   "role": "narrator"
+  },
+  {
+   "i": 2,
+   "scene": "cab",
+   "start": 12.07,
+   "speech_end": 16.87,
+   "end": 17.87,
+   "overlay": null,
+   "text": "The cab smells like pine air freshener, and something worse. You don't look at the seat.",
+   "role": "narrator"
+  },
+  {
+   "i": 3,
+   "scene": "truck_bed",
+   "start": 17.87,
+   "speech_end": 22.61,
+   "end": 23.61,
+   "overlay": null,
+   "text": "Three empty gas cans in the back. Dani has a car. The car needs gas.",
+   "role": "narrator"
+  },
+  {
+   "i": 4,
+   "scene": "breaker",
+   "start": 23.61,
+   "speech_end": 28.3,
+   "end": 29.3,
+   "overlay": null,
+   "text": "The pumps need power. Power means the breaker. The breaker means light.",
+   "role": "narrator"
+  },
+  {
+   "i": 5,
+   "scene": "breaker",
+   "start": 29.3,
+   "speech_end": 32.66,
+   "end": 33.86,
+   "overlay": null,
+   "text": "You flip one switch. Pumps. Only pumps.",
+   "role": "narrator"
+  },
+  {
+   "i": 6,
+   "scene": "pump_on",
+   "start": 33.86,
+   "speech_end": 36.86,
+   "end": 38.06,
+   "overlay": null,
+   "text": "Pump four wakes up with a beep that sounds like a gunshot.",
+   "role": "narrator"
+  },
+  {
+   "i": 7,
+   "scene": "heads_turn",
+   "start": 38.06,
+   "speech_end": 40.1,
+   "end": 41.7,
+   "overlay": null,
+   "text": "Out on the highway, heads turn.",
+   "role": "narrator"
+  },
+  {
+   "i": 8,
+   "scene": "filling",
+   "start": 41.7,
+   "speech_end": 46.25,
+   "end": 47.45,
+   "overlay": [
+    "count",
+    "3",
+    "GAS CANS"
+   ],
+   "text": "Three cans. Ninety seconds each. The longest four and a half minutes of your life.",
+   "role": "narrator"
+  },
+  {
+   "i": 9,
+   "scene": "coming",
+   "start": 47.45,
+   "speech_end": 51.86,
+   "end": 52.86,
+   "overlay": null,
+   "text": "They're coming for the little glowing screen. Slow. Then not slow.",
+   "role": "narrator"
+  },
+  {
+   "i": 10,
+   "scene": "yank",
+   "start": 52.86,
+   "speech_end": 54.11,
+   "end": 55.11,
+   "overlay": null,
+   "text": "You don't finish the third can.",
+   "role": "narrator"
+  },
+  {
+   "i": 11,
+   "scene": "ignition",
+   "start": 55.11,
+   "speech_end": 58.04,
+   "end": 59.04,
+   "overlay": null,
+   "text": "The engine catches. And the headlights come on by themselves.",
+   "role": "narrator"
+  },
+  {
+   "i": 12,
+   "scene": "faces",
+   "start": 59.04,
+   "speech_end": 61.42,
+   "end": 62.82,
+   "overlay": null,
+   "text": "Every face on Route 9 turns toward you.",
+   "role": "narrator"
+  },
+  {
+   "i": 13,
+   "scene": "drive_through",
+   "start": 62.82,
+   "speech_end": 65.74,
+   "end": 67.14,
+   "overlay": null,
+   "text": "You drive. You don't brake. You don't look.",
+   "role": "narrator"
+  },
+  {
+   "i": 14,
+   "scene": "drive_through",
+   "start": 67.14,
+   "speech_end": 72.71,
+   "end": 73.91,
+   "overlay": null,
+   "text": "Something hits the fender. Then something else. The truck doesn't stop. Neither do you.",
+   "role": "narrator"
+  },
+  {
+   "i": 15,
+   "scene": "mile_signs",
+   "start": 73.91,
+   "speech_end": 76.48,
+   "end": 77.68,
+   "overlay": null,
+   "text": "Mile one twenty-eight. One twenty-nine.",
+   "role": "narrator"
+  },
+  {
+   "i": 16,
+   "scene": "motel",
+   "start": 77.68,
+   "speech_end": 83.77,
+   "end": 84.97,
+   "overlay": null,
+   "text": "The Starlight Motel. Its sign is dark. Of course it is. Dani follows the rules.",
+   "role": "narrator"
+  },
+  {
+   "i": 17,
+   "scene": "room12",
+   "start": 84.97,
+   "speech_end": 87.16,
+   "end": 88.16,
+   "overlay": null,
+   "text": "Room twelve. The door is open.",
+   "role": "narrator"
+  },
+  {
+   "i": 18,
+   "scene": "room_inside",
+   "start": 88.16,
+   "speech_end": 94.39,
+   "end": 95.59,
+   "overlay": null,
+   "text": "Inside, the beds are made. Two backpacks by the door. No Dani. No Milo.",
+   "role": "narrator"
+  },
+  {
+   "i": 19,
+   "scene": "cb_bed",
+   "start": 95.59,
+   "speech_end": 99.95,
+   "end": 100.95,
+   "overlay": null,
+   "text": "Meet us at dawn. We'll watch for your headlights. Meet us at dawn.",
+   "role": "dani"
+  },
+  {
+   "i": 20,
+   "scene": "recorder",
+   "start": 100.95,
+   "speech_end": 106.11,
+   "end": 107.51,
+   "overlay": null,
+   "text": "A tape recorder. Taped to the microphone. Playing Dani's voice. On a loop.",
+   "role": "narrator"
+  },
+  {
+   "i": 21,
+   "scene": "doorway",
+   "start": 107.51,
+   "speech_end": 110.43,
+   "end": 111.83,
+   "overlay": null,
+   "text": "Somebody wanted you to drive here. With your headlights on.",
+   "role": "narrator"
+  },
+  {
+   "i": 22,
+   "scene": "convoy",
+   "start": 111.83,
+   "speech_end": 115.06,
+   "end": 116.06,
+   "overlay": null,
+   "text": "Out on the highway, more headlights. A lot more.",
+   "role": "narrator"
+  },
+  {
+   "i": 23,
+   "scene": "convoy",
+   "start": 116.06,
+   "speech_end": 117.27,
+   "end": 119.67,
+   "overlay": null,
+   "text": "And the dead don't drive.",
+   "role": "narrator"
+  },
+  {
+   "i": 24,
+   "scene": "end",
+   "start": 119.67,
+   "speech_end": 119.67,
+   "end": 123.17,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}
