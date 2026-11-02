@@ -1,0 +1,265 @@
+{
+ "duration": 130.49,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "ray_dark",
+   "start": 0.6,
+   "speech_end": 3.68,
+   "end": 4.68,
+   "overlay": [
+    "time",
+    "DAY 4 - 3:24 AM"
+   ],
+   "text": "There is no shutter. And Ray knows you know.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "confess",
+   "start": 4.68,
+   "speech_end": 14.76,
+   "end": 15.56,
+   "overlay": null,
+   "text": "Day two. You were asleep. I went out for the pickup's keys. The driver was still in the cab.",
+   "role": "ray"
+  },
+  {
+   "i": 2,
+   "scene": "keys",
+   "start": 15.56,
+   "speech_end": 18.31,
+   "end": 19.31,
+   "overlay": null,
+   "text": "He opens his hand. A set of truck keys.",
+   "role": "narrator"
+  },
+  {
+   "i": 3,
+   "scene": "confess",
+   "start": 19.31,
+   "speech_end": 25.36,
+   "end": 26.16,
+   "overlay": null,
+   "text": "It's slow. I can feel it. Cold. Like the inside of that cooler.",
+   "role": "ray"
+  },
+  {
+   "i": 4,
+   "scene": "confess",
+   "start": 26.16,
+   "speech_end": 30.5,
+   "end": 31.5,
+   "overlay": null,
+   "text": "You should be scared of him. You're not. Not yet.",
+   "role": "narrator"
+  },
+  {
+   "i": 5,
+   "scene": "ticket4",
+   "start": 31.5,
+   "speech_end": 36.81,
+   "end": 37.81,
+   "overlay": [
+    "rule",
+    "RULE 4:",
+    "IF SCRATCHED, SAY SO"
+   ],
+   "text": "Ray makes a new rule. Rule four. If you're scratched, you say so.",
+   "role": "narrator"
+  },
+  {
+   "i": 6,
+   "scene": "promise",
+   "start": 37.81,
+   "speech_end": 43.34,
+   "end": 44.14,
+   "overlay": null,
+   "text": "When I start forgetting your name, you lock me in the walk-in. Promise me.",
+   "role": "ray"
+  },
+  {
+   "i": 7,
+   "scene": "promise",
+   "start": 44.14,
+   "speech_end": 47.29,
+   "end": 48.49,
+   "overlay": null,
+   "text": "You promise. You don't mean it.",
+   "role": "narrator"
+  },
+  {
+   "i": 8,
+   "scene": "cards",
+   "start": 48.49,
+   "speech_end": 55.81,
+   "end": 56.41,
+   "overlay": [
+    "time",
+    "DAY 5"
+   ],
+   "text": "Day five. Ray still plays cards. He lets you win. His hands shake when he deals.",
+   "role": "narrator"
+  },
+  {
+   "i": 9,
+   "scene": "cards_tap",
+   "start": 56.41,
+   "speech_end": 58.24,
+   "end": 59.44,
+   "overlay": null,
+   "text": "Tap, tap. Your turn.",
+   "role": "narrator"
+  },
+  {
+   "i": 10,
+   "scene": "stare",
+   "start": 59.44,
+   "speech_end": 65.19,
+   "end": 66.39,
+   "overlay": null,
+   "text": "Twice, you catch him staring at the window. Like the dark outside is saying his name.",
+   "role": "narrator"
+  },
+  {
+   "i": 11,
+   "scene": "danny",
+   "start": 66.39,
+   "speech_end": 69.96,
+   "end": 70.96,
+   "overlay": [
+    "time",
+    "DAY 6"
+   ],
+   "text": "Hey. Danny. Your turn.",
+   "role": "ray"
+  },
+  {
+   "i": 12,
+   "scene": "you_frozen",
+   "start": 70.96,
+   "speech_end": 72.05,
+   "end": 73.45,
+   "overlay": null,
+   "text": "Your name isn't Danny.",
+   "role": "narrator"
+  },
+  {
+   "i": 13,
+   "scene": "hands_look",
+   "start": 73.45,
+   "speech_end": 78.46,
+   "end": 79.26,
+   "overlay": null,
+   "text": "Walk-in. Now. While I can still walk there myself.",
+   "role": "ray"
+  },
+  {
+   "i": 14,
+   "scene": "into_cooler",
+   "start": 79.26,
+   "speech_end": 84.2,
+   "end": 85.2,
+   "overlay": null,
+   "text": "He walks into the cooler on his own. You close the door. He doesn't fight it.",
+   "role": "narrator"
+  },
+  {
+   "i": 15,
+   "scene": "door_closed",
+   "start": 85.2,
+   "speech_end": 91.48,
+   "end": 92.48,
+   "overlay": null,
+   "text": "Keys are yours. Pickup's got half a tank. Don't come back for me.",
+   "role": "ray"
+  },
+  {
+   "i": 16,
+   "scene": "guard",
+   "start": 92.48,
+   "speech_end": 96.83,
+   "end": 97.83,
+   "overlay": null,
+   "text": "You slide the bolt. Then you sit with your back against the door, like a guard.",
+   "role": "narrator"
+  },
+  {
+   "i": 17,
+   "scene": "guard",
+   "start": 97.83,
+   "speech_end": 105.36,
+   "end": 106.76,
+   "overlay": null,
+   "text": "Through the steel, Ray hums. Old songs. Then fewer words. Then just humming.",
+   "role": "narrator"
+  },
+  {
+   "i": 18,
+   "scene": "fridge",
+   "start": 106.76,
+   "speech_end": 110.5,
+   "end": 111.5,
+   "overlay": [
+    "count",
+    "14",
+    "BOTTLES LEFT"
+   ],
+   "text": "Fourteen bottles left. Half of rule two was for Ray.",
+   "role": "narrator"
+  },
+  {
+   "i": 19,
+   "scene": "guard_night",
+   "start": 111.5,
+   "speech_end": 114.24,
+   "end": 116.24,
+   "overlay": [
+    "time",
+    "DAY 7"
+   ],
+   "text": "On the seventh night, the humming stops.",
+   "role": "narrator"
+  },
+  {
+   "i": 20,
+   "scene": "taps",
+   "start": 116.24,
+   "speech_end": 119.78,
+   "end": 121.18,
+   "overlay": null,
+   "text": "Then two soft taps on the door. Tap, tap.",
+   "role": "narrator"
+  },
+  {
+   "i": 21,
+   "scene": "bolt",
+   "start": 121.18,
+   "speech_end": 121.73,
+   "end": 122.73,
+   "overlay": null,
+   "text": "Your turn.",
+   "role": "narrator"
+  },
+  {
+   "i": 22,
+   "scene": "bolt",
+   "start": 122.73,
+   "speech_end": 124.79,
+   "end": 126.99,
+   "overlay": null,
+   "text": "You don't open it. You keep your promise.",
+   "role": "narrator"
+  },
+  {
+   "i": 23,
+   "scene": "end",
+   "start": 126.99,
+   "speech_end": 126.99,
+   "end": 130.49,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}
