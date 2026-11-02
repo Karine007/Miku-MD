@@ -1,0 +1,271 @@
+{
+ "duration": 120.48,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "dock_dark",
+   "start": 0.6,
+   "speech_end": 4.37,
+   "end": 5.57,
+   "overlay": [
+    "time",
+    "DAY 9 - 4:40 AM"
+   ],
+   "text": "Ray is out there now. Somewhere between you and the motel.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "shove",
+   "start": 5.57,
+   "speech_end": 9.41,
+   "end": 10.41,
+   "overlay": null,
+   "text": "You shove a shelf against the loading dock door. It takes everything you have.",
+   "role": "narrator"
+  },
+  {
+   "i": 2,
+   "scene": "math",
+   "start": 10.41,
+   "speech_end": 16.51,
+   "end": 17.51,
+   "overlay": [
+    "count",
+    "9",
+    "BOTTLES LEFT"
+   ],
+   "text": "Then you do the math. Nine bottles. Sixty-one snacks. One pickup with half a tank.",
+   "role": "narrator"
+  },
+  {
+   "i": 3,
+   "scene": "keys_pocket",
+   "start": 17.51,
+   "speech_end": 20.8,
+   "end": 21.8,
+   "overlay": null,
+   "text": "The truck keys are in your pocket. They feel heavier than they should.",
+   "role": "narrator"
+  },
+  {
+   "i": 4,
+   "scene": "cb_live",
+   "start": 21.8,
+   "speech_end": 26.35,
+   "end": 27.15,
+   "overlay": null,
+   "text": "Hey, gas station. Still with me? Milo wants to know your name.",
+   "role": "dani"
+  },
+  {
+   "i": 5,
+   "scene": "cb_mic",
+   "start": 27.15,
+   "speech_end": 30.16,
+   "end": 31.16,
+   "overlay": null,
+   "text": "You tell her. Milo says it's a good name.",
+   "role": "narrator"
+  },
+  {
+   "i": 6,
+   "scene": "cb_live",
+   "start": 31.16,
+   "speech_end": 33.51,
+   "end": 34.31,
+   "overlay": null,
+   "text": "Tomorrow at dawn. We'll watch for your headlights.",
+   "role": "dani"
+  },
+  {
+   "i": 7,
+   "scene": "pickup_lot",
+   "start": 34.31,
+   "speech_end": 37.76,
+   "end": 39.16,
+   "overlay": null,
+   "text": "Headlights. Rule one just got a lot harder.",
+   "role": "narrator"
+  },
+  {
+   "i": 8,
+   "scene": "timelapse",
+   "start": 39.16,
+   "speech_end": 42.54,
+   "end": 43.94,
+   "overlay": [
+    "time",
+    "DAY 9 - 9:02 PM"
+   ],
+   "text": "The day goes too fast. Night falls on the lot.",
+   "role": "narrator"
+  },
+  {
+   "i": 9,
+   "scene": "lot_thin",
+   "start": 43.94,
+   "speech_end": 47.85,
+   "end": 48.85,
+   "overlay": null,
+   "text": "The crowd outside has thinned. Most of them wandered off toward the highway.",
+   "role": "narrator"
+  },
+  {
+   "i": 10,
+   "scene": "lot_ray",
+   "start": 48.85,
+   "speech_end": 54.38,
+   "end": 55.58,
+   "overlay": null,
+   "text": "Not all of them. One stands by pump four. Red vest. Glasses.",
+   "role": "narrator"
+  },
+  {
+   "i": 11,
+   "scene": "ray_watch",
+   "start": 55.58,
+   "speech_end": 59.47,
+   "end": 60.87,
+   "overlay": null,
+   "text": "Ray. Not swaying like the others. Watching.",
+   "role": "narrator"
+  },
+  {
+   "i": 12,
+   "scene": "crouch",
+   "start": 60.87,
+   "speech_end": 65.38,
+   "end": 66.58,
+   "overlay": null,
+   "text": "You get low. You hold your breath. Every rule at once.",
+   "role": "narrator"
+  },
+  {
+   "i": 13,
+   "scene": "glass_ray",
+   "start": 66.58,
+   "speech_end": 69.9,
+   "end": 70.9,
+   "overlay": null,
+   "text": "He walks to the window. Right where you played cards on day one.",
+   "role": "narrator"
+  },
+  {
+   "i": 14,
+   "scene": "knuckle",
+   "start": 70.9,
+   "speech_end": 72.42,
+   "end": 73.82,
+   "overlay": null,
+   "text": "Tap. Tap.",
+   "role": "narrator"
+  },
+  {
+   "i": 15,
+   "scene": "eyes_shut",
+   "start": 73.82,
+   "speech_end": 74.44,
+   "end": 75.64,
+   "overlay": null,
+   "text": "Your turn.",
+   "role": "narrator"
+  },
+  {
+   "i": 16,
+   "scene": "eyes_shut",
+   "start": 75.64,
+   "speech_end": 78.05,
+   "end": 79.45,
+   "overlay": null,
+   "text": "You don't move. You don't breathe.",
+   "role": "narrator"
+  },
+  {
+   "i": 17,
+   "scene": "ray_leaves",
+   "start": 79.45,
+   "speech_end": 84.83,
+   "end": 86.23,
+   "overlay": null,
+   "text": "He stands there for an hour. Then he walks away. North. Toward the motel.",
+   "role": "narrator"
+  },
+  {
+   "i": 18,
+   "scene": "cb_live",
+   "start": 86.23,
+   "speech_end": 90.46,
+   "end": 91.26,
+   "overlay": [
+    "time",
+    "DAY 10 - 2:58 AM"
+   ],
+   "text": "Hey. There's someone in our parking lot. He's wearing a red vest.",
+   "role": "dani"
+  },
+  {
+   "i": 19,
+   "scene": "map",
+   "start": 91.26,
+   "speech_end": 94.59,
+   "end": 95.59,
+   "overlay": null,
+   "text": "Three miles in one night. He's faster than the others.",
+   "role": "narrator"
+  },
+  {
+   "i": 20,
+   "scene": "cb_live",
+   "start": 95.59,
+   "speech_end": 100.28,
+   "end": 101.28,
+   "overlay": null,
+   "text": "He's just standing at our door. He looks hurt. Should we let him in?",
+   "role": "dani"
+  },
+  {
+   "i": 21,
+   "scene": "grip_mic",
+   "start": 101.28,
+   "speech_end": 106.9,
+   "end": 108.5,
+   "overlay": null,
+   "text": "You press the button so hard it hurts. Don't open the door. Whatever he does. Don't open the door.",
+   "role": "narrator"
+  },
+  {
+   "i": 22,
+   "scene": "cb_live",
+   "start": 108.5,
+   "speech_end": 110.08,
+   "end": 111.88,
+   "overlay": null,
+   "text": "He knocked. Twice.",
+   "role": "dani"
+  },
+  {
+   "i": 23,
+   "scene": "grab_keys",
+   "start": 111.88,
+   "speech_end": 114.58,
+   "end": 116.98,
+   "overlay": [
+    "time",
+    "3:12 AM"
+   ],
+   "text": "Dawn is three hours away. You can't wait for dawn.",
+   "role": "narrator"
+  },
+  {
+   "i": 24,
+   "scene": "end",
+   "start": 116.98,
+   "speech_end": 116.98,
+   "end": 120.48,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}
