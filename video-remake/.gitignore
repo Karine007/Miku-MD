@@ -2,3 +2,4 @@ __pycache__/
 *.mp4
 *.wav
 !voices/*.wav
+!gas_station/voices/*.wav

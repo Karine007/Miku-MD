@@ -36,3 +36,9 @@ python3 render.py --still 42.5 frame.png   # preview a single frame
 | 75–84 | time-lapse until sunrise | ALORS TU NE RÉPONDS PAS… JUSQU'AU LEVER DU SOLEIL. |
 | 84–93 | Mom calls at 07:00 | « MON AVION VIENT D'ATTERRIR. » « DANS UNE HEURE. » |
 | 93–104 | twist + end card | TA MÈRE ÉTAIT PARTIE TOUTE LA… CHAMBRE D'À CÔTÉ… LE RONFLEMENT REPREND. FIN |
+
+## Second episode
+
+`gas_station/` contains an original episode, *"ZOMBIE OUTBREAK: STRANDED AT A GAS STATION"*,
+in the format of vertical zombie-survival shorts, voiced with Gemini TTS. See
+`gas_station/README.md`.

@@ -1,0 +1,328 @@
+{
+ "duration": 120.35,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "highway",
+   "start": 0.6,
+   "speech_end": 4.57,
+   "end": 4.97,
+   "overlay": [
+    "time",
+    "11:48 PM"
+   ],
+   "text": "Eleven forty-eight PM. The last gas station for sixty miles.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "highway",
+   "start": 4.97,
+   "speech_end": 6.24,
+   "end": 6.74,
+   "overlay": null,
+   "text": "You only stopped for coffee.",
+   "role": "narrator"
+  },
+  {
+   "i": 2,
+   "scene": "store",
+   "start": 6.74,
+   "speech_end": 11.4,
+   "end": 11.8,
+   "overlay": null,
+   "text": "The clerk's name tag says Ray. He hasn't looked up from his crossword in ten minutes.",
+   "role": "narrator"
+  },
+  {
+   "i": 3,
+   "scene": "coffee",
+   "start": 11.8,
+   "speech_end": 13.66,
+   "end": 14.26,
+   "overlay": null,
+   "text": "The coffee machine takes three tries.",
+   "role": "narrator"
+  },
+  {
+   "i": 4,
+   "scene": "radio",
+   "start": 14.26,
+   "speech_end": 25.63,
+   "end": 26.03,
+   "overlay": null,
+   "text": "This is an emergency broadcast for Harlan County. Stay indoors. Avoid contact with anyone who appears confused or injured. Repeat. Stay indoors.",
+   "role": "radio"
+  },
+  {
+   "i": 5,
+   "scene": "store_shrug",
+   "start": 26.03,
+   "speech_end": 29.81,
+   "end": 30.31,
+   "overlay": null,
+   "text": "Ray turns the radio off. \"Probably another drill,\" he says.",
+   "role": "narrator"
+  },
+  {
+   "i": 6,
+   "scene": "window",
+   "start": 30.31,
+   "speech_end": 35.56,
+   "end": 36.06,
+   "overlay": null,
+   "text": "Then a pickup rolls in. Nobody gets out. The driver's door just hangs open.",
+   "role": "narrator"
+  },
+  {
+   "i": 7,
+   "scene": "pump_zombie",
+   "start": 36.06,
+   "speech_end": 40.64,
+   "end": 41.24,
+   "overlay": null,
+   "text": "Someone is standing at pump four. Swaying. Staring up at the lights.",
+   "role": "narrator"
+  },
+  {
+   "i": 8,
+   "scene": "horde",
+   "start": 41.24,
+   "speech_end": 48.52,
+   "end": 49.12,
+   "overlay": null,
+   "text": "Behind him, on the highway, more shapes. Dozens. All walking toward the only lights for sixty miles.",
+   "role": "narrator"
+  },
+  {
+   "i": 9,
+   "scene": "switch",
+   "start": 49.12,
+   "speech_end": 52.19,
+   "end": 52.49,
+   "overlay": null,
+   "text": "Ray moves faster than you'd think. He kills the canopy lights.",
+   "role": "narrator"
+  },
+  {
+   "i": 10,
+   "scene": "highway_dark",
+   "start": 52.49,
+   "speech_end": 53.65,
+   "end": 54.45,
+   "overlay": null,
+   "text": "The whole lot goes black.",
+   "role": "narrator"
+  },
+  {
+   "i": 11,
+   "scene": "glass",
+   "start": 54.45,
+   "speech_end": 59.86,
+   "end": 60.46,
+   "overlay": null,
+   "text": "Something thumps against the glass. Then it stops. In the dark, they lose interest.",
+   "role": "narrator"
+  },
+  {
+   "i": 12,
+   "scene": "store_dark",
+   "start": 60.46,
+   "speech_end": 64.48,
+   "end": 65.28,
+   "overlay": [
+    "rule",
+    "RULE 1:",
+    "NO LIGHTS AFTER SUNSET"
+   ],
+   "text": "Rule one. No lights after sunset. Not even your phone screen.",
+   "role": "narrator"
+  },
+  {
+   "i": 13,
+   "scene": "aisle",
+   "start": 65.28,
+   "speech_end": 66.21,
+   "end": 66.41,
+   "overlay": null,
+   "text": "You take inventory.",
+   "role": "narrator"
+  },
+  {
+   "i": 14,
+   "scene": "aisle",
+   "start": 66.41,
+   "speech_end": 68.02,
+   "end": 68.32,
+   "overlay": [
+    "count",
+    "214",
+    "SNACKS"
+   ],
+   "text": "Two hundred fourteen snacks.",
+   "role": "narrator"
+  },
+  {
+   "i": 15,
+   "scene": "fridge",
+   "start": 68.32,
+   "speech_end": 69.73,
+   "end": 70.03,
+   "overlay": [
+    "count",
+    "40",
+    "BOTTLES OF WATER"
+   ],
+   "text": "Forty bottles of water.",
+   "role": "narrator"
+  },
+  {
+   "i": 16,
+   "scene": "roller",
+   "start": 70.03,
+   "speech_end": 72.46,
+   "end": 72.96,
+   "overlay": [
+    "count",
+    "1",
+    "HOT DOG ROLLER"
+   ],
+   "text": "And one hot dog roller that never turns off.",
+   "role": "narrator"
+  },
+  {
+   "i": 17,
+   "scene": "ticket",
+   "start": 72.96,
+   "speech_end": 78.57,
+   "end": 79.27,
+   "overlay": [
+    "rule",
+    "RULE 2:",
+    "TWO BOTTLES A DAY"
+   ],
+   "text": "Rule two. Two bottles a day. Each. Ray writes it on the back of a lottery ticket.",
+   "role": "narrator"
+  },
+  {
+   "i": 18,
+   "scene": "day1",
+   "start": 79.27,
+   "speech_end": 84.69,
+   "end": 85.29,
+   "overlay": [
+    "time",
+    "DAY 1"
+   ],
+   "text": "Day one. Chips for breakfast. Ray teaches you a card game he's clearly making up as he goes.",
+   "role": "narrator"
+  },
+  {
+   "i": 19,
+   "scene": "phone",
+   "start": 85.29,
+   "speech_end": 89.93,
+   "end": 90.63,
+   "overlay": null,
+   "text": "Your phone finds one bar. One message gets through. Then the bar is gone.",
+   "role": "narrator"
+  },
+  {
+   "i": 20,
+   "scene": "store_dark",
+   "start": 90.63,
+   "speech_end": 93.52,
+   "end": 94.32,
+   "overlay": [
+    "rule",
+    "RULE 3:",
+    "SOMEONE STAYS AWAKE"
+   ],
+   "text": "Rule three. Someone stays awake. Always.",
+   "role": "narrator"
+  },
+  {
+   "i": 21,
+   "scene": "night",
+   "start": 94.32,
+   "speech_end": 98.26,
+   "end": 98.66,
+   "overlay": [
+    "time",
+    "DAY 4 - 3:21 AM"
+   ],
+   "text": "Day four. Three twenty-one AM. You wake up on your cardboard bed.",
+   "role": "narrator"
+  },
+  {
+   "i": 22,
+   "scene": "night_empty",
+   "start": 98.66,
+   "speech_end": 99.82,
+   "end": 100.62,
+   "overlay": null,
+   "text": "Ray's blanket is empty.",
+   "role": "narrator"
+  },
+  {
+   "i": 23,
+   "scene": "cooler",
+   "start": 100.62,
+   "speech_end": 103.8,
+   "end": 104.6,
+   "overlay": null,
+   "text": "The walk-in cooler door is open a crack. It's never open.",
+   "role": "narrator"
+  },
+  {
+   "i": 24,
+   "scene": "ray_back",
+   "start": 104.6,
+   "speech_end": 107.92,
+   "end": 108.42,
+   "overlay": null,
+   "text": "Ray steps out, smiling. He says he was counting water.",
+   "role": "narrator"
+  },
+  {
+   "i": 25,
+   "scene": "sleeve",
+   "start": 108.42,
+   "speech_end": 110.62,
+   "end": 111.52,
+   "overlay": null,
+   "text": "His sleeve is wet. And red.",
+   "role": "narrator"
+  },
+  {
+   "i": 26,
+   "scene": "ray_dark",
+   "start": 111.52,
+   "speech_end": 113.92,
+   "end": 114.42,
+   "overlay": null,
+   "text": "\"Just a scratch,\" he says. \"From the shutter.\"",
+   "role": "narrator"
+  },
+  {
+   "i": 27,
+   "scene": "ray_dark2",
+   "start": 114.42,
+   "speech_end": 115.25,
+   "end": 116.85,
+   "overlay": null,
+   "text": "There is no shutter.",
+   "role": "narrator"
+  },
+  {
+   "i": 28,
+   "scene": "end",
+   "start": 116.85,
+   "speech_end": 116.85,
+   "end": 120.35,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}

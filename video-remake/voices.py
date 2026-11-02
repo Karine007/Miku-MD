@@ -204,6 +204,8 @@ def split_aligned(path, texts):
     syl = np.array([syllables(t) for t in texts], float)
     pause = np.array([0.35 * (t.count("...") + t.count(". ") + t.count("? ")) for t in texts])
     B = len(texts) - 1
+    if B == 0:                                  # single line: just the voiced span
+        return [x[int(max(0, v0s - 0.03) * SR): int((v1 + 0.12) * SR)].copy()]
     G = len(gaps)
     if G < B:
         raise RuntimeError(f"{path}: only {G} pauses for {B} cuts")
