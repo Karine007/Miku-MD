@@ -1,0 +1,252 @@
+{
+ "duration": 120.23,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "alone",
+   "start": 0.6,
+   "speech_end": 4.21,
+   "end": 5.41,
+   "overlay": [
+    "time",
+    "DAY 8"
+   ],
+   "text": "Day eight. It's quiet when you're the only one breathing.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "dead_phone",
+   "start": 5.41,
+   "speech_end": 8.45,
+   "end": 9.45,
+   "overlay": null,
+   "text": "Your phone died two days ago. You still check it.",
+   "role": "narrator"
+  },
+  {
+   "i": 2,
+   "scene": "locker",
+   "start": 9.45,
+   "speech_end": 15.19,
+   "end": 16.19,
+   "overlay": null,
+   "text": "In Ray's locker. A spare vest. A photo of a young man in a hard hat. And a CB radio.",
+   "role": "narrator"
+  },
+  {
+   "i": 3,
+   "scene": "cb",
+   "start": 16.19,
+   "speech_end": 21.77,
+   "end": 22.57,
+   "overlay": [
+    "time",
+    "CH 19"
+   ],
+   "text": "Truckers use channel nineteen. Ray told you that on day one.",
+   "role": "narrator"
+  },
+  {
+   "i": 4,
+   "scene": "cb_knob",
+   "start": 22.57,
+   "speech_end": 27.4,
+   "end": 28.4,
+   "overlay": null,
+   "text": "You keep the volume low. Rule one says no lights. It says nothing about sound.",
+   "role": "narrator"
+  },
+  {
+   "i": 5,
+   "scene": "cb_mic",
+   "start": 28.4,
+   "speech_end": 32.62,
+   "end": 34.02,
+   "overlay": null,
+   "text": "You press the button, and say the only thing you can think of. Is anyone out there?",
+   "role": "narrator"
+  },
+  {
+   "i": 6,
+   "scene": "cb_wait",
+   "start": 34.02,
+   "speech_end": 36.92,
+   "end": 39.72,
+   "overlay": null,
+   "text": "Nothing. For an hour, nothing.",
+   "role": "narrator"
+  },
+  {
+   "i": 7,
+   "scene": "cb_live",
+   "start": 39.72,
+   "speech_end": 43.78,
+   "end": 44.58,
+   "overlay": null,
+   "text": "Hello? Hello! Is somebody actually there?",
+   "role": "dani"
+  },
+  {
+   "i": 8,
+   "scene": "cb_live",
+   "start": 44.58,
+   "speech_end": 51.81,
+   "end": 52.81,
+   "overlay": null,
+   "text": "I'm Dani. I'm at the Starlight Motel, mile marker one-thirty. It's me and my little brother, Milo.",
+   "role": "dani"
+  },
+  {
+   "i": 9,
+   "scene": "map",
+   "start": 52.81,
+   "speech_end": 57.78,
+   "end": 58.78,
+   "overlay": [
+    "count",
+    "3",
+    "MILES NORTH"
+   ],
+   "text": "Three miles north. An hour on foot. Forever in the dark.",
+   "role": "narrator"
+  },
+  {
+   "i": 10,
+   "scene": "cb_live",
+   "start": 58.78,
+   "speech_end": 62.7,
+   "end": 63.7,
+   "overlay": null,
+   "text": "We have a car. No gas. Please tell me you have gas.",
+   "role": "dani"
+  },
+  {
+   "i": 11,
+   "scene": "pumps_dark",
+   "start": 63.7,
+   "speech_end": 66.02,
+   "end": 67.22,
+   "overlay": null,
+   "text": "You're sitting on top of twelve thousand gallons of it.",
+   "role": "narrator"
+  },
+  {
+   "i": 12,
+   "scene": "cb_live",
+   "start": 67.22,
+   "speech_end": 72.84,
+   "end": 73.84,
+   "overlay": null,
+   "text": "Dawn is safest. They go slow when it's cold. Meet us at dawn. Day after tomorrow.",
+   "role": "dani"
+  },
+  {
+   "i": 13,
+   "scene": "napkin",
+   "start": 73.84,
+   "speech_end": 77.66,
+   "end": 78.66,
+   "overlay": [
+    "rule",
+    "RULE 5:",
+    "MOVE ONLY AT DAWN"
+   ],
+   "text": "Rule five, you write on a napkin. Move only at dawn.",
+   "role": "narrator"
+  },
+  {
+   "i": 14,
+   "scene": "sleep_cb",
+   "start": 78.66,
+   "speech_end": 83.89,
+   "end": 85.49,
+   "overlay": null,
+   "text": "That night, you sleep with the radio on your chest. Channel nineteen, hissing softly.",
+   "role": "narrator"
+  },
+  {
+   "i": 15,
+   "scene": "draft",
+   "start": 85.49,
+   "speech_end": 87.33,
+   "end": 88.53,
+   "overlay": [
+    "time",
+    "DAY 9 - 4:02 AM"
+   ],
+   "text": "At four AM, a cold draft wakes you.",
+   "role": "narrator"
+  },
+  {
+   "i": 16,
+   "scene": "storeroom",
+   "start": 88.53,
+   "speech_end": 91.63,
+   "end": 92.83,
+   "overlay": null,
+   "text": "It's coming from the storeroom. From behind the walk-in.",
+   "role": "narrator"
+  },
+  {
+   "i": 17,
+   "scene": "dock_open",
+   "start": 92.83,
+   "speech_end": 96.4,
+   "end": 98.0,
+   "overlay": null,
+   "text": "Walk-in coolers have two doors. You only ever locked one.",
+   "role": "narrator"
+  },
+  {
+   "i": 18,
+   "scene": "cooler_empty",
+   "start": 98.0,
+   "speech_end": 104.07,
+   "end": 105.47,
+   "overlay": null,
+   "text": "The cooler is empty. Ray's crossword sits on a crate. Folded. Like he's coming back to finish it.",
+   "role": "narrator"
+  },
+  {
+   "i": 19,
+   "scene": "footprints",
+   "start": 105.47,
+   "speech_end": 110.36,
+   "end": 111.56,
+   "overlay": null,
+   "text": "On the loading dock, footprints. Wet. Leading out across the lot.",
+   "role": "narrator"
+  },
+  {
+   "i": 20,
+   "scene": "footprints_far",
+   "start": 111.56,
+   "speech_end": 112.09,
+   "end": 112.89,
+   "overlay": null,
+   "text": "Heading north.",
+   "role": "narrator"
+  },
+  {
+   "i": 21,
+   "scene": "footprints_far",
+   "start": 112.89,
+   "speech_end": 114.33,
+   "end": 116.73,
+   "overlay": null,
+   "text": "Toward the Starlight Motel.",
+   "role": "narrator"
+  },
+  {
+   "i": 22,
+   "scene": "end",
+   "start": 116.73,
+   "speech_end": 116.73,
+   "end": 120.23,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}
