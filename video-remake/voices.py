@@ -48,6 +48,9 @@ ROLE_VOICE = {"narrator": "narrator", "fake": "mother", "door": "mother", "real"
 # phone = voicemail / call band-pass, door = muffled through a door with a little room
 FX = {"narrator": None, "fake": "phone", "door": "door", "me": "phone", "real": "phone"}
 
+# seconds trimmed from the start of a line's clip (TTS stutters), by line index
+TRIM_START = {18: 0.37}
+
 # (start, latest_end, role, text)
 LINES = [
     (0.2, 2.0, "narrator", "Imagine..."),
@@ -286,7 +289,8 @@ def main():
         clips.update(zip(ks, segs))
     track = np.zeros((int(SR * DUR), 2), np.float32)
     for k, (start, end, role, text) in enumerate(LINES):
-        sig, tempo = process(clips[k], role, end - start)
+        clip = clips[k][int(TRIM_START.get(k, 0) * SR):]
+        sig, tempo = process(clip, role, end - start)
         gain = {"narrator": 1.0, "fake": 0.8, "door": 0.75, "me": 0.8, "real": 0.85}[role]
         pan = {"door": -0.25}.get(role, 0.0)
         i = int(start * SR)
