@@ -155,7 +155,7 @@ put(START[16], (np.sin(2 * np.pi * 100 * T(n)) + 0.4 * lp(noise(n), 400)) * env(
 # pen scribble
 n = int(3.0 * SR)
 scr = (lp(noise(n), 4000) - lp(noise(n), 1500)) * (np.abs(np.sin(2 * np.pi * 5 * T(n))) > 0.4)
-put(START[17] + 0.6, scr * env(n, 0.05, 0.2), 0.12)
+put(START[17] + 1.4, scr * env(n, 0.3, 0.4), 0.06)
 
 # day one: cards shuffle
 for k in range(4):
@@ -197,8 +197,8 @@ sting = sum(np.sin(2 * np.pi * f * tt) for f in (196, 207.65, 277.18, 415.3)) / 
 put(START[27] + 1.1, sting * env(n, 0.005, 0.5), 0.35)
 put(START[27] + 1.1, np.sin(2 * np.pi * 40 * tt * (1 - 0.3 * tt / 3)) * np.exp(-tt * 1.5), 0.7)
 n = int(1.5 * SR)
-riser = (noise(n) - lp(noise(n), 800)) * (T(n) / 1.5) ** 2.5
-put(START[27] - 0.4, riser, 0.15)
+riser = (noise(n) - lp(noise(n), 800)) * (T(n) / 1.5) ** 2.5 * env(n, 0.0, 0.25)
+put(START[27] - 0.4, riser, 0.1)
 
 out *= 0.9
 out = np.tanh(out * 1.2) / math.tanh(1.2)
