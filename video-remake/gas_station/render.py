@@ -40,7 +40,9 @@ W, H = 720, 1280
 PW, PH = 720, 640           # illustrated panel
 PY = 360                    # panel top on the frame
 FPS = 30
-TL = json.load(open(os.path.join(HERE, "timeline.json")))
+# episode folder (default: this one). It holds script.py, timeline.json and optionally scenes.py
+EP = os.path.abspath(os.environ.get("EPISODE", HERE))
+TL = json.load(open(os.path.join(EP, "timeline.json")))
 DURATION = TL["duration"]
 BEATS = TL["beats"]
 
@@ -777,6 +779,25 @@ def sc_end(t, lt):
 SCENES = {k[3:]: v for k, v in globals().items() if k.startswith("sc_")}
 
 
+def _load_episode_module(name):
+    """Load <episode>/<name>.py with this module's helpers (stick, zombie, D, ...) in its namespace."""
+    import importlib.util
+    path = os.path.join(EP, name + ".py")
+    if not os.path.exists(path):
+        return None
+    spec = importlib.util.spec_from_file_location(f"episode_{name}", path)
+    mod = importlib.util.module_from_spec(spec)
+    mod.__dict__.update({k: v for k, v in globals().items() if not k.startswith("__")})
+    spec.loader.exec_module(mod)
+    return mod
+
+
+_SCRIPT = _load_episode_module("script")
+_EP_SCENES = _load_episode_module("scenes") if EP != HERE else None
+if _EP_SCENES:
+    SCENES.update({k[3:]: v for k, v in vars(_EP_SCENES).items() if k.startswith("sc_")})
+
+
 # --------------------------------------------------------------------------
 # timeline helpers
 # --------------------------------------------------------------------------
@@ -813,7 +834,8 @@ def title_img():
 
 
 TITLE_1 = " OUTBREAK:"
-TITLE_2 = "STRANDED AT A GAS STATION"
+TITLE_2 = _SCRIPT.TITLE[2] if _SCRIPT else "STRANDED AT A GAS STATION"
+END_TEXT = getattr(_SCRIPT, "END_TEXT", "PART 2 COMING SOON")
 
 
 def overlay_label(panel1x, b, lt):
@@ -849,7 +871,7 @@ def render_frame(i):
     if b["scene"] == "end":
         k = ease(lt / 0.5)
         c = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-        paste_center(c, rich_text("PART 2 COMING SOON", 76, stroke=0, squeeze=0.68), 360, 620, 1.0, k)
+        paste_center(c, rich_text(END_TEXT, 76, stroke=0, squeeze=0.68), 360, 620, 1.0, k)
         paste_center(c, rich_text("*FOLLOW SO YOU DON'T MISS IT*", 34, stroke=0, red=ORANGE, squeeze=0.7),
                      360, 676, 1.0, k)
         canvas.paste(c, (0, 0), c)

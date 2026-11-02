@@ -20,23 +20,30 @@ import wave
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+EP = os.path.abspath(os.environ.get("EPISODE", HERE))   # episode folder (script.py, voices/, timeline.json)
 sys.path.insert(0, os.path.dirname(HERE))
+sys.path.insert(0, EP)
 import voices as V          # noqa: E402  (shared TTS / alignment / cutting helpers)
 from script import BEATS    # noqa: E402
 
 SR = V.SR
-CACHE = os.path.join(HERE, "voices")
-MODEL = "gemini-3.8-flash-lite-tts"
-VOICE = {"narrator": "Charon", "radio": "Kore"}
+CACHE = os.path.join(EP, "voices")
+MODEL = os.environ.get("TTS_MODEL", "gemini-3.8-flash-lite-tts")   # each model has its own daily free quota
+# series cast (Gemini prebuilt voices)
+VOICE = {"narrator": "Charon", "radio": "Kore", "mom": "Sulafat", "ray": "Algenib",
+         "dani": "Leda", "milo": "Puck", "boone": "Alnilam"}
 BATCH = 14
 LEAD = 0.6                  # silence before the first line
-GAIN = {"narrator": 1.0, "radio": 0.75}
+GAIN = {"narrator": 1.0, "radio": 0.75, "mom": 0.85, "ray": 0.95, "dani": 0.85, "milo": 0.85, "boone": 0.95}
 
 # reuse voices.py machinery with this episode's settings
-V.VOICES = {"narrator": VOICE["narrator"], "radio": VOICE["radio"]}
-V.ROLE_VOICE = {"narrator": "narrator", "radio": "radio"}
-V.STYLES = {"narrator": "", "radio": ""}
-V.FX = {"narrator": None, "radio": "radio"}
+V.VOICES = dict(VOICE)
+V.ROLE_VOICE = {r: r for r in VOICE}
+V.STYLES = {r: "" for r in VOICE}
+# mom = phone / voicemail, radio = broadcast, dani = CB radio; ray / boone / milo in the room
+V.FX = {"narrator": None, "radio": "radio", "mom": "phone", "ray": None, "dani": "cb", "milo": None, "boone": None}
+V.FILTERS["cb"] = (",highpass=f=380,lowpass=f=2800,acompressor=threshold=0.1:ratio=5,"
+                   "acrusher=bits=11:mix=0.2,volume=1.6")
 V.FILTERS["radio"] = (",highpass=f=450,lowpass=f=3000,acompressor=threshold=0.08:ratio=6,"
                       "acrusher=bits=10:mix=0.25,volume=1.7")
 
@@ -53,7 +60,22 @@ def tts(role, texts, out):
         f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
         data=json.dumps(body).encode(),
         headers={"Content-Type": "application/json", "x-goog-api-key": os.environ["GEMINI_API_KEY"]})
-    r = json.load(urllib.request.urlopen(req, timeout=300))
+    import time
+    import urllib.error
+    for attempt in range(6):
+        try:
+            r = json.load(urllib.request.urlopen(req, timeout=300))
+            break
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode(errors="replace")
+            if e.code != 429 or "PerDay" in msg:
+                raise RuntimeError(f"TTS refused ({e.code}): {msg[:300]}")
+            wait = 45 * (attempt + 1)                 # per-minute limit: back off and retry
+            print(f"  rate limited, retrying in {wait}s", flush=True)
+            time.sleep(wait)
+            req = urllib.request.Request(req.full_url, data=req.data, headers=dict(req.header_items()))
+    else:
+        raise RuntimeError("TTS still rate limited after retries")
     try:
         part = r["candidates"][0]["content"]["parts"][0]["inlineData"]
     except (KeyError, IndexError):
@@ -94,8 +116,10 @@ def main():
             path = os.path.join(CACHE, name + ".wav")
             texts = [BEATS[k][2] for k in ck]
             if not os.path.exists(path):
-                print(f"TTS {name}: {len(ck)} lines", flush=True)
+                print(f"TTS {name}: {len(ck)} lines ({MODEL})", flush=True)
                 tts(role, texts, path)
+                import time
+                time.sleep(20)          # stay under the per-minute request limit
             segs = V.split_aligned(path, texts)
             clips.update(zip(ck, segs))
 
@@ -118,7 +142,7 @@ def main():
     for st, sig in pieces:
         i = int(st * SR)
         track[i:i + len(sig)] += sig[:, None] * 1.0
-    json.dump({"duration": round(total, 3), "beats": timeline}, open(os.path.join(HERE, "timeline.json"), "w"),
+    json.dump({"duration": round(total, 3), "beats": timeline}, open(os.path.join(EP, "timeline.json"), "w"),
               indent=1, ensure_ascii=False)
     pcm = (np.clip(track, -1, 1) * 32000).astype(np.int16)
     with wave.open(out, "wb") as w:

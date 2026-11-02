@@ -3,3 +3,4 @@ __pycache__/
 *.wav
 !voices/*.wav
 !gas_station/voices/*.wav
+!route9/*/voices/*.wav

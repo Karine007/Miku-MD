@@ -1,0 +1,285 @@
+{
+ "duration": 120.728,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "garage",
+   "start": 0.6,
+   "speech_end": 4.92,
+   "end": 5.32,
+   "overlay": [
+    "time",
+    "9:15 PM"
+   ],
+   "text": "Nine fifteen PM. Your shift ran two hours late. Again.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "missed_call",
+   "start": 5.32,
+   "speech_end": 9.25,
+   "end": 9.65,
+   "overlay": null,
+   "text": "One missed call. Mom. She never calls after eight.",
+   "role": "narrator"
+  },
+  {
+   "i": 2,
+   "scene": "voicemail",
+   "start": 9.65,
+   "speech_end": 16.288,
+   "end": 17.288,
+   "overlay": null,
+   "text": "Hi, sweetheart. It's probably nothing. The news says stay home tonight. Call me when you see this, okay?",
+   "role": "mom"
+  },
+  {
+   "i": 3,
+   "scene": "call_failed",
+   "start": 17.288,
+   "speech_end": 19.298,
+   "end": 19.798,
+   "overlay": null,
+   "text": "You call back. Straight to voicemail.",
+   "role": "narrator"
+  },
+  {
+   "i": 4,
+   "scene": "onramp",
+   "start": 19.798,
+   "speech_end": 23.308,
+   "end": 24.508,
+   "overlay": null,
+   "text": "Pine Hollow is two hundred miles north. You decide to drive.",
+   "role": "narrator"
+  },
+  {
+   "i": 5,
+   "scene": "traffic",
+   "start": 24.508,
+   "speech_end": 26.418,
+   "end": 26.618,
+   "overlay": null,
+   "text": "Route 9 is never busy on a Tuesday.",
+   "role": "narrator"
+  },
+  {
+   "i": 6,
+   "scene": "traffic",
+   "start": 26.618,
+   "speech_end": 28.838,
+   "end": 30.038,
+   "overlay": null,
+   "text": "Tonight, every car is going the other way.",
+   "role": "narrator"
+  },
+  {
+   "i": 7,
+   "scene": "car_radio",
+   "start": 30.038,
+   "speech_end": 36.858,
+   "end": 37.358,
+   "overlay": null,
+   "text": "Reports of violent incidents across Harlan County. Drivers should avoid Route 9 north of mile marker one-twenty.",
+   "role": "radio"
+  },
+  {
+   "i": 8,
+   "scene": "mile_marker",
+   "start": 37.358,
+   "speech_end": 39.078,
+   "end": 39.478,
+   "overlay": null,
+   "text": "You pass mile marker one-eighteen.",
+   "role": "narrator"
+  },
+  {
+   "i": 9,
+   "scene": "trooper",
+   "start": 39.478,
+   "speech_end": 45.568,
+   "end": 46.768,
+   "overlay": null,
+   "text": "A state trooper's car sits across the shoulder. Lights on. Door open. Nobody inside.",
+   "role": "narrator"
+  },
+  {
+   "i": 10,
+   "scene": "man_road",
+   "start": 46.768,
+   "speech_end": 48.078,
+   "end": 48.478,
+   "overlay": null,
+   "text": "Then there's a man in the road.",
+   "role": "narrator"
+  },
+  {
+   "i": 11,
+   "scene": "brake",
+   "start": 48.478,
+   "speech_end": 50.638,
+   "end": 51.638,
+   "overlay": null,
+   "text": "You brake hard. He doesn't move.",
+   "role": "narrator"
+  },
+  {
+   "i": 12,
+   "scene": "man_turns",
+   "start": 51.638,
+   "speech_end": 56.568,
+   "end": 57.068,
+   "overlay": null,
+   "text": "He turns around. Slowly. Like he's hearing a song only he can hear.",
+   "role": "narrator"
+  },
+  {
+   "i": 13,
+   "scene": "man_walks",
+   "start": 57.068,
+   "speech_end": 61.298,
+   "end": 61.698,
+   "overlay": null,
+   "text": "He walks straight into your headlights. And from the trees, two more step out.",
+   "role": "narrator"
+  },
+  {
+   "i": 14,
+   "scene": "swerve",
+   "start": 61.698,
+   "speech_end": 64.418,
+   "end": 65.618,
+   "overlay": null,
+   "text": "You don't think. You swerve around them and floor it.",
+   "role": "narrator"
+  },
+  {
+   "i": 15,
+   "scene": "mirror",
+   "start": 65.618,
+   "speech_end": 70.378,
+   "end": 71.178,
+   "overlay": null,
+   "text": "In the mirror, they keep walking after your taillights. Long after they should have stopped.",
+   "role": "narrator"
+  },
+  {
+   "i": 16,
+   "scene": "hands",
+   "start": 71.178,
+   "speech_end": 76.678,
+   "end": 77.678,
+   "overlay": null,
+   "text": "Your hands won't stop shaking. You turn the radio off. The silence is worse.",
+   "role": "narrator"
+  },
+  {
+   "i": 17,
+   "scene": "fuel",
+   "start": 77.678,
+   "speech_end": 82.558,
+   "end": 83.058,
+   "overlay": [
+    "count",
+    "12",
+    "MILES LEFT"
+   ],
+   "text": "Then a soft chime. The fuel light. Twelve miles left in the tank.",
+   "role": "narrator"
+  },
+  {
+   "i": 18,
+   "scene": "battery",
+   "start": 83.058,
+   "speech_end": 85.598,
+   "end": 85.998,
+   "overlay": null,
+   "text": "No service. Thirty-one percent battery.",
+   "role": "narrator"
+  },
+  {
+   "i": 19,
+   "scene": "battery",
+   "start": 85.998,
+   "speech_end": 92.188,
+   "end": 92.988,
+   "overlay": null,
+   "text": "You type a message to Mom anyway. On my way. You hold the phone up, like that will help it send.",
+   "role": "narrator"
+  },
+  {
+   "i": 20,
+   "scene": "last_sign",
+   "start": 92.988,
+   "speech_end": 96.328,
+   "end": 96.828,
+   "overlay": null,
+   "text": "A green sign. Last services for sixty miles.",
+   "role": "narrator"
+  },
+  {
+   "i": 21,
+   "scene": "ramp",
+   "start": 96.828,
+   "speech_end": 102.258,
+   "end": 103.058,
+   "overlay": null,
+   "text": "The exit ramp is dark. No streetlights. Just your headlights, and the trees leaning in.",
+   "role": "narrator"
+  },
+  {
+   "i": 22,
+   "scene": "station_far",
+   "start": 103.058,
+   "speech_end": 105.888,
+   "end": 107.088,
+   "overlay": null,
+   "text": "One gas station. Lit up like a lighthouse.",
+   "role": "narrator"
+  },
+  {
+   "i": 23,
+   "scene": "highway",
+   "start": 107.088,
+   "speech_end": 110.668,
+   "end": 111.268,
+   "overlay": [
+    "time",
+    "11:48 PM"
+   ],
+   "text": "Eleven forty-eight. You'll just get gas. And maybe coffee.",
+   "role": "narrator"
+  },
+  {
+   "i": 24,
+   "scene": "pickup_behind",
+   "start": 111.268,
+   "speech_end": 113.578,
+   "end": 114.078,
+   "overlay": null,
+   "text": "You don't notice the pickup truck half a mile behind you.",
+   "role": "narrator"
+  },
+  {
+   "i": 25,
+   "scene": "pickup_behind",
+   "start": 114.078,
+   "speech_end": 115.228,
+   "end": 117.228,
+   "overlay": null,
+   "text": "Its headlights are off.",
+   "role": "narrator"
+  },
+  {
+   "i": 26,
+   "scene": "end",
+   "start": 117.228,
+   "speech_end": 117.228,
+   "end": 120.728,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}
