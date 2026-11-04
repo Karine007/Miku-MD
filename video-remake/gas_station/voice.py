@@ -34,7 +34,7 @@ VOICE = {"narrator": "Charon", "radio": "Kore", "mom": "Sulafat", "ray": "Algeni
          "dani": "Leda", "milo": "Puck", "boone": "Alnilam"}
 BATCH = 14
 LEAD = 0.6                  # silence before the first line
-GAIN = {"narrator": 1.0, "radio": 0.75, "mom": 0.85, "ray": 0.95, "dani": 0.95, "milo": 0.85, "boone": 0.95}
+GAIN = {"narrator": 1.0, "radio": 0.75, "mom": 0.85, "ray": 0.95, "dani": 0.95, "milo": 0.85, "boone": 1.05}
 
 # reuse voices.py machinery with this episode's settings
 V.VOICES = dict(VOICE)

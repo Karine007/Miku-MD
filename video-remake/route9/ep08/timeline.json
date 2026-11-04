@@ -1,0 +1,239 @@
+{
+ "duration": 120.54,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "step_out",
+   "start": 0.6,
+   "speech_end": 4.33,
+   "end": 5.93,
+   "overlay": [
+    "time",
+    "DAY 10 - 4:10 AM"
+   ],
+   "text": "You make Dani promise to stay hidden. Then you step out into the light.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "boone_meet",
+   "start": 5.93,
+   "speech_end": 10.15,
+   "end": 11.35,
+   "overlay": null,
+   "text": "Boone is younger than you expected. Tired eyes. A rifle he doesn't point.",
+   "role": "narrator"
+  },
+  {
+   "i": 2,
+   "scene": "boone_talk",
+   "start": 11.35,
+   "speech_end": 12.24,
+   "end": 13.64,
+   "overlay": null,
+   "text": "Where's my father?",
+   "role": "boone"
+  },
+  {
+   "i": 3,
+   "scene": "tell_all",
+   "start": 13.64,
+   "speech_end": 18.34,
+   "end": 20.34,
+   "overlay": null,
+   "text": "You tell him everything. The keys. The scratch. The walk-in. The two taps.",
+   "role": "narrator"
+  },
+  {
+   "i": 4,
+   "scene": "boone_away",
+   "start": 20.34,
+   "speech_end": 24.68,
+   "end": 26.28,
+   "overlay": null,
+   "text": "Two taps. He did that when I was a kid. Your turn.",
+   "role": "boone"
+  },
+  {
+   "i": 5,
+   "scene": "boone_away",
+   "start": 26.28,
+   "speech_end": 29.35,
+   "end": 31.15,
+   "overlay": null,
+   "text": "For a moment, nobody says anything. The floodlights hum.",
+   "role": "narrator"
+  },
+  {
+   "i": 6,
+   "scene": "boone_talk",
+   "start": 31.15,
+   "speech_end": 34.92,
+   "end": 35.92,
+   "overlay": null,
+   "text": "Then he's out here. And if he's out here, he's coming to the dam with the rest of them.",
+   "role": "boone"
+  },
+  {
+   "i": 7,
+   "scene": "you_ask",
+   "start": 35.92,
+   "speech_end": 36.62,
+   "end": 37.82,
+   "overlay": null,
+   "text": "The rest of them?",
+   "role": "narrator"
+  },
+  {
+   "i": 8,
+   "scene": "herd_wide",
+   "start": 37.82,
+   "speech_end": 43.99,
+   "end": 45.19,
+   "overlay": null,
+   "text": "Every one in the county. We walk them to Harlan Dam. Lights on the whole way. They follow like it's church.",
+   "role": "boone"
+  },
+  {
+   "i": 9,
+   "scene": "spillway",
+   "start": 45.19,
+   "speech_end": 50.26,
+   "end": 51.66,
+   "overlay": null,
+   "text": "At sunrise, we open the floodgates. The spillway takes them all. Downriver. Gone.",
+   "role": "boone"
+  },
+  {
+   "i": 10,
+   "scene": "river_you",
+   "start": 51.66,
+   "speech_end": 55.39,
+   "end": 56.59,
+   "overlay": null,
+   "text": "Downriver. You know that river. You grew up on it.",
+   "role": "narrator"
+  },
+  {
+   "i": 11,
+   "scene": "river_map",
+   "start": 56.59,
+   "speech_end": 61.0,
+   "end": 62.6,
+   "overlay": [
+    "count",
+    "12",
+    "MILES TO PINE HOLLOW"
+   ],
+   "text": "Twelve miles downstream from Harlan Dam is Pine Hollow. Where your mom lives.",
+   "role": "narrator"
+  },
+  {
+   "i": 12,
+   "scene": "boone_shrug",
+   "start": 62.6,
+   "speech_end": 66.65,
+   "end": 67.85,
+   "overlay": null,
+   "text": "Pine Hollow got evacuated on day one. It's empty. I checked the list myself.",
+   "role": "boone"
+  },
+  {
+   "i": 13,
+   "scene": "you_doubt",
+   "start": 67.85,
+   "speech_end": 70.46,
+   "end": 72.46,
+   "overlay": null,
+   "text": "He believes it. You want to believe it.",
+   "role": "narrator"
+  },
+  {
+   "i": 14,
+   "scene": "rule6",
+   "start": 72.46,
+   "speech_end": 77.01,
+   "end": 78.41,
+   "overlay": [
+    "rule",
+    "RULE 6:",
+    "NOT EVERY LIGHT IS SAFE"
+   ],
+   "text": "Rule six. Not every light is safe. Especially the ones that want you to follow.",
+   "role": "narrator"
+  },
+  {
+   "i": 15,
+   "scene": "boone_offer",
+   "start": 78.41,
+   "speech_end": 82.91,
+   "end": 84.11,
+   "overlay": null,
+   "text": "Ride with me. Whatever's left of my dad, you're the last one who saw him.",
+   "role": "boone"
+  },
+  {
+   "i": 16,
+   "scene": "mirror_pickup",
+   "start": 84.11,
+   "speech_end": 90.89,
+   "end": 92.29,
+   "overlay": null,
+   "text": "You take the seat. In the side mirror, your pickup follows, headlights off. Dani was never good at staying hidden.",
+   "role": "narrator"
+  },
+  {
+   "i": 17,
+   "scene": "parade",
+   "start": 92.29,
+   "speech_end": 97.17,
+   "end": 98.77,
+   "overlay": null,
+   "text": "All around the convoy, hundreds of them walk in the light. Calm. Like a parade.",
+   "role": "narrator"
+  },
+  {
+   "i": 18,
+   "scene": "parade",
+   "start": 98.77,
+   "speech_end": 103.7,
+   "end": 105.1,
+   "overlay": null,
+   "text": "The trucks crawl. The dead keep pace. Nobody honks. Nobody talks.",
+   "role": "narrator"
+  },
+  {
+   "i": 19,
+   "scene": "red_vest",
+   "start": 105.1,
+   "speech_end": 108.24,
+   "end": 110.44,
+   "overlay": null,
+   "text": "And somewhere in that parade, a red vest.",
+   "role": "narrator"
+  },
+  {
+   "i": 20,
+   "scene": "dam_far",
+   "start": 110.44,
+   "speech_end": 113.84,
+   "end": 117.04,
+   "overlay": [
+    "time",
+    "HARLAN DAM"
+   ],
+   "text": "Harlan Dam rises out of the dark. Lit up like a stadium.",
+   "role": "narrator"
+  },
+  {
+   "i": 21,
+   "scene": "end",
+   "start": 117.04,
+   "speech_end": 117.04,
+   "end": 120.54,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}
