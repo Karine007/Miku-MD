@@ -1,0 +1,238 @@
+{
+ "duration": 120.558,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "dam_top",
+   "start": 0.6,
+   "speech_end": 3.42,
+   "end": 5.22,
+   "overlay": [
+    "time",
+    "DAY 10 - 5:20 AM"
+   ],
+   "text": "Five twenty AM. Forty minutes to sunrise.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "channel",
+   "start": 5.22,
+   "speech_end": 12.62,
+   "end": 14.82,
+   "overlay": null,
+   "text": "Below the dam, the spillway channel fills. Thousands of them. Shoulder to shoulder. Staring up at the lights.",
+   "role": "narrator"
+  },
+  {
+   "i": 2,
+   "scene": "control_room",
+   "start": 14.82,
+   "speech_end": 19.14,
+   "end": 20.34,
+   "overlay": null,
+   "text": "The control room still has power. And a radio that reaches farther than any CB.",
+   "role": "narrator"
+  },
+  {
+   "i": 3,
+   "scene": "dam_radio",
+   "start": 20.34,
+   "speech_end": 26.22,
+   "end": 27.22,
+   "overlay": null,
+   "text": "Pine Hollow shelter at Saint Agnes Church remains open. Survivors should keep all lights off.",
+   "role": "radio"
+  },
+  {
+   "i": 4,
+   "scene": "you_lean",
+   "start": 27.22,
+   "speech_end": 32.19,
+   "end": 33.59,
+   "overlay": null,
+   "text": "Pine Hollow. Not empty. A shelter. Right on the river.",
+   "role": "narrator"
+  },
+  {
+   "i": 5,
+   "scene": "dam_radio",
+   "start": 33.59,
+   "speech_end": 42.048,
+   "end": 43.648,
+   "overlay": null,
+   "text": "This is Linda, at Saint Agnes. We have forty-one people here. We need water. Please. Anybody.",
+   "role": "mom"
+  },
+  {
+   "i": 6,
+   "scene": "you_grip",
+   "start": 43.648,
+   "speech_end": 45.188,
+   "end": 47.588,
+   "overlay": null,
+   "text": "You'd know that voice anywhere.",
+   "role": "narrator"
+  },
+  {
+   "i": 7,
+   "scene": "tell_boone",
+   "start": 47.588,
+   "speech_end": 52.878,
+   "end": 54.678,
+   "overlay": null,
+   "text": "You tell Boone. Forty-one people. Your mother. Twelve miles downstream.",
+   "role": "narrator"
+  },
+  {
+   "i": 8,
+   "scene": "boone_tight",
+   "start": 54.678,
+   "speech_end": 60.918,
+   "end": 61.918,
+   "overlay": null,
+   "text": "If I don't open those gates, all of that walks back out of the channel. Toward every town in this county.",
+   "role": "boone"
+  },
+  {
+   "i": 9,
+   "scene": "boone_tight",
+   "start": 61.918,
+   "speech_end": 63.158,
+   "end": 64.758,
+   "overlay": null,
+   "text": "Including Pine Hollow.",
+   "role": "boone"
+  },
+  {
+   "i": 10,
+   "scene": "you_lean",
+   "start": 64.758,
+   "speech_end": 67.088,
+   "end": 68.688,
+   "overlay": null,
+   "text": "He's not wrong. That's the worst part.",
+   "role": "narrator"
+  },
+  {
+   "i": 11,
+   "scene": "timer",
+   "start": 68.688,
+   "speech_end": 73.108,
+   "end": 74.908,
+   "overlay": [
+    "time",
+    "SUNRISE 6:01 AM"
+   ],
+   "text": "The floodgates open on a timer. At sunrise. Boone set it himself.",
+   "role": "narrator"
+  },
+  {
+   "i": 12,
+   "scene": "dani_door",
+   "start": 74.908,
+   "speech_end": 79.118,
+   "end": 80.318,
+   "overlay": null,
+   "text": "There's another way. You taught it to us. No lights, they lose interest.",
+   "role": "dani_live"
+  },
+  {
+   "i": 13,
+   "scene": "rule1",
+   "start": 80.318,
+   "speech_end": 82.868,
+   "end": 84.668,
+   "overlay": [
+    "rule",
+    "RULE 1:",
+    "NO LIGHTS AFTER SUNSET"
+   ],
+   "text": "Rule one. The oldest rule you have.",
+   "role": "narrator"
+  },
+  {
+   "i": 14,
+   "scene": "dark_plan",
+   "start": 84.668,
+   "speech_end": 89.648,
+   "end": 91.448,
+   "overlay": null,
+   "text": "Kill every light on the dam. Let them drift away in the dark. Back into the hills.",
+   "role": "narrator"
+  },
+  {
+   "i": 15,
+   "scene": "boone_tight",
+   "start": 91.448,
+   "speech_end": 95.638,
+   "end": 96.638,
+   "overlay": null,
+   "text": "Scattered is worse than drowned. You can't herd what you can't see.",
+   "role": "boone"
+  },
+  {
+   "i": 16,
+   "scene": "dani_door",
+   "start": 96.638,
+   "speech_end": 98.028,
+   "end": 99.828,
+   "overlay": null,
+   "text": "Not for the people downstream.",
+   "role": "dani_live"
+  },
+  {
+   "i": 17,
+   "scene": "ray_up",
+   "start": 99.828,
+   "speech_end": 105.158,
+   "end": 106.558,
+   "overlay": null,
+   "text": "Down in the channel, one of them isn't looking at the lights. He's looking up at the control room window.",
+   "role": "narrator"
+  },
+  {
+   "i": 18,
+   "scene": "ray_zoom",
+   "start": 106.558,
+   "speech_end": 108.678,
+   "end": 111.078,
+   "overlay": null,
+   "text": "Red vest. Cracked glasses.",
+   "role": "narrator"
+  },
+  {
+   "i": 19,
+   "scene": "boone_glass",
+   "start": 111.078,
+   "speech_end": 111.658,
+   "end": 114.058,
+   "overlay": null,
+   "text": "Dad.",
+   "role": "boone"
+  },
+  {
+   "i": 20,
+   "scene": "countdown",
+   "start": 114.058,
+   "speech_end": 114.058,
+   "end": 117.058,
+   "overlay": [
+    "time",
+    "0:40:00"
+   ],
+   "text": "",
+   "role": null
+  },
+  {
+   "i": 21,
+   "scene": "end",
+   "start": 117.058,
+   "speech_end": 117.058,
+   "end": 120.558,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}

@@ -25,6 +25,8 @@ sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, EP)
 import voices as V          # noqa: E402  (shared TTS / alignment / cutting helpers)
 from script import BEATS    # noqa: E402
+import script as _script    # noqa: E402
+LINE_GAIN = getattr(_script, "LINE_GAIN", {})   # optional per-beat volume tweaks {beat index: factor}
 
 SR = V.SR
 CACHE = os.path.join(EP, "voices")
@@ -137,11 +139,13 @@ def main():
         if role:
             sig, _ = V.process(clips[k], role, 99)
             sig = sig / (np.abs(sig).max() or 1) * 0.7 * GAIN[role]
-            f = min(len(sig) // 2, int(0.01 * SR))          # 10 ms fades: no clicks at the cut points
-            if f:
-                sig = sig.copy()
-                sig[:f] *= np.linspace(0, 1, f)
-                sig[-f:] *= np.linspace(1, 0, f)
+            fi, fo = min(len(sig) // 3, int(0.04 * SR)), min(len(sig) // 3, int(0.01 * SR))
+            sig = sig.copy()                                  # 40 ms in / 10 ms out: no clicks or breath pops
+            if fi:
+                sig[:fi] *= np.linspace(0, 1, fi)
+            if fo:
+                sig[-fo:] *= np.linspace(1, 0, fo)
+            sig *= LINE_GAIN.get(k, 1.0)
             pieces.append((t, sig))
             dur = len(sig) / SR
         else:
