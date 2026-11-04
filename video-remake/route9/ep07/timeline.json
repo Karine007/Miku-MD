@@ -1,0 +1,272 @@
+{
+ "duration": 132.91,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "hide_truck",
+   "start": 0.6,
+   "speech_end": 5.31,
+   "end": 6.51,
+   "overlay": [
+    "time",
+    "DAY 10 - 3:58 AM"
+   ],
+   "text": "You kill the engine and the headlights. You roll the truck behind the ice machine.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "hide_truck",
+   "start": 6.51,
+   "speech_end": 10.44,
+   "end": 11.44,
+   "overlay": null,
+   "text": "Then you wait. Engines on the highway. Getting closer.",
+   "role": "narrator"
+  },
+  {
+   "i": 2,
+   "scene": "hide_truck",
+   "start": 11.44,
+   "speech_end": 14.97,
+   "end": 15.97,
+   "overlay": null,
+   "text": "The ice machine hums. It's the only sound at the Starlight.",
+   "role": "narrator"
+  },
+  {
+   "i": 3,
+   "scene": "shed_psst",
+   "start": 15.97,
+   "speech_end": 18.37,
+   "end": 19.37,
+   "overlay": null,
+   "text": "Psst. Gas station. Over here.",
+   "role": "milo"
+  },
+  {
+   "i": 4,
+   "scene": "shed_in",
+   "start": 19.37,
+   "speech_end": 20.26,
+   "end": 21.26,
+   "overlay": null,
+   "text": "Get in. Quiet.",
+   "role": "dani_live"
+  },
+  {
+   "i": 5,
+   "scene": "shed_in",
+   "start": 21.26,
+   "speech_end": 26.22,
+   "end": 27.42,
+   "overlay": null,
+   "text": "Dani is seventeen. Milo is nine. They've been in this shed since the knock.",
+   "role": "narrator"
+  },
+  {
+   "i": 6,
+   "scene": "dani_close",
+   "start": 27.42,
+   "speech_end": 32.73,
+   "end": 33.73,
+   "overlay": null,
+   "text": "When the man in the vest knocked, we went out the bathroom window. He didn't follow. He just stood there.",
+   "role": "dani_live"
+  },
+  {
+   "i": 7,
+   "scene": "dani_close",
+   "start": 33.73,
+   "speech_end": 39.41,
+   "end": 40.41,
+   "overlay": null,
+   "text": "That recording isn't us. Not anymore. They made me say it, two nights ago.",
+   "role": "dani_live"
+  },
+  {
+   "i": 8,
+   "scene": "you_close",
+   "start": 40.41,
+   "speech_end": 40.9,
+   "end": 41.9,
+   "overlay": null,
+   "text": "They?",
+   "role": "narrator"
+  },
+  {
+   "i": 9,
+   "scene": "dani_close",
+   "start": 41.9,
+   "speech_end": 44.58,
+   "end": 45.38,
+   "overlay": null,
+   "text": "Dani glances at the parking lot, like it might be listening.",
+   "role": "narrator"
+  },
+  {
+   "i": 10,
+   "scene": "dani_close",
+   "start": 45.38,
+   "speech_end": 49.53,
+   "end": 50.33,
+   "overlay": null,
+   "text": "The Linemen. Utility crews. Hard hats, floodlights, big trucks.",
+   "role": "dani_live"
+  },
+  {
+   "i": 11,
+   "scene": "herding",
+   "start": 50.33,
+   "speech_end": 53.56,
+   "end": 54.96,
+   "overlay": null,
+   "text": "They use lights like a sheepdog. They move them. Whole crowds.",
+   "role": "dani_live"
+  },
+  {
+   "i": 12,
+   "scene": "milo_close",
+   "start": 54.96,
+   "speech_end": 60.5,
+   "end": 61.5,
+   "overlay": null,
+   "text": "They took Mrs. Alvarez. And the man from room four. They said they were going to the dam.",
+   "role": "milo"
+  },
+  {
+   "i": 13,
+   "scene": "dam_map",
+   "start": 61.5,
+   "speech_end": 63.75,
+   "end": 64.75,
+   "overlay": [
+    "count",
+    "20",
+    "MILES TO HARLAN DAM"
+   ],
+   "text": "Harlan Dam. The lights there never go off.",
+   "role": "dani_live"
+  },
+  {
+   "i": 14,
+   "scene": "shed_dark",
+   "start": 64.75,
+   "speech_end": 68.62,
+   "end": 70.02,
+   "overlay": null,
+   "text": "A place that's always lit. In a world where light means death.",
+   "role": "narrator"
+  },
+  {
+   "i": 15,
+   "scene": "floodlights",
+   "start": 70.02,
+   "speech_end": 71.89,
+   "end": 72.69,
+   "overlay": null,
+   "text": "Then the floodlights reach the parking lot.",
+   "role": "narrator"
+  },
+  {
+   "i": 16,
+   "scene": "floodlights",
+   "start": 72.69,
+   "speech_end": 78.18,
+   "end": 79.38,
+   "overlay": null,
+   "text": "White light. Brighter than day. It slides across every door, one by one.",
+   "role": "narrator"
+  },
+  {
+   "i": 17,
+   "scene": "slats",
+   "start": 79.38,
+   "speech_end": 82.66,
+   "end": 84.26,
+   "overlay": null,
+   "text": "Light pours through the slats. You all lie flat.",
+   "role": "narrator"
+  },
+  {
+   "i": 18,
+   "scene": "boone_out",
+   "start": 84.26,
+   "speech_end": 88.71,
+   "end": 89.71,
+   "overlay": null,
+   "text": "Gas station! I know you're here. Your truck's still warm.",
+   "role": "boone_mega"
+  },
+  {
+   "i": 19,
+   "scene": "boone_out",
+   "start": 89.71,
+   "speech_end": 97.86,
+   "end": 99.06,
+   "overlay": null,
+   "text": "Nobody's getting hurt tonight. We've got food. Water. Walls. Come on out.",
+   "role": "boone_mega"
+  },
+  {
+   "i": 20,
+   "scene": "shed_scared",
+   "start": 99.06,
+   "speech_end": 102.53,
+   "end": 103.53,
+   "overlay": null,
+   "text": "Dani shakes her head. Milo is shaking all over.",
+   "role": "narrator"
+  },
+  {
+   "i": 21,
+   "scene": "trucks_crowd",
+   "start": 103.53,
+   "speech_end": 111.02,
+   "end": 112.42,
+   "overlay": null,
+   "text": "Through the slats you count the trucks. Four. And behind each one, a crowd of the dead, walking calmly in its light.",
+   "role": "narrator"
+  },
+  {
+   "i": 22,
+   "scene": "boone_low",
+   "start": 112.42,
+   "speech_end": 118.38,
+   "end": 119.58,
+   "overlay": null,
+   "text": "I'm looking for somebody. Older guy. Runs the station on Route 9. Name's Ray.",
+   "role": "boone"
+  },
+  {
+   "i": 23,
+   "scene": "boone_close",
+   "start": 119.58,
+   "speech_end": 120.31,
+   "end": 122.11,
+   "overlay": null,
+   "text": "He's my dad.",
+   "role": "boone"
+  },
+  {
+   "i": 24,
+   "scene": "photo_match",
+   "start": 122.11,
+   "speech_end": 126.81,
+   "end": 129.41,
+   "overlay": null,
+   "text": "The young man from the photo in Ray's locker. Older now. Same hard hat.",
+   "role": "narrator"
+  },
+  {
+   "i": 25,
+   "scene": "end",
+   "start": 129.41,
+   "speech_end": 129.41,
+   "end": 132.91,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}

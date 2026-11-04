@@ -42,6 +42,14 @@ V.ROLE_VOICE = {r: r for r in VOICE}
 V.STYLES = {r: "" for r in VOICE}
 # mom = phone / voicemail, radio = broadcast, dani = CB radio; ray / boone / milo in the room
 V.FX = {"narrator": None, "radio": "radio", "mom": "phone", "ray": None, "dani": "cb", "milo": None, "boone": None}
+# variants: same speaker (recorded in the same batch) with a different sound treatment
+BASE = {"dani_live": "dani", "boone_mega": "boone", "mom_live": "mom"}
+V.FX.update({"dani_live": None, "boone_mega": "megaphone", "mom_live": None})
+GAIN.update({"dani_live": 1.0, "boone_mega": 0.85, "mom_live": 0.9, "milo": 1.25})
+V.FX["boone"] = "outdoor"                                # a little air so he matches the megaphone takes
+V.FILTERS["outdoor"] = ",aecho=0.8:0.35:45|90:0.18|0.1"
+V.FILTERS["megaphone"] = (",highpass=f=600,lowpass=f=3500,acompressor=threshold=0.05:ratio=8,"
+                          "acrusher=bits=9:mix=0.3,aecho=0.8:0.5:60:0.25,volume=1.8")
 V.FILTERS["cb"] = (",highpass=f=380,lowpass=f=2800,acompressor=threshold=0.1:ratio=5,"
                    "acrusher=bits=11:mix=0.2,volume=1.6")
 V.FILTERS["radio"] = (",highpass=f=450,lowpass=f=3000,acompressor=threshold=0.08:ratio=6,"
@@ -107,7 +115,7 @@ def main():
     by_role = {}
     for k, b in enumerate(BEATS):
         if b[1]:
-            by_role.setdefault(b[1], []).append(k)
+            by_role.setdefault(BASE.get(b[1], b[1]), []).append(k)
     clips = {}
     for role, ks in by_role.items():
         chunks = [ks[i:i + BATCH] for i in range(0, len(ks), BATCH)]
@@ -129,6 +137,11 @@ def main():
         if role:
             sig, _ = V.process(clips[k], role, 99)
             sig = sig / (np.abs(sig).max() or 1) * 0.7 * GAIN[role]
+            f = min(len(sig) // 2, int(0.01 * SR))          # 10 ms fades: no clicks at the cut points
+            if f:
+                sig = sig.copy()
+                sig[:f] *= np.linspace(0, 1, f)
+                sig[-f:] *= np.linspace(1, 0, f)
             pieces.append((t, sig))
             dur = len(sig) / SR
         else:
