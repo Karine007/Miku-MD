@@ -1,0 +1,50 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>07 Minimal Doodle</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  /* Minimalist "creator essay" look: dark paper, one white doodle, big serif statement */
+  #stage { background:#111; }
+  .tag { background:#f2efe8; color:#111; font-family:"DejaVu Serif", serif; letter-spacing:2px; }
+  .line { fill:none; stroke:#f2efe8; stroke-width:3.5; stroke-linecap:round; stroke-linejoin:round; filter:url(#wobble); }
+</style></head>
+<body><div id="stage" data-duration="6">
+  <svg class="full" viewBox="0 0 540 960">
+    <defs>
+      <filter id="wobble"><feTurbulence baseFrequency="0.03" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter>
+      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" seed="2"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .07 0"/></filter>
+    </defs>
+    <rect width="540" height="960" filter="url(#grain)"/>
+    <text x="50" y="190" font-family="Liberation Serif" font-size="50" fill="#f2efe8">Most people</text>
+    <text x="50" y="250" font-family="Liberation Serif" font-size="50" fill="#f2efe8">drive in circles.</text>
+    <text x="50" y="320" font-family="Liberation Serif" font-style="italic" font-size="30" fill="#8c8a84">Pick a direction.</text>
+    <!-- circular loop path (the "trap") -->
+    <ellipse class="line draw" cx="190" cy="600" rx="120" ry="70" stroke-dasharray="6 14"/>
+    <!-- arrow breaking out -->
+    <path class="line draw" d="M290 560 Q380 480 470 470"/>
+    <path class="line draw" d="M445 452 L472 470 L446 492"/>
+    <!-- tiny stick figure in a box car on the loop -->
+    <g id="mini">
+      <rect class="line" x="-26" y="-20" width="52" height="24" rx="6"/>
+      <circle class="line" cx="-14" cy="8" r="7"/><circle class="line" cx="14" cy="8" r="7"/>
+      <circle class="line" cx="0" cy="-34" r="8"/>
+    </g>
+    <!-- flag at goal -->
+    <path class="line draw" d="M475 470 L475 395 L515 410 L475 425"/>
+    <text x="50" y="820" font-family="Liberation Serif" font-size="22" fill="#8c8a84">1 idea · 1 doodle · 1 voice</text>
+    <line x1="50" y1="840" x2="490" y2="840" stroke="#333" stroke-width="2"/>
+    <text x="50" y="880" font-family="DejaVu Sans" font-size="16" letter-spacing="3" fill="#5c5a55">THE FOCUS ESSAY · PART 3</text>
+  </svg>
+  <div class="tag">07 · DAN KOE STYLE</div>
+</div>
+<script>
+const parts = [...document.querySelectorAll('.draw')];
+parts.forEach(p => { p.dataset.len = p.getTotalLength(); });
+const mini = document.getElementById('mini');
+function render(t) {
+  parts.forEach((p, i) => { if (i === 0) return; const L = +p.dataset.len, k = Math.max(0, Math.min(1, (t - 1 - i * .5) / .8)); p.style.strokeDasharray = L; p.style.strokeDashoffset = L * (1 - k); });
+  const a = t * 1.3 - 1.2;
+  mini.setAttribute('transform', `translate(${190 + Math.cos(a) * 120} ${600 + Math.sin(a) * 70 - 14})`);
+}
+window.renderAt = render;
+if (!window.__frozen) { const t0 = performance.now(); (function loop(){ render((performance.now() - t0) / 1000); requestAnimationFrame(loop); })(); }
+</script></body></html>

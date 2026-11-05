@@ -1,0 +1,67 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>03 Glow Sketch</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  #stage { background: radial-gradient(ellipse at 50% 55%, #0b1430 0%, #04060f 70%); }
+  .tag { background:#00e5ff14; color:#7ff6ff; border:1.5px solid #00e5ff; box-shadow:0 0 18px #00e5ff, inset 0 0 12px #00e5ff55; text-shadow:0 0 8px #00e5ff; }
+  .neon { fill:none; stroke-linecap:round; stroke-linejoin:round; }
+</style></head>
+<body><div id="stage" data-duration="6">
+  <svg class="full" viewBox="0 0 540 960">
+    <defs>
+      <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="3" result="b1"/><feGaussianBlur stdDeviation="10" result="b2"/><feGaussianBlur stdDeviation="22" result="b3"/>
+        <feMerge><feMergeNode in="b3"/><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#1a2a55" stroke-width="1"/></pattern>
+      <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#04060f"/><stop offset=".5" stop-color="#04060f" stop-opacity="0"/></linearGradient>
+    </defs>
+    <g transform="translate(0 640)"><rect x="-300" y="0" width="1140" height="400" fill="url(#grid)" transform="skewX(0)"/></g>
+    <rect y="600" width="540" height="360" fill="url(#fade)"/>
+    <g filter="url(#glow)">
+      <!-- rough double-stroked sketch lines (sketch feel = 2 passes slightly offset) -->
+      <g class="neon" stroke="#00e5ff" stroke-width="3">
+        <path class="draw" d="M70 600 L100 535 Q150 520 195 500 L255 448 Q305 432 365 448 L420 500 Q462 510 480 535 L482 600 Z"/>
+        <path class="draw" d="M73 604 L103 538 Q152 523 197 503 L257 451 Q307 436 367 451 L423 503 Q464 513 483 540 L479 603" stroke-width="1.5" opacity=".7"/>
+        <path class="draw" d="M210 500 L262 460 Q308 450 350 460 L392 500 Z"/>
+        <circle class="draw" cx="165" cy="605" r="44"/><circle class="draw" cx="392" cy="605" r="44"/>
+        <circle class="draw" cx="165" cy="605" r="18" stroke="#ff3df2"/><circle class="draw" cx="392" cy="605" r="18" stroke="#ff3df2"/>
+      </g>
+      <g class="neon" stroke="#ff3df2" stroke-width="3">
+        <path class="draw" d="M470 545 L540 520 M470 560 L540 575"/>
+        <path class="draw" d="M30 520 l-40 0 M45 560 l-60 0 M30 600 l-40 0"/>
+      </g>
+      <text x="270" y="300" text-anchor="middle" font-family="DejaVu Sans" font-weight="200" font-size="54" letter-spacing="6" fill="none" stroke="#7ff6ff" stroke-width="1.6">DREAM CAR</text>
+      <text x="270" y="345" text-anchor="middle" font-family="DejaVu Sans" font-size="18" letter-spacing="10" fill="#ff3df2">— SKETCHED IN LIGHT —</text>
+      <!-- pen tip spark -->
+      <circle id="tip" r="5" fill="#fff"/>
+    </g>
+    <g id="sparks"></g>
+  </svg>
+  <div class="tag">03 · GLOW SKETCH</div>
+</div>
+<script>
+const parts = [...document.querySelectorAll('.draw')];
+parts.forEach(p => { const L = p.getTotalLength(); p.dataset.len = L; p.style.strokeDasharray = L; });
+const tip = document.getElementById('tip'), sparks = document.getElementById('sparks');
+function render(t) {
+  const prog = Math.min(t / 4.5, 1) * parts.length;
+  let tp = null;
+  parts.forEach((p, i) => {
+    const L = +p.dataset.len, k = Math.max(0, Math.min(1, prog - i));
+    p.style.strokeDashoffset = L * (1 - k);
+    if (k > 0 && k < 1) tp = p.getPointAtLength(L * k);
+  });
+  tip.style.opacity = tp ? 1 : 0;
+  sparks.innerHTML = '';
+  if (tp) {
+    tip.setAttribute('cx', tp.x); tip.setAttribute('cy', tp.y);
+    for (let i = 0; i < 10; i++) {
+      const a = i * 2.4 + t * 9, r = 6 + ((i * 13 + t * 80) % 26);
+      sparks.innerHTML += `<circle cx="${tp.x + Math.cos(a) * r}" cy="${tp.y + Math.sin(a) * r}" r="${1.6 - r / 30}" fill="#b6fbff" opacity="${1 - r / 32}"/>`;
+    }
+  }
+}
+window.renderAt = render;
+if (!window.__frozen) { const t0 = performance.now(); (function loop(){ render((performance.now() - t0) / 1000); requestAnimationFrame(loop); })(); }
+</script></body></html>

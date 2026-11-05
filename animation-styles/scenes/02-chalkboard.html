@@ -1,0 +1,68 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>02 Chalkboard</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  #stage { background: radial-gradient(ellipse at 50% 40%, #2f5a45 0%, #1d3a2c 70%, #142a20 100%); }
+  .frame { position:absolute; inset:0; border:22px solid #6b4423; box-shadow: inset 0 0 0 4px #4a2e15, inset 0 0 60px #0008; z-index:5; pointer-events:none; }
+  .tag { background:transparent; color:#f4f1e6; border:2px dashed #f4f1e6aa; top:50px; font-family:"DejaVu Serif", serif; font-style:italic; }
+  .chalk { fill:none; stroke-linecap:round; stroke-linejoin:round; filter:url(#rough); }
+</style></head>
+<body><div id="stage" data-duration="6">
+  <svg class="full" viewBox="0 0 540 960">
+    <defs>
+      <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" result="d"/>
+        <feTurbulence type="fractalNoise" baseFrequency="1.8" numOctaves="1" seed="9" result="g"/>
+        <feColorMatrix in="g" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -2.2 1.6" result="mask"/>
+        <feComposite in="d" in2="mask" operator="in"/>
+      </filter>
+      <filter id="dust"><feTurbulence type="fractalNoise" baseFrequency="0.02 0.004" numOctaves="3" seed="5"/>
+        <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .18 -.05"/></filter>
+    </defs>
+    <rect width="540" height="960" filter="url(#dust)"/>
+    <!-- title -->
+    <g class="chalk" stroke="#f4f1e6" stroke-width="4" id="title"></g>
+    <text x="270" y="190" text-anchor="middle" font-family="DejaVu Serif" font-style="italic" font-size="44" fill="#f4f1e6" filter="url(#rough)">How a car moves</text>
+    <path class="chalk" stroke="#ffe27a" stroke-width="4" d="M120 210 Q270 200 420 214"/>
+    <!-- car drawing -->
+    <g id="car" class="chalk" stroke="#f4f1e6" stroke-width="5">
+      <path class="draw" d="M80 560 L110 500 Q150 490 190 470 L250 420 Q300 405 360 420 L410 470 Q450 480 470 500 L470 560 Z"/>
+      <path class="draw" d="M205 470 L255 432 Q300 420 345 432 L385 470 Z" stroke="#9fd8ff"/>
+      <line class="draw" x1="295" y1="425" x2="295" y2="470"/>
+      <circle class="draw" cx="170" cy="565" r="40"/><circle class="draw" cx="390" cy="565" r="40"/>
+      <circle class="draw" cx="170" cy="565" r="12" stroke="#ffe27a"/><circle class="draw" cx="390" cy="565" r="12" stroke="#ffe27a"/>
+      <path class="draw" d="M455 505 l20 0" stroke="#ffe27a"/>
+    </g>
+    <!-- motion lines + arrows + labels -->
+    <g class="chalk" stroke="#f4f1e6" stroke-width="3.5">
+      <path class="draw" d="M20 470 l45 0 M10 510 l60 0 M25 550 l40 0"/>
+      <path class="draw" d="M300 680 L470 680 M450 665 L472 680 L450 695" stroke="#ff9db4"/>
+      <path class="draw" d="M170 615 Q140 680 120 720" stroke="#9fd8ff"/>
+    </g>
+    <text x="385" y="720" text-anchor="middle" font-family="DejaVu Serif" font-style="italic" font-size="30" fill="#ff9db4" filter="url(#rough)">velocity →</text>
+    <text x="110" y="760" text-anchor="middle" font-family="DejaVu Serif" font-style="italic" font-size="26" fill="#9fd8ff" filter="url(#rough)">friction</text>
+    <text x="270" y="850" text-anchor="middle" font-family="DejaVu Serif" font-size="36" fill="#ffe27a" filter="url(#rough)">F = m · a</text>
+    <path class="chalk" stroke="#ffe27a" stroke-width="3" d="M180 870 Q270 885 360 868"/>
+    <!-- chalk piece drawing -->
+    <g id="hand"><rect x="-8" y="-40" width="16" height="44" rx="3" fill="#f4f1e6" transform="rotate(30)"/></g>
+  </svg>
+  <div class="frame"></div>
+  <div class="tag">02 · CHALKBOARD</div>
+</div>
+<script>
+const parts = [...document.querySelectorAll('.draw')];
+parts.forEach(p => { const L = p.getTotalLength(); p.dataset.len = L; p.style.strokeDasharray = L; });
+const hand = document.getElementById('hand');
+function render(t) {
+  const prog = Math.min(t / 4, 1) * parts.length; // drawn progressively over 4s
+  parts.forEach((p, i) => {
+    const L = +p.dataset.len, k = Math.max(0, Math.min(1, prog - i));
+    p.style.strokeDashoffset = L * (1 - k);
+    if (k > 0 && k < 1) { const pt = p.getPointAtLength(L * k); hand.setAttribute('transform', `translate(${pt.x},${pt.y})`); }
+  });
+  hand.style.opacity = prog >= parts.length ? 0 : 1;
+}
+window.renderAt = render;
+if (!window.__frozen) { const t0 = performance.now(); (function loop(){ render((performance.now() - t0) / 1000); requestAnimationFrame(loop); })(); }
+</script></body></html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>01 Pixel Art</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  #c { image-rendering: pixelated; }
+  .tag { background:#1b1340; color:#ffd84a; border:3px solid #ffd84a; border-radius:0; font-family:"DejaVu Sans Mono", monospace; }
+</style></head>
+<body><div id="stage" data-duration="6">
+  <canvas id="c" width="135" height="240"></canvas>
+  <div class="tag">01 · PIXEL ART</div>
+</div>
+<script>
+const W = 135, H = 240, ctx = document.getElementById('c').getContext('2d');
+const px = (x, y, w, h, c) => { ctx.fillStyle = c; ctx.fillRect(Math.round(x), Math.round(y), w, h); };
+const sky = ['#2b1b5e','#47237a','#6e2c8c','#a23c8f','#d8577f','#f5806b','#ffb36b'];
+const car = [
+  '......KKKKKKKKK.........',
+  '.....KCCWWWWWCCK........',
+  '....KCCWWWWWWWCCK.......',
+  '.KKKRRRRRRRRRRRRRKKKK...',
+  'KRRRRRRRRRRRRRRRRRRRRK..',
+  'KYRRRRRRRRRRRRRRRRRRRRK.',
+  'KRRRRDDDRRRRRRRRDDDRRRK.',
+  '.KKKD...DKKKKKKD...DKK..',
+  '....D.G.D......D.G.D....',
+  '.....DDD........DDD.....'];
+const pal = { K:'#140c1c', R:'#e8343c', C:'#ff9da1', W:'#9fe8ff', Y:'#ffee55', D:'#2a2a3a', G:'#888' };
+function render(t) {
+  // banded sky with ordered dithering between bands
+  const band = 100 / sky.length;
+  for (let y = 0; y < 150; y++) {
+    const f = Math.min(y / band, sky.length - 1), i = Math.floor(f), frac = f - i;
+    for (let x = 0; x < W; x++) {
+      const dither = ((x + y) % 2 === 0 ? 0.25 : 0.75) < frac && i + 1 < sky.length;
+      px(x, y, 1, 1, sky[dither ? i + 1 : i]);
+    }
+  }
+  // stars
+  for (let s = 0; s < 30; s++) { const sx = (s * 47) % W, sy = (s * 29) % 45; if ((s + Math.floor(t * 4)) % 5) px(sx, sy, 1, 1, '#fff'); }
+  // sun
+  for (let y = -14; y <= 14; y++) for (let x = -14; x <= 14; x++)
+    if (x*x + y*y < 196 && !((y > 2) && (y % 3 === 0))) px(67 + x, 98 + y, 1, 1, y < -4 ? '#fff27a' : '#ffb03b');
+  // mountains (parallax)
+  for (let x = 0; x < W; x++) {
+    const h1 = 22 + 10 * Math.sin((x + t * 4) * 0.07) + 6 * Math.sin((x + t * 4) * 0.19);
+    px(x, 135 - h1, 1, h1 + 15, '#3a1f5d');
+    const h2 = 12 + 6 * Math.sin((x + t * 10) * 0.11 + 2);
+    px(x, 148 - h2, 1, h2 + 5, '#24123f');
+  }
+  // ground + road
+  px(0, 150, W, 90, '#1a3a2a');
+  for (let y = 150; y < 240; y += 4) px(0, y, W, 1, '#1f4733');
+  px(0, 178, W, 34, '#3a3a4a'); px(0, 178, W, 2, '#6a6a7a'); px(0, 210, W, 2, '#6a6a7a');
+  const off = Math.floor(t * 60) % 16;
+  for (let x = -16; x < W + 16; x += 16) px(x - off, 194, 8, 2, '#ffd84a');
+  // pixel clouds
+  [[20, 60, 6], [90, 40, 10], [55, 75, 14]].forEach(([cx, cy, sp]) => {
+    const x = ((cx - t * sp) % (W + 40) + W + 40) % (W + 40) - 20;
+    px(x, cy, 18, 3, '#f8c4d8'); px(x + 4, cy - 3, 9, 3, '#f8c4d8'); px(x + 2, cy + 3, 14, 1, '#c78bb3');
+  });
+  // car with bounce
+  const bob = Math.floor(t * 8) % 2;
+  car.forEach((row, y) => [...row].forEach((ch, x) => { if (pal[ch]) px(55 + x, 170 + y + (y < 7 ? bob : 0), 1, 1, pal[ch]); }));
+  // exhaust puffs
+  for (let i = 0; i < 3; i++) { const a = (t * 3 + i / 3) % 1; px(52 - a * 18, 176 - a * 6, 3 - Math.floor(a * 2), 2, a < .5 ? '#ddd' : '#999'); }
+  // HUD
+  ctx.font = '6px monospace'; px(4, 222, 50, 12, '#00000088');
+  ctx.fillStyle = '#fff'; ctx.fillText('SCORE ' + String(Math.floor(t * 1234)).padStart(6, '0'), 6, 230);
+  for (let i = 0; i < 3; i++) { px(110 + i * 7, 224, 5, 4, '#e8343c'); px(111 + i * 7, 223, 3, 1, '#e8343c'); }
+}
+window.renderAt = render;
+if (!window.__frozen) { const t0 = performance.now(); (function loop(){ render((performance.now() - t0) / 1000); requestAnimationFrame(loop); })(); }
+</script></body></html>

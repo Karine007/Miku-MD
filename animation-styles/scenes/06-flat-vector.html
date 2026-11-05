@@ -1,0 +1,58 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>06 Flat Vector</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  #stage { background:#ffe8d6; }
+  .tag { background:#264653; color:#fff; }
+</style></head>
+<body><div id="stage" data-duration="6">
+  <svg class="full" viewBox="0 0 540 960">
+    <circle cx="400" cy="260" r="90" fill="#f4a261"/>
+    <g id="clouds" fill="#fff"></g>
+    <!-- skyline layers -->
+    <g fill="#a8dadc" id="city1"></g>
+    <g fill="#457b9d" id="city2"></g>
+    <rect y="640" width="540" height="320" fill="#2a9d8f"/>
+    <rect y="700" width="540" height="110" fill="#264653"/>
+    <g id="dash" fill="#e9c46a"></g>
+    <!-- trees -->
+    <g id="trees"></g>
+    <!-- car -->
+    <g id="car">
+      <rect x="130" y="660" width="290" height="70" rx="26" fill="#e76f51"/>
+      <path d="M185 662 Q205 600 260 598 L330 598 Q370 600 392 662 Z" fill="#e76f51"/>
+      <path d="M205 660 Q222 615 262 614 L290 614 L290 660 Z" fill="#cdeffa"/>
+      <path d="M302 614 L328 614 Q358 616 372 660 L302 660 Z" fill="#cdeffa"/>
+      <rect x="400" y="680" width="22" height="14" rx="5" fill="#ffe66d"/>
+      <rect x="128" y="684" width="16" height="12" rx="4" fill="#c1121f"/>
+      <rect x="160" y="700" width="230" height="8" rx="4" fill="#c4563d"/>
+      <g id="w1"><circle cx="195" cy="735" r="32" fill="#1d3557"/><circle cx="195" cy="735" r="13" fill="#f1faee"/><rect x="192" y="710" width="6" height="50" fill="#1d3557"/></g>
+      <g id="w2"><circle cx="360" cy="735" r="32" fill="#1d3557"/><circle cx="360" cy="735" r="13" fill="#f1faee"/><rect x="357" y="710" width="6" height="50" fill="#1d3557"/></g>
+    </g>
+    <text x="40" y="150" font-family="DejaVu Sans" font-weight="800" font-size="46" fill="#264653">Drive</text>
+    <text x="40" y="200" font-family="DejaVu Sans" font-weight="800" font-size="46" fill="#e76f51">smarter.</text>
+    <rect x="40" y="225" width="80" height="8" rx="4" fill="#2a9d8f"/>
+    <g transform="translate(40 860)">
+      <rect width="460" height="64" rx="32" fill="#fff"/>
+      <circle cx="32" cy="32" r="22" fill="#2a9d8f"/><path d="M22 32 l7 7 l14 -14" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <text x="70" y="41" font-family="DejaVu Sans" font-weight="700" font-size="24" fill="#264653">Save 30% fuel every trip</text>
+    </g>
+  </svg>
+  <div class="tag">06 · FLAT VECTOR</div>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const B1 = [60,110,80,150,95,70,130,100,85,140,75,120], B2 = [90,60,120,75,140,100,65,110,85,95];
+function render(t) {
+  const mk = (arr, w, base, sp, col) => { let s = '', x = -((t * sp) % (arr.length * w)); for (let k = 0; k < 3; k++) arr.forEach((h, i) => { const X = x + (k * arr.length + i) * w; if (X > -w && X < 560) { s += `<rect x="${X}" y="${base - h - 60}" width="${w - 6}" height="${h + 60}" rx="4"/>`; for (let j = 0; j < 3; j++) s += `<rect x="${X + 10}" y="${base - h - 40 + j * 30}" width="${w - 26}" height="10" rx="2" fill="${col}"/>`; } }); return s; };
+  $('city1').innerHTML = mk(B1, 58, 600, 20, '#d6eff0');
+  $('city2').innerHTML = mk(B2, 70, 650, 45, '#6c9bbd');
+  let d = ''; const o = (t * 260) % 90; for (let x = -90; x < 600; x += 90) d += `<rect x="${x - o}" y="750" width="50" height="10" rx="5"/>`; $('dash').innerHTML = d;
+  let tr = ''; const to = (t * 160) % 180; for (let x = -180; x < 640; x += 180) tr += `<rect x="${x - to + 40}" y="600" width="10" height="40" fill="#6d4c41"/><circle cx="${x - to + 45}" cy="590" r="30" fill="#52b788"/><circle cx="${x - to + 60}" cy="600" r="20" fill="#40916c"/>`; $('trees').innerHTML = tr;
+  let c = ''; [[80, 330, 12], [300, 140, 7], [200, 420, 16]].forEach(([x, y, s]) => { const X = ((x - t * s) % 640 + 640) % 640 - 50; c += `<rect x="${X}" y="${y}" width="110" height="34" rx="17"/><circle cx="${X + 45}" cy="${y}" r="26"/><circle cx="${X + 75}" cy="${y + 6}" r="18"/>`; }); $('clouds').innerHTML = c;
+  const r = t * 600; $('w1').setAttribute('transform', `rotate(${r} 195 735)`); $('w2').setAttribute('transform', `rotate(${r} 360 735)`);
+  $('car').setAttribute('transform', `translate(0 ${Math.sin(t * 14) * 2})`);
+}
+window.renderAt = render;
+if (!window.__frozen) { const t0 = performance.now(); (function loop(){ render((performance.now() - t0) / 1000); requestAnimationFrame(loop); })(); }
+</script></body></html>

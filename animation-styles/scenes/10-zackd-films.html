@@ -1,0 +1,77 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>10 What-If 3D</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  /* "What-if" hyper-real 3D short: dramatic low camera, shallow depth, big bold karaoke captions */
+  .tag { background:#000a; color:#fff; border:1px solid #fff4; }
+  .caps { position:absolute; z-index:6; left:20px; right:20px; top:690px; text-align:center;
+    font:900 48px/1.1 "DejaVu Sans", sans-serif; color:#fff; text-transform:uppercase;
+    -webkit-text-stroke: 3px #000; paint-order: stroke fill; text-shadow: 0 6px 0 #000, 0 0 24px #000a; }
+  .caps .hl { color:#ffe11a; }
+  .vign { position:absolute; inset:0; z-index:5; background:radial-gradient(ellipse at 50% 45%, transparent 45%, #000c 100%); pointer-events:none; }
+</style>
+<script type="importmap">{ "imports": { "three": "../vendor/three.module.min.js" } }</script>
+</head>
+<body><div id="stage" data-duration="6">
+  <canvas id="c"></canvas>
+  <div class="vign"></div>
+  <div class="caps" id="caps"></div>
+  <div class="tag">10 · ZACKD FILMS STYLE</div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from '../vendor/RoomEnvironment.js';
+import { makeRenderer, makeCar, boot } from './three-common.js';
+const r = makeRenderer(document.getElementById('c'), { pixelRatio: 2 });
+r.toneMappingExposure = 1.1;
+const scene = new THREE.Scene();
+scene.environment = new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.background = new THREE.Color('#e9c896');
+scene.fog = new THREE.FogExp2('#e9c896', 0.016);
+const cam = new THREE.PerspectiveCamera(30, 540 / 960, 0.1, 200);
+const sun = new THREE.DirectionalLight('#ffe2b0', 3); sun.position.set(-6, 7, 3); sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -8, right: 8, top: 8, bottom: -8 }); sun.shadow.radius = 4;
+scene.add(sun, new THREE.HemisphereLight('#fff3df', '#a77b46', 0.7));
+// quicksand: displaced plane with procedural ripples + canvas-noise bump
+const noise = (() => { const c = document.createElement('canvas'); c.width = c.height = 512; const g = c.getContext('2d'); const d = g.createImageData(512, 512);
+  for (let i = 0; i < d.data.length; i += 4) { const v = 150 + Math.random() * 90; d.data[i] = v; d.data[i + 1] = v * .82; d.data[i + 2] = v * .55; d.data[i + 3] = 255; }
+  g.putImageData(d, 0, 0); const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(30, 30); t.colorSpace = THREE.SRGBColorSpace; return t; })();
+const sg = new THREE.PlaneGeometry(80, 80, 300, 300); sg.rotateX(-Math.PI / 2);
+const sand = new THREE.Mesh(sg, new THREE.MeshStandardMaterial({ color: '#d9a865', map: noise, bumpMap: noise, bumpScale: 0.6, roughness: 0.95 }));
+sand.receiveShadow = true; scene.add(sand);
+const base = sg.attributes.position.array.slice();
+const paint = new THREE.MeshPhysicalMaterial({ color: '#c92b22', metalness: 0.35, roughness: 0.35, clearcoat: 1, clearcoatRoughness: 0.08 });
+const car = makeCar({ body: paint, glass: new THREE.MeshPhysicalMaterial({ color: '#0d1117', roughness: 0.05, metalness: .3 }), tire: new THREE.MeshStandardMaterial({ color: '#151515', roughness: .9 }), rim: new THREE.MeshStandardMaterial({ color: '#ddd', metalness: 1, roughness: .2 }) });
+scene.add(car);
+// flying sand particles
+const pg = new THREE.BufferGeometry(); const N = 500, pp = new Float32Array(N * 3), seeds = [];
+for (let i = 0; i < N; i++) seeds.push([Math.random() * Math.PI * 2, 1.5 + Math.random() * 2.5, Math.random()]);
+pg.setAttribute('position', new THREE.BufferAttribute(pp, 3));
+const parts = new THREE.Points(pg, new THREE.PointsMaterial({ color: '#c99653', size: 0.06 })); scene.add(parts);
+const words = ['What', 'happens', 'if', 'you', 'drive', 'into', 'quicksand?'];
+const hlWords = new Set(['quicksand?']);
+function render(t) {
+  const sink = Math.min(t / 6, 1) * 0.75 + 0.15;
+  car.position.set(0, -sink, 0); car.rotation.set(0.06 + sink * 0.12, -0.55, -0.05 - sink * 0.05);
+  car.wheels.forEach(w => w.rotation.z = -t * 14);
+  // ripples spreading from the car
+  const p = sg.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const x = base[i * 3], z = base[i * 3 + 2], d = Math.hypot(x / 1.6, z);
+    const crater = -0.6 * Math.exp(-d * d / 6);
+    const rim = 0.25 * Math.exp(-((d - 2.6) ** 2) / 0.6);
+    const ripple = 0.06 * Math.sin(d * 5 - t * 4) * Math.exp(-d / 5);
+    p.setY(i, crater + rim + ripple);
+  }
+  p.needsUpdate = true; sg.computeVertexNormals();
+  for (let i = 0; i < N; i++) { const [a, sp, ph] = seeds[i]; const k = (t * 0.6 + ph) % 1; pp[i * 3] = Math.cos(a) * (1.8 + k * sp); pp[i * 3 + 1] = Math.sin(k * Math.PI) * 1.4 * ph; pp[i * 3 + 2] = Math.sin(a) * (1.2 + k * sp); }
+  pg.attributes.position.needsUpdate = true;
+  cam.position.set(7 + t * 0.05, 2.4, 13 - t * 0.15); cam.lookAt(0, 0.4, 0);
+  r.render(scene, cam);
+  // karaoke captions: 3 words on screen, active word yellow
+  const i = Math.min(Math.floor(t / 0.35), words.length - 1);
+  const start = i < 3 ? 0 : i < 5 ? 3 : 5, chunk = words.slice(start, start === 5 ? 7 : start + 3);
+  document.getElementById('caps').innerHTML = chunk.map((w, j) => `<span class="${start + j === i || hlWords.has(w) ? 'hl' : ''}">${w}</span>`).join(' ');
+}
+boot(render);
+</script></body></html>

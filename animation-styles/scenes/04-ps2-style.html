@@ -1,0 +1,60 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>04 PS2 Style</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  #c { image-rendering: pixelated; }
+  .tag { background:#0b0b3b; color:#cfd8ff; border:2px solid #8fa0ff; border-radius:4px; font-family:"DejaVu Sans Mono", monospace; }
+  .hud { position:absolute; z-index:6; color:#fff; font:700 22px "DejaVu Sans Mono", monospace; text-shadow:2px 2px 0 #000, 0 0 6px #4a6cff; }
+  .scan { position:absolute; inset:0; z-index:5; background:repeating-linear-gradient(0deg, #0003 0 2px, transparent 2px 4px); pointer-events:none; }
+</style>
+<script type="importmap">{ "imports": { "three": "../vendor/three.module.min.js" } }</script>
+</head>
+<body><div id="stage" data-duration="6">
+  <canvas id="c"></canvas>
+  <div class="scan"></div>
+  <div class="hud" style="left:24px;bottom:120px">LAP 2/3</div>
+  <div class="hud" style="left:24px;bottom:90px;font-size:16px;color:#ffe066">01:23.47</div>
+  <div class="hud" style="right:24px;bottom:84px;font-size:56px;font-style:italic">187<span style="font-size:20px"> km/h</span></div>
+  <div class="hud" style="left:0;right:0;top:130px;text-align:center;font-size:26px;color:#ffe066" id="press">PRESS START</div>
+  <div class="tag">04 · PS2 STYLE</div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { makeRenderer, makeCar, boot } from './three-common.js';
+// Low internal resolution + no AA + flat shading + vertex fog = early-2000s console look
+const r = makeRenderer(document.getElementById('c'), { pixelRatio: 0.42, shadows: false, tone: false });
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#9db6d8');
+scene.fog = new THREE.Fog('#b9c7da', 12, 60);
+const cam = new THREE.PerspectiveCamera(60, 540 / 960, 0.1, 200);
+scene.add(new THREE.HemisphereLight('#dfe8ff', '#5a4a3a', 1.2));
+const sun = new THREE.DirectionalLight('#fff1d0', 1.6); sun.position.set(5, 10, 4); scene.add(sun);
+const L = c => new THREE.MeshLambertMaterial({ color: c, flatShading: true });
+const car = makeCar({ body: L('#d83a2e'), glass: L('#1d2638'), tire: L('#1a1a1a'), rim: L('#b0b0b0'), low: true, bevel: false });
+car.rotation.y = -0.5; scene.add(car);
+// road + terrain
+const road = new THREE.Mesh(new THREE.PlaneGeometry(6, 400), L('#5b5b60')); road.rotation.x = -Math.PI / 2; road.position.z = -150; scene.add(road);
+const stripes = new THREE.Group(); scene.add(stripes);
+for (let i = 0; i < 60; i++) { const s = new THREE.Mesh(new THREE.PlaneGeometry(0.2, 1.6), L('#f0e070')); s.rotation.x = -Math.PI / 2; s.position.set(0, 0.01, 10 - i * 5); stripes.add(s); }
+const tg = new THREE.PlaneGeometry(200, 400, 40, 80); tg.rotateX(-Math.PI / 2);
+const p = tg.attributes.position; const cols = [];
+for (let i = 0; i < p.count; i++) { const x = p.getX(i), z = p.getZ(i); const d = Math.max(0, Math.abs(x) - 4); const h = d > 0 ? Math.sin(x * 0.3) * Math.cos(z * 0.2) * 1.5 + d * 0.15 + Math.sin(z * 0.05) * d * 0.1 : -0.05; p.setY(i, h); const c = new THREE.Color(h > 4 ? '#8a8a7a' : h > 1.5 ? '#5d7a3a' : '#7a9a4a'); cols.push(c.r, c.g, c.b); }
+tg.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3)); tg.computeVertexNormals();
+const terrain = new THREE.Mesh(tg, new THREE.MeshLambertMaterial({ vertexColors: true, flatShading: true })); terrain.position.z = -150; scene.add(terrain);
+// low poly trees
+const trees = new THREE.Group(); scene.add(trees);
+for (let i = 0; i < 40; i++) { const t = new THREE.Group(); const top = new THREE.Mesh(new THREE.ConeGeometry(0.9, 2.6, 5), L('#2e5a2a')); top.position.y = 2.2; t.add(top); const tr = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.2, 1, 4), L('#5a3a22')); tr.position.y = 0.5; t.add(tr); t.position.set((i % 2 ? 1 : -1) * (5 + (i * 7) % 6), 0, 8 - i * 4); trees.add(t); }
+// billboard
+const bb = new THREE.Mesh(new THREE.BoxGeometry(5, 2.4, 0.2), L('#2244aa')); bb.position.set(-7, 4, -22); bb.rotation.y = 0.4; scene.add(bb);
+function render(t) {
+  const sp = t * 18;
+  stripes.position.z = sp % 5; trees.position.z = sp % 8;
+  car.wheels.forEach(w => w.rotation.z = -t * 20);
+  car.position.y = Math.abs(Math.sin(t * 9)) * 0.05;
+  car.rotation.z = Math.sin(t * 2) * 0.02;
+  cam.position.set(3.6, 2.2, 6.4); cam.lookAt(-0.4, 0.9, -1);
+  r.render(scene, cam);
+  document.getElementById('press').style.opacity = Math.floor(t * 2) % 2 ? 0.2 : 1;
+}
+boot(render);
+</script></body></html>

@@ -1,0 +1,9 @@
+/* Shared 9:16 frame for every style scene (540x960, rendered at 2x = 1080x1920) */
+html, body { margin: 0; padding: 0; background: #000; }
+#stage { position: relative; width: 540px; height: 960px; overflow: hidden; }
+#stage canvas, #stage svg.full { position: absolute; inset: 0; width: 540px; height: 960px; display: block; }
+.tag {
+  position: absolute; top: 28px; left: 50%; transform: translateX(-50%);
+  font: 800 20px/1 "DejaVu Sans", "Liberation Sans", sans-serif; letter-spacing: 3px;
+  padding: 10px 18px; border-radius: 999px; z-index: 10; white-space: nowrap;
+}

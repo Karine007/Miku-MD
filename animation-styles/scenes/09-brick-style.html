@@ -1,0 +1,90 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>09 Brick Style</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  .tag { background:#ffcf00; color:#c4141c; border:4px solid #c4141c; border-radius:10px; font-weight:900; }
+</style>
+<script type="importmap">{ "imports": { "three": "../vendor/three.module.min.js" } }</script>
+</head>
+<body><div id="stage" data-duration="6">
+  <canvas id="c"></canvas>
+  <div class="tag">09 · BRICK / LEGO STYLE</div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from '../vendor/RoomEnvironment.js';
+import { makeRenderer, boot } from './three-common.js';
+// Toy-brick world: every object is built from 1x1-unit bricks with studs, glossy ABS-plastic material.
+const r = makeRenderer(document.getElementById('c'), { pixelRatio: 2 });
+const scene = new THREE.Scene();
+scene.environment = new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.background = new THREE.Color('#8fd3ff');
+const cam = new THREE.PerspectiveCamera(32, 540 / 960, 0.1, 200);
+const sun = new THREE.DirectionalLight('#fff', 2.4); sun.position.set(8, 16, 10); sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, { left: -14, right: 14, top: 14, bottom: -14 }); sun.shadow.bias = -0.0005;
+scene.add(sun, new THREE.HemisphereLight('#ffffff', '#88aa66', 0.6));
+const U = 0.8, H = 0.96, mats = {};
+const plastic = c => mats[c] ??= new THREE.MeshPhysicalMaterial({ color: c, roughness: 0.22, clearcoat: 0.6, clearcoatRoughness: 0.15 });
+const studGeo = new THREE.CylinderGeometry(0.24, 0.24, 0.17, 24);
+function brick(w, d, h, color, x, y, z, studs = true, parent = scene) {
+  const g = new THREE.Group();
+  const b = new THREE.Mesh(new THREE.BoxGeometry(w * U - 0.02, h * H - 0.02, d * U - 0.02), plastic(color));
+  b.castShadow = b.receiveShadow = true; g.add(b);
+  if (studs) for (let i = 0; i < w; i++) for (let j = 0; j < d; j++) {
+    const s = new THREE.Mesh(studGeo, plastic(color)); s.castShadow = true;
+    s.position.set((i - (w - 1) / 2) * U, h * H / 2 + 0.085, (j - (d - 1) / 2) * U); g.add(s);
+  }
+  g.position.set(x * U, y * H + h * H / 2, z * U); parent.add(g); return g;
+}
+// baseplate
+const plate = new THREE.Group(); scene.add(plate);
+const pb = new THREE.Mesh(new THREE.BoxGeometry(40 * U, 0.3, 40 * U), plastic('#3fa34d')); pb.receiveShadow = true; pb.position.y = -0.15; plate.add(pb);
+const studInst = new THREE.InstancedMesh(studGeo, plastic('#3fa34d'), 1600); let k = 0; const m = new THREE.Matrix4();
+for (let i = 0; i < 40; i++) for (let j = 0; j < 40; j++) { m.makeTranslation((i - 19.5) * U, 0.085, (j - 19.5) * U); studInst.setMatrixAt(k++, m); }
+studInst.receiveShadow = true; plate.add(studInst);
+// road plates
+const road = new THREE.Group(); scene.add(road);
+for (let z = -20; z < 20; z += 2) { brick(6, 2, 0.33, '#6b6f75', 0, 0, z, false, road); brick(1, 1, 0.33, '#f4f4f4', 0, 0.33, z, false, road); }
+// car
+const car = new THREE.Group(); scene.add(car);
+const R = '#d01012', Y = '#ffcf00', K = '#1b1b1b', T = '#9fdcf6';
+brick(3, 6, 1, R, 0, 0.6, 0, true, car);                // chassis
+brick(3, 2, 1, R, 0, 1.6, 2, true, car);                 // hood
+brick(3, 1, 1, T, 0, 1.6, 0.5, false, car);              // windscreen
+brick(3, 2, 1, R, 0, 2.6, -0.5, true, car);              // roof
+brick(1, 1, 1, T, -1, 1.6, -0.5, false, car); brick(1, 1, 1, T, 1, 1.6, -0.5, false, car);
+brick(3, 2, 1, R, 0, 1.6, -2, true, car);                // trunk
+brick(1, 1, 0.33, Y, -1, 1.0, 3.05, false, car); brick(1, 1, 0.33, Y, 1, 1.0, 3.05, false, car); // headlights
+const wheels = [];
+for (const [x, z] of [[-1.95, 1.8], [1.95, 1.8], [-1.95, -1.8], [1.95, -1.8]]) {
+  const w = new THREE.Group();
+  const tire = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.62, 0.5, 32), plastic(K)); tire.rotation.z = Math.PI / 2; tire.castShadow = true; w.add(tire);
+  const hub = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.54, 6), plastic('#bfc4c9')); hub.rotation.z = Math.PI / 2; w.add(hub);
+  w.position.set(x * U, 0.62, z * U); car.add(w); wheels.push(w);
+}
+// minifig-ish driver (generic toy figure)
+const fig = new THREE.Group(); car.add(fig); fig.position.set(0, 3.0 * H, 0.1 * U);
+const head = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.5, 32), plastic('#ffd500')); head.position.y = 0.28; fig.add(head);
+const eye = new THREE.MeshBasicMaterial({ color: '#111' });
+for (const x of [-0.11, 0.11]) { const e = new THREE.Mesh(new THREE.SphereGeometry(0.045, 12, 8), eye); e.position.set(x, 0.33, 0.3); fig.add(e); }
+const smile = new THREE.Mesh(new THREE.TorusGeometry(0.12, 0.02, 8, 16, Math.PI), eye); smile.rotation.z = Math.PI; smile.position.set(0, 0.22, 0.31); fig.add(smile);
+const helm = new THREE.Mesh(new THREE.SphereGeometry(0.36, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), plastic('#1e5aa8')); helm.position.y = 0.42; fig.add(helm);
+// scenery: brick trees & house
+const props = new THREE.Group(); scene.add(props);
+function tree(x, z) { brick(1, 1, 2, '#6b3e26', x, 0, z, false, props); brick(3, 3, 1, '#237841', x, 2, z, true, props); brick(1, 1, 1, '#237841', x, 3, z, true, props); }
+[[-6, -4], [6, -9], [-7, -12], [-9, 2], [10, -14]].forEach(([x, z]) => tree(x, z));
+brick(4, 3, 3, '#f2f2f2', -10, 0, -6, false, props); brick(4, 3, 1, '#0055bf', -10, 3, -6, true, props);
+// clouds
+for (const [x, y, z] of [[-6, 14, -20], [5, 16, -26]]) { brick(4, 2, 1, '#ffffff', x, y, z); brick(2, 2, 1, '#ffffff', x, y + 1, z); }
+function render(t) {
+  car.position.y = Math.abs(Math.sin(t * 6)) * 0.04;
+  wheels.forEach(w => w.rotation.x = t * 8);
+  road.position.z = (t * 4) % (2 * U);
+  props.position.z = (t * 1.2) % 4;
+  fig.rotation.y = Math.sin(t * 2) * 0.3;
+  const a = 0.75 + Math.sin(t * 0.4) * 0.1;
+  cam.position.set(Math.sin(a) * 26, 13, Math.cos(a) * 26); cam.lookAt(0, 0.5, -2);
+  r.render(scene, cam);
+}
+boot(render);
+</script></body></html>
