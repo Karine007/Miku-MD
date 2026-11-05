@@ -27,6 +27,7 @@ import voices as V          # noqa: E402  (shared TTS / alignment / cutting help
 from script import BEATS    # noqa: E402
 import script as _script    # noqa: E402
 LINE_GAIN = getattr(_script, "LINE_GAIN", {})   # optional per-beat volume tweaks {beat index: factor}
+V.CUT_SHIFT = getattr(_script, "CUT_SHIFT", {})  # optional manual cut fixes per batch
 
 SR = V.SR
 CACHE = os.path.join(EP, "voices")

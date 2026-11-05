@@ -1,0 +1,238 @@
+{
+ "duration": 132.808,
+ "beats": [
+  {
+   "i": 0,
+   "scene": "countdown",
+   "start": 0.6,
+   "speech_end": 4.7,
+   "end": 6.3,
+   "overlay": [
+    "time",
+    "DAY 10 - 5:51 AM"
+   ],
+   "text": "Ten minutes to sunrise. Three choices. No good ones.",
+   "role": "narrator"
+  },
+  {
+   "i": 1,
+   "scene": "breaker_room",
+   "start": 6.3,
+   "speech_end": 9.65,
+   "end": 11.05,
+   "overlay": null,
+   "text": "The dam has a breaker room. Bigger than Ray's. Same idea.",
+   "role": "narrator"
+  },
+  {
+   "i": 2,
+   "scene": "boone_door",
+   "start": 11.05,
+   "speech_end": 16.15,
+   "end": 17.35,
+   "overlay": null,
+   "text": "Kill the lights, and I can't reach the gates in the dark. The timer still runs.",
+   "role": "boone"
+  },
+  {
+   "i": 3,
+   "scene": "you_think",
+   "start": 17.35,
+   "speech_end": 20.82,
+   "end": 22.22,
+   "overlay": null,
+   "text": "So you need both. Lights off. Timer stopped.",
+   "role": "narrator"
+  },
+  {
+   "i": 4,
+   "scene": "milo_radio",
+   "start": 22.22,
+   "speech_end": 26.32,
+   "end": 27.32,
+   "overlay": null,
+   "text": "Saint Agnes, this is Milo. Get everybody upstairs. Right now.",
+   "role": "milo"
+  },
+  {
+   "i": 5,
+   "scene": "milo_radio",
+   "start": 27.32,
+   "speech_end": 29.778,
+   "end": 31.178,
+   "overlay": null,
+   "text": "Who is this? Is my son with you?",
+   "role": "mom"
+  },
+  {
+   "i": 6,
+   "scene": "milo_look",
+   "start": 31.178,
+   "speech_end": 34.838,
+   "end": 36.438,
+   "overlay": null,
+   "text": "Milo looks at you. You nod. He says yes.",
+   "role": "narrator"
+  },
+  {
+   "i": 7,
+   "scene": "lever",
+   "start": 36.438,
+   "speech_end": 36.958,
+   "end": 38.358,
+   "overlay": [
+    "rule",
+    "RULE 1:",
+    "NO LIGHTS AFTER SUNSET"
+   ],
+   "text": "Rule one.",
+   "role": "narrator"
+  },
+  {
+   "i": 8,
+   "scene": "lights_out",
+   "start": 38.358,
+   "speech_end": 42.378,
+   "end": 44.578,
+   "overlay": null,
+   "text": "You pull it. Harlan Dam goes dark for the first time in ten days.",
+   "role": "narrator"
+  },
+  {
+   "i": 9,
+   "scene": "drift",
+   "start": 44.578,
+   "speech_end": 50.398,
+   "end": 52.398,
+   "overlay": null,
+   "text": "In the channel, thousands of heads tilt. Then, slowly, they start to drift apart.",
+   "role": "narrator"
+  },
+  {
+   "i": 10,
+   "scene": "code",
+   "start": 52.398,
+   "speech_end": 56.248,
+   "end": 57.448,
+   "overlay": null,
+   "text": "Zero nine one one. My dad's birthday.",
+   "role": "boone"
+  },
+  {
+   "i": 11,
+   "scene": "frozen_timer",
+   "start": 57.448,
+   "speech_end": 64.378,
+   "end": 66.178,
+   "overlay": [
+    "time",
+    "0:00:42"
+   ],
+   "text": "The timer stops with forty-two seconds left. Sunrise comes anyway. Cold, and grey, and quiet.",
+   "role": "narrator"
+  },
+  {
+   "i": 12,
+   "scene": "stairs",
+   "start": 66.178,
+   "speech_end": 73.638,
+   "end": 75.038,
+   "overlay": null,
+   "text": "One of them doesn't drift away. He climbs the maintenance stairs. Slowly. Toward you and Boone.",
+   "role": "narrator"
+  },
+  {
+   "i": 13,
+   "scene": "ray_glass",
+   "start": 75.038,
+   "speech_end": 81.918,
+   "end": 83.718,
+   "overlay": null,
+   "text": "He stops at the glass door. Red vest. Cracked glasses. Tap. Tap.",
+   "role": "narrator"
+  },
+  {
+   "i": 14,
+   "scene": "boone_glass",
+   "start": 83.718,
+   "speech_end": 84.498,
+   "end": 86.298,
+   "overlay": null,
+   "text": "Your turn, Dad.",
+   "role": "boone"
+  },
+  {
+   "i": 15,
+   "scene": "ray_leaves",
+   "start": 86.298,
+   "speech_end": 93.458,
+   "end": 95.658,
+   "overlay": null,
+   "text": "Boone taps back twice. Ray turns around, and walks into the hills with the others. He doesn't look back.",
+   "role": "narrator"
+  },
+  {
+   "i": 16,
+   "scene": "church",
+   "start": 95.658,
+   "speech_end": 100.408,
+   "end": 101.808,
+   "overlay": [
+    "time",
+    "PINE HOLLOW - 7:30 AM"
+   ],
+   "text": "Pine Hollow. Saint Agnes Church. Forty-one people on the steps.",
+   "role": "narrator"
+  },
+  {
+   "i": 17,
+   "scene": "mom_steps",
+   "start": 101.808,
+   "speech_end": 104.758,
+   "end": 105.958,
+   "overlay": null,
+   "text": "You came. I told you to stay home!",
+   "role": "mom_live"
+  },
+  {
+   "i": 18,
+   "scene": "hug",
+   "start": 105.958,
+   "speech_end": 107.598,
+   "end": 109.398,
+   "overlay": null,
+   "text": "You did stay home, eventually. It just took ten days.",
+   "role": "narrator"
+  },
+  {
+   "i": 19,
+   "scene": "chalkboard",
+   "start": 109.398,
+   "speech_end": 117.888,
+   "end": 119.888,
+   "overlay": null,
+   "text": "Rule seven. You write it on the church chalkboard, under the other six. Some of them remember.",
+   "role": "narrator"
+  },
+  {
+   "i": 20,
+   "scene": "hills_night",
+   "start": 119.888,
+   "speech_end": 126.408,
+   "end": 128.808,
+   "overlay": null,
+   "text": "This is an emergency broadcast for all counties. Stay indoors. Repeat. All counties.",
+   "role": "radio"
+  },
+  {
+   "i": 21,
+   "scene": "end",
+   "start": 128.808,
+   "speech_end": 128.808,
+   "end": 132.808,
+   "overlay": null,
+   "text": "",
+   "role": null
+  }
+ ]
+}

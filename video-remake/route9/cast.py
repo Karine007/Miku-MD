@@ -1,5 +1,5 @@
 """
-Route 9 cast added from Episode 7 on: Dani, Milo, Boone (original designs).
+Route 9 cast added from Episode 7 on: Dani, Milo, Boone, and Mom in Episode 10 (original designs).
 exec()'d into an episode's scenes.py namespace, which already has the engine helpers
 (D, INK, SKIN, math, ...). Same stick-figure language as `stick()` in the engine.
 """
@@ -7,13 +7,13 @@ exec()'d into an episode's scenes.py namespace, which already has the engine hel
 
 def person(d, x, y, s=1.0, who="dani", face="neutral", look=0, pose="stand", arms="down", t=0.0, tint=None,
            item=None):
-    """who: dani | milo | boone. (x, y) = head centre."""
+    """who: dani | milo | boone | mom. (x, y) = head centre."""
     r = 34 * s
     lw = 5 * s
     skin = tint or SKIN
     neck = (x, y + r)
     hip = (x, y + r + (80 if pose == "sit" else 92) * s)
-    top = {"dani": (64, 118, 72), "milo": (190, 52, 46), "boone": (110, 112, 118)}[who]
+    top = {"dani": (64, 118, 72), "milo": (190, 52, 46), "boone": (110, 112, 118), "mom": (120, 80, 150)}[who]
     d.poly([(x - 26 * s, neck[1] + 6 * s), (x + 26 * s, neck[1] + 6 * s), (x + 30 * s, hip[1] + 4 * s),
             (x - 30 * s, hip[1] + 4 * s)], fill=top, outline=INK, w=3 * s)
     if who == "dani":
@@ -60,6 +60,11 @@ def person(d, x, y, s=1.0, who="dani", face="neutral", look=0, pose="stand", arm
             d.circ(bx + side * 4 * s, y + r * 1.9, 5 * s, fill=(220, 60, 90))
     d.circ(x, y, r, fill=skin, outline=INK, w=3.5 * s)
     lx = look * 8 * s
+    if who == "mom":
+        d.d.chord([v * K for v in (x - r * 1.12, y - r * 1.12, x + r * 1.12, y + r * 1.0)], 180, 360, fill=(120, 104, 92))
+        for side in (-1, 1):
+            d.rr((x + side * r * 0.82 - 7 * s, y - 6 * s, x + side * r * 0.82 + 7 * s, y + r * 0.7), 6 * s,
+                 fill=(120, 104, 92))
     if who == "dani":
         d.arc((x - r, y - r, x + r, y + r), 180, 360, fill=(70, 46, 30), w=10 * s)
         d.line([(x - r * 0.6, y - r * 0.82), (x + r * 0.2, y - r * 0.55)], fill=(70, 46, 30), w=6 * s)

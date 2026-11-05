@@ -132,6 +132,9 @@ def tts_batch(role, texts, out, model=MODEL):
             w.writeframes(data)
 
 
+CUT_SHIFT = {}
+
+
 def syllables(text):
     import re
     t = text.lower()
@@ -240,7 +243,11 @@ def split_aligned(path, texts):
         for b in range(B - 1, 0, -1):
             g = int(back[b, g])
             chosen.append(g)
-        chosen = [gaps[c] for c in reversed(chosen)]
+        chosen = list(reversed(chosen))
+        # manual fixes: CUT_SHIFT[<batch name>][boundary] = n moves the cut after line `boundary` n pauses later
+        for bnd, sh in CUT_SHIFT.get(os.path.basename(path)[:-4], {}).items():
+            chosen[bnd] = min(len(gaps) - 1, max(0, chosen[bnd] + sh))
+        chosen = [gaps[c] for c in chosen]
     bounds = [v0s] + [t for c in chosen for t in (c[2], c[3])] + [v1]
     segs = []
     for a, b in zip(bounds[0::2], bounds[1::2]):

@@ -836,6 +836,7 @@ def title_img():
 TITLE_1 = " OUTBREAK:"
 TITLE_2 = _SCRIPT.TITLE[2] if _SCRIPT else "STRANDED AT A GAS STATION"
 END_TEXT = getattr(_SCRIPT, "END_TEXT", "PART 2 COMING SOON")
+END_SUB = getattr(_SCRIPT, "END_SUB", "FOLLOW SO YOU DON'T MISS IT")
 
 
 def overlay_label(panel1x, b, lt):
@@ -872,7 +873,7 @@ def render_frame(i):
         k = ease(lt / 0.5)
         c = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         paste_center(c, rich_text(END_TEXT, 76, stroke=0, squeeze=0.68), 360, 620, 1.0, k)
-        paste_center(c, rich_text("*FOLLOW SO YOU DON'T MISS IT*", 34, stroke=0, red=ORANGE, squeeze=0.7),
+        paste_center(c, rich_text("*" + END_SUB + "*", 34, stroke=0, red=ORANGE, squeeze=0.7),
                      360, 676, 1.0, k)
         canvas.paste(c, (0, 0), c)
         fade = clamp((t - (DURATION - 0.6)) / 0.6)
