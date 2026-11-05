@@ -3,9 +3,16 @@ Writes ../assets/soundtrack.wav. Deterministic; no external samples."""
 import os, wave
 import numpy as np
 
-SR = 44100; DUR = 60
+SR = 44100
+import json
+TM = json.load(open(os.path.join(os.path.dirname(__file__), '..', 'assets', 'timemap.json')))
+DUR = TM['total']
+def M(st):  # story time -> film time (the voiceover stretches story beats)
+    for a, b, s0, s1 in TM['segments']:
+        if st <= s1: return a + (b - a) * (st - s0) / max(1e-6, s1 - s0)
+    return DUR
 rng = np.random.default_rng(11)
-L = np.zeros(DUR * SR); R = np.zeros(DUR * SR)
+L = np.zeros(int(DUR * SR)); R = np.zeros(int(DUR * SR))
 
 def tt(sec): return np.arange(int(sec * SR)) / SR
 def lowpass(x, k):
@@ -21,6 +28,8 @@ def env(n, a, r):
     if Rr: e[-Rr:] *= np.linspace(1, 0, Rr)
     return e
 def put(x, at, g=1.0, pan=0.0):
+    put_film(x, M(at), g, pan)
+def put_film(x, at, g=1.0, pan=0.0):
     i = int(at * SR); j = min(len(L), i + len(x)); x = x[: j - i] * g
     L[i:j] += x * (1 - pan) * 0.5 * 2 ** 0.5; R[i:j] += x * (1 + pan) * 0.5 * 2 ** 0.5
 def pluck(f, dur, damp=0.996):
@@ -36,12 +45,12 @@ chords = [(0, [110, 130.8, 164.8]), (8, [87.3, 110, 130.8]), (16, [98, 123.5, 14
 pad = np.zeros(len(t))
 for i, (st, fs) in enumerate(chords):
     en = chords[i + 1][0] if i + 1 < len(chords) else DUR
-    a, b = int(st * SR), int(en * SR); seg = t[a:b] - st; n = b - a
+    a, b = int(M(st) * SR), int(M(en) * SR); seg = t[a:b] - M(st); n = b - a
     s = sum(np.sin(2 * np.pi * f * seg) + 0.5 * np.sin(2 * np.pi * f * 1.003 * 2 * seg) + 0.3 * np.sin(2 * np.pi * f * 0.997 * seg) for f in fs)
     pad[a:b] += s * env(n, min(0.8, n / SR / 3), min(0.8, n / SR / 3))
-swell = 0.55 + 0.45 * np.clip((t - 50) / 7, 0, 1) * (t < 59)
+swell = 0.55 + 0.45 * np.clip((t - M(50)) / (M(57) - M(50)), 0, 1) * (t < M(59))
 pad *= swell * 0.12
-put(pad, 0, 1.0)
+put_film(pad, 0, 1.0)
 # melody plucks (sparse, sad)
 mel = [(1.0, 440), (2.0, 392), (3.0, 329.6), (5.5, 440), (6.5, 523.3), (7.5, 493.9), (9.0, 440), (12, 329.6), (13, 349.2), (14, 329.6),
        (22, 523.3), (22.6, 587.3), (23.2, 659.3), (25, 587.3), (28, 440), (29, 493.9), (30.2, 523.3), (31, 659.3),
@@ -53,8 +62,8 @@ def thump():
     n = int(0.18 * SR); u = np.arange(n) / SR
     return np.sin(2 * np.pi * (60 + 40 * np.exp(-u * 30)) * u) * np.exp(-u * 18)
 for a, b, rate in [(17, 21, 1.2), (44, 48, 1.6), (50.6, 57.4, 1.9)]:
-    x = a
-    while x < b: put(thump(), x, 0.9); put(thump(), x + 0.22, 0.6); x += 1 / rate * 1.2
+    x = M(a)
+    while x < M(b): put_film(thump(), x, 0.9); put_film(thump(), x + 0.22, 0.6); x += 1 / rate * 1.2
 
 # ---------- ambiences
 def ambience_water(sec):  # muffled underwater rumble + bubble blips
@@ -81,9 +90,9 @@ def drips(sec, count):
     y = x.copy()
     for d, g in [(0.11, 0.5), (0.23, 0.3), (0.37, 0.18)]: k = int(d * SR); y[k:] += x[:-k] * g
     return y
-for a, b in [(5, 11), (11, 13.2), (27, 33), (41, 53), (53, 54.6)]: put(ambience_water(b - a), a, 0.55)
-for a, b in [(0, 5), (21, 27), (33, 41)]: put(ambience_day(b - a), a, 0.35)
-put(drips(4, 5), 17, 0.25); put(drips(8, 7), 13.3, 0.15); put(drips(5.5, 6), 54.5, 0.25)
+for a, b in [(5, 11), (11, 13.2), (27, 33), (41, 53), (53, 54.6)]: put(ambience_water(M(b) - M(a)), a, 0.55)
+for a, b in [(0, 5), (21, 27), (33, 41)]: put(ambience_day(M(b) - M(a)), a, 0.35)
+put(drips(M(21) - M(17), 6), 17, 0.25); put(drips(M(21) - M(13.3), 8), 13.3, 0.15); put(drips(DUR - M(54.5) - 0.2, 9), 54.5, 0.25)
 
 # ---------- one-shot effects
 def splash():
@@ -134,9 +143,7 @@ for at in (30, 42, 49): put(ding(), at, 0.5)
 for k in range(14): put(beep(), 44.5 + k * 0.25, 0.35)
 for k in range(10): put(step(), 34.6 + k * 0.24, 0.5, pan=0.4)
 for k in range(6): put(step(), 22 + k * 0.3, 0.4); put(step(), 37.5 + k * 0.28, 0.4)
-put(rush(2.6), 50.6, 0.7)
-put(shout(), 57.7, 0.9)
-put(-np.cos(np.linspace(0, np.pi, int(1.2 * SR))) * 0 + 0, 0)
+put(rush(M(53.2) - M(50.6)), 50.6, 0.7)
 # final stinger
 n = int(2.5 * SR); u = np.arange(n) / SR
 put(sum(np.sin(2 * np.pi * f * u) for f in (110, 164.8, 233.1)) * np.exp(-u * 1.2) * 0.25, 59.0, 1.0)
