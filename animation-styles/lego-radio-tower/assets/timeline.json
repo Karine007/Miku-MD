@@ -1,0 +1,836 @@
+{
+ "title": "18 Days in the Radio Tower",
+ "total": 331.4,
+ "beats": [
+  {
+   "s": "studio",
+   "a": "onair",
+   "light": "night",
+   "t": "Remi was halfway through his midnight radio show when every phone line in the studio lit up at once.",
+   "fx": [
+    [
+     "phones",
+     0.15
+    ]
+   ],
+   "title": "DAY 1 \u00b7 11:52 PM",
+   "start": 0.6,
+   "dur": 9.492
+  },
+  {
+   "s": "studio",
+   "a": "phone",
+   "light": "night",
+   "t": "Caller after caller, screaming the same thing. People were attacking people, all across the city.",
+   "fx": [
+    [
+     "phones",
+     0.0
+    ]
+   ],
+   "start": 10.092,
+   "dur": 8.053
+  },
+  {
+   "s": "window",
+   "a": "look",
+   "light": "night",
+   "fire": 1,
+   "t": "He walked to the window. From sixty-two floors up, he watched the city start to burn.",
+   "fx": [
+    [
+     "sirens",
+     0.1
+    ]
+   ],
+   "start": 18.145,
+   "dur": 7.239
+  },
+  {
+   "s": "studio",
+   "a": "alarm",
+   "light": "alarm",
+   "t": "Then the building alarm went off. The elevators froze. The lights flickered and died.",
+   "fx": [
+    [
+     "alarm",
+     0.0
+    ],
+    [
+     "powerdown",
+     0.75
+    ]
+   ],
+   "start": 25.384,
+   "dur": 6.485
+  },
+  {
+   "s": "stairs",
+   "a": "peek",
+   "light": "dark",
+   "t": "With a flashlight in his hand, he opened the stairwell door, just a crack.",
+   "fx": [
+    [
+     "creak",
+     0.2
+    ]
+   ],
+   "start": 31.869,
+   "dur": 5.45
+  },
+  {
+   "s": "stairwell",
+   "a": "climbers",
+   "light": "dark",
+   "t": "Far below, something was climbing. Slowly. Floor by floor.",
+   "fx": [
+    [
+     "groans",
+     0.1
+    ]
+   ],
+   "start": 37.319,
+   "dur": 5.927
+  },
+  {
+   "s": "door",
+   "a": "barricade",
+   "light": "dark",
+   "t": "He slammed the door, dragged a filing cabinet in front of it, and didn't sleep at all that night.",
+   "fx": [
+    [
+     "slam",
+     0.08
+    ],
+    [
+     "drag",
+     0.35
+    ]
+   ],
+   "start": 43.247,
+   "dur": 7.708
+  },
+  {
+   "s": "daycard",
+   "day": "DAY 2",
+   "t": "In the morning, he took stock of everything he had.",
+   "fx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "start": 50.954,
+   "dur": 3.494
+  },
+  {
+   "s": "card",
+   "card": "supplies",
+   "vals": {
+    "water": 18,
+    "food": 41,
+    "fuel": 40
+   },
+   "t": "Eighteen bottles of water. One vending machine full of snacks. And forty liters of fuel for the backup generator on the roof.",
+   "fx": [
+    [
+     "tick",
+     0.1
+    ],
+    [
+     "tick",
+     0.4
+    ],
+    [
+     "tick",
+     0.7
+    ]
+   ],
+   "start": 54.448,
+   "dur": 11.204
+  },
+  {
+   "s": "vending",
+   "a": "vending",
+   "light": "day",
+   "t": "The vending machine became his pantry. Chips, crackers, and forty-one chocolate bars.",
+   "fx": [
+    [
+     "vend",
+     0.3
+    ]
+   ],
+   "start": 65.652,
+   "dur": 6.944
+  },
+  {
+   "s": "card",
+   "card": "rules",
+   "t": "He gave himself three rules. One meal a day. Two bottles of water. And never, ever make noise near the stairs.",
+   "fx": [
+    [
+     "tick",
+     0.25
+    ],
+    [
+     "tick",
+     0.5
+    ],
+    [
+     "tick",
+     0.78
+    ]
+   ],
+   "start": 72.596,
+   "dur": 5.582
+  },
+  {
+   "s": "card",
+   "card": "fuel",
+   "t": "The generator burned two liters an hour. That meant twenty hours of power. Total.",
+   "fx": [
+    [
+     "tick",
+     0.2
+    ]
+   ],
+   "start": 78.179,
+   "dur": 5.276
+  },
+  {
+   "s": "studio",
+   "a": "think",
+   "light": "day",
+   "t": "Twenty hours. He could use it for light, for heat\u2026 or for the radio.",
+   "fx": [],
+   "start": 83.454,
+   "dur": 6.191
+  },
+  {
+   "s": "studio",
+   "a": "onair",
+   "light": "night",
+   "onair": 1,
+   "t": "Remi chose the radio. One hour on air every night. No music. Only information.",
+   "fx": [
+    [
+     "generator",
+     0.0
+    ],
+    [
+     "static",
+     0.5
+    ]
+   ],
+   "start": 89.646,
+   "dur": 7.176
+  },
+  {
+   "s": "studio",
+   "a": "onair",
+   "light": "night",
+   "onair": 1,
+   "t": "Which streets were blocked. Where the fires were spreading. Which buildings still had lights on.",
+   "fx": [
+    [
+     "static",
+     0.0
+    ]
+   ],
+   "start": 96.822,
+   "dur": 6.366
+  },
+  {
+   "s": "daycard",
+   "day": "DAY 4",
+   "t": "",
+   "fx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "start": 103.188,
+   "dur": 1.7
+  },
+  {
+   "s": "window",
+   "a": "binoculars",
+   "light": "day",
+   "fire": 0.6,
+   "t": "From the top of the tower, he could see the whole city. So he started watching it, with an old pair of binoculars.",
+   "fx": [
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "start": 104.888,
+   "dur": 7.039
+  },
+  {
+   "s": "card",
+   "card": "notes",
+   "t": "He wrote down everything. The infected followed noise and light. They hated the cold wind off the river. And they were slowest just after sunrise.",
+   "fx": [
+    [
+     "pencil",
+     0.1
+    ],
+    [
+     "pencil",
+     0.45
+    ],
+    [
+     "pencil",
+     0.75
+    ]
+   ],
+   "start": 111.928,
+   "dur": 10.152
+  },
+  {
+   "s": "studio",
+   "a": "onair",
+   "light": "night",
+   "onair": 1,
+   "t": "Every night, he read his notes on air\u2026 and wondered if anyone out there was even listening.",
+   "fx": [
+    [
+     "static",
+     0.0
+    ]
+   ],
+   "start": 122.08,
+   "dur": 5.954
+  },
+  {
+   "s": "daycard",
+   "day": "DAY 7",
+   "t": "",
+   "fx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "start": 128.034,
+   "dur": 1.7
+  },
+  {
+   "s": "studio",
+   "a": "surprised",
+   "light": "night",
+   "onair": 1,
+   "t": "On the seventh night, the radio crackled back.",
+   "fx": [
+    [
+     "static",
+     0.0
+    ],
+    [
+     "crackle",
+     0.45
+    ]
+   ],
+   "start": 129.734,
+   "dur": 9.475
+  },
+  {
+   "s": "studio",
+   "a": "listen",
+   "light": "night",
+   "onair": 1,
+   "radio": "girl",
+   "t": "A girl's voice. Her name was Tess. She was hiding in a pharmacy with her little brother, twelve blocks away.",
+   "fx": [
+    [
+     "crackle",
+     0.05
+    ]
+   ],
+   "start": 139.209,
+   "dur": 7.401
+  },
+  {
+   "s": "card",
+   "card": "map1",
+   "t": "Twelve blocks. Through the most crowded streets in the city.",
+   "fx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "start": 146.61,
+   "dur": 3.918
+  },
+  {
+   "s": "door",
+   "a": "scratch",
+   "light": "dark",
+   "t": "That same night, the scratching started. Something was on his floor, right behind the stairwell door.",
+   "fx": [
+    [
+     "scratch",
+     0.1
+    ],
+    [
+     "scratch",
+     0.55
+    ]
+   ],
+   "start": 150.528,
+   "dur": 5.556
+  },
+  {
+   "s": "door",
+   "a": "sofa",
+   "light": "dark",
+   "t": "He pushed the sofa against the cabinet. The handle rattled until dawn\u2026 and then it stopped.",
+   "fx": [
+    [
+     "drag",
+     0.05
+    ],
+    [
+     "rattle",
+     0.45
+    ],
+    [
+     "rattle",
+     0.7
+    ]
+   ],
+   "start": 156.084,
+   "dur": 5.171
+  },
+  {
+   "s": "daycard",
+   "day": "DAY 9",
+   "t": "",
+   "fx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "start": 161.255,
+   "dur": 1.7
+  },
+  {
+   "s": "card",
+   "card": "supplies",
+   "vals": {
+    "water": 6,
+    "food": 24,
+    "fuel": 31
+   },
+   "t": "Water was the real problem now. Six bottles left. Maybe four days.",
+   "fx": [
+    [
+     "tick",
+     0.2
+    ]
+   ],
+   "start": 162.955,
+   "dur": 4.599
+  },
+  {
+   "s": "roof",
+   "a": "rain",
+   "light": "storm",
+   "t": "Then, on day ten, a storm rolled in. Remi climbed to the roof with every trash can he could carry.",
+   "fx": [
+    [
+     "thunder",
+     0.05
+    ],
+    [
+     "rain",
+     0.0
+    ]
+   ],
+   "start": 167.554,
+   "dur": 8.123
+  },
+  {
+   "s": "roof",
+   "a": "laugh",
+   "light": "storm",
+   "t": "By morning, he had thirty liters of rainwater. He laughed out loud for the first time in days.",
+   "fx": [
+    [
+     "rain",
+     0.0
+    ],
+    [
+     "thunder",
+     0.6
+    ]
+   ],
+   "start": 175.677,
+   "dur": 7.066
+  },
+  {
+   "s": "daycard",
+   "day": "DAY 12",
+   "t": "",
+   "fx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "start": 182.743,
+   "dur": 1.7
+  },
+  {
+   "s": "studio",
+   "a": "worried",
+   "light": "night",
+   "onair": 1,
+   "radio": "girl",
+   "t": "Tess's voice was weaker now. The infected had found the pharmacy door.",
+   "fx": [
+    [
+     "crackle",
+     0.0
+    ],
+    [
+     "bang",
+     0.6
+    ]
+   ],
+   "start": 184.443,
+   "dur": 5.168
+  },
+  {
+   "s": "card",
+   "card": "map2",
+   "t": "Remi studied his map for hours. There was one way out. Along the river, against the wind\u2026 at sunrise.",
+   "fx": [
+    [
+     "pencil",
+     0.3
+    ],
+    [
+     "pencil",
+     0.6
+    ]
+   ],
+   "start": 189.611,
+   "dur": 8.406
+  },
+  {
+   "s": "studio",
+   "a": "onair",
+   "light": "dawn",
+   "onair": 1,
+   "t": "He talked them through it, street by street. Left at the bakery. Stay low past the bus. Don't run. Running is loud.",
+   "fx": [
+    [
+     "static",
+     0.0
+    ]
+   ],
+   "start": 198.018,
+   "dur": 8.412
+  },
+  {
+   "s": "street",
+   "a": "sneak",
+   "light": "dawn",
+   "t": "In the pale morning light, two tiny figures slipped out of the pharmacy.",
+   "fx": [
+    [
+     "wind",
+     0.0
+    ]
+   ],
+   "start": 206.43,
+   "dur": 5.429
+  },
+  {
+   "s": "street",
+   "a": "freeze",
+   "light": "dawn",
+   "t": "One of the infected turned its head toward them. Tess froze, exactly like Remi had told her.",
+   "fx": [
+    [
+     "groans",
+     0.2
+    ],
+    [
+     "heartbeat",
+     0.3
+    ]
+   ],
+   "start": 211.859,
+   "dur": 8.055
+  },
+  {
+   "s": "street",
+   "a": "turnaway",
+   "light": "dawn",
+   "t": "Then the wind blew in from the river\u2026 and it turned away.",
+   "fx": [
+    [
+     "wind",
+     0.1
+    ]
+   ],
+   "start": 219.914,
+   "dur": 3.844
+  },
+  {
+   "s": "bridge",
+   "a": "boat",
+   "light": "dawn",
+   "t": "Forty minutes later, they reached the old footbridge. Waiting underneath was a boat full of survivors.",
+   "fx": [
+    [
+     "water",
+     0.0
+    ]
+   ],
+   "start": 223.758,
+   "dur": 6.97
+  },
+  {
+   "s": "studio",
+   "a": "cry",
+   "light": "dawn",
+   "t": "When Tess's voice came back on the radio, Remi sat back in his chair\u2026 and cried.",
+   "fx": [
+    [
+     "crackle",
+     0.0
+    ]
+   ],
+   "start": 230.729,
+   "dur": 5.932
+  },
+  {
+   "s": "daycard",
+   "day": "DAY 15",
+   "t": "",
+   "fx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "start": 236.661,
+   "dur": 1.7
+  },
+  {
+   "s": "card",
+   "card": "fuel2",
+   "t": "But every broadcast cost fuel. By day fifteen, there were only three liters left. Enough for one last hour.",
+   "fx": [
+    [
+     "tick",
+     0.3
+    ]
+   ],
+   "start": 238.361,
+   "dur": 8.866
+  },
+  {
+   "s": "daycard",
+   "day": "DAY 18",
+   "t": "",
+   "fx": [
+    [
+     "whoosh",
+     0.0
+    ]
+   ],
+   "start": 247.227,
+   "dur": 1.7
+  },
+  {
+   "s": "window",
+   "a": "heli_far",
+   "light": "dusk",
+   "fire": 0.3,
+   "t": "Then, on the eighteenth evening, he heard it. A low thumping sound, coming from across the river.",
+   "fx": [
+    [
+     "heli_far",
+     0.0
+    ]
+   ],
+   "start": 248.927,
+   "dur": 6.865
+  },
+  {
+   "s": "window",
+   "a": "heli_far",
+   "light": "dusk",
+   "fire": 0.3,
+   "t": "A rescue helicopter, flying a search pattern. In the dark, they would never spot one man in a silent tower.",
+   "fx": [
+    [
+     "heli_far",
+     0.0
+    ]
+   ],
+   "start": 255.792,
+   "dur": 10.486
+  },
+  {
+   "s": "roof",
+   "a": "fuel",
+   "light": "dusk",
+   "t": "So Remi climbed to the roof with the last of the fuel, and poured every drop into the generator.",
+   "fx": [
+    [
+     "pour",
+     0.2
+    ],
+    [
+     "generator",
+     0.8
+    ]
+   ],
+   "start": 266.278,
+   "dur": 8.47
+  },
+  {
+   "s": "tower",
+   "a": "lightup",
+   "light": "night",
+   "t": "He flipped every switch at once. For the first time in eighteen days, the tallest building in the city lit up.",
+   "fx": [
+    [
+     "switch",
+     0.3
+    ],
+    [
+     "hum",
+     0.35
+    ]
+   ],
+   "start": 274.748,
+   "dur": 6.542
+  },
+  {
+   "s": "tower",
+   "a": "heliturn",
+   "light": "night",
+   "t": "The helicopter turned.",
+   "fx": [
+    [
+     "heli_near",
+     0.0
+    ]
+   ],
+   "start": 281.291,
+   "dur": 2.364
+  },
+  {
+   "s": "stairwell",
+   "a": "horde",
+   "light": "dark",
+   "t": "But the light called something else too. Below him, the stairwell filled with noise. Hundreds of them were climbing.",
+   "fx": [
+    [
+     "groans",
+     0.0
+    ],
+    [
+     "groans",
+     0.5
+    ]
+   ],
+   "start": 283.655,
+   "dur": 8.333
+  },
+  {
+   "s": "door",
+   "a": "hold",
+   "light": "dark",
+   "t": "The barricade held for eleven minutes.",
+   "fx": [
+    [
+     "bang",
+     0.1
+    ],
+    [
+     "bang",
+     0.4
+    ],
+    [
+     "bang",
+     0.7
+    ]
+   ],
+   "start": 291.989,
+   "dur": 3.605
+  },
+  {
+   "s": "roof",
+   "a": "rescue",
+   "light": "night",
+   "t": "That was enough. A rope dropped from the sky, and Remi grabbed it with both hands.",
+   "fx": [
+    [
+     "heli_near",
+     0.0
+    ]
+   ],
+   "start": 295.593,
+   "dur": 7.318
+  },
+  {
+   "s": "heli",
+   "a": "headset",
+   "light": "night",
+   "t": "Inside, the pilot handed him a headset. We heard your broadcasts, she said. All of them. There's a whole camp by the river because of you.",
+   "fx": [
+    [
+     "heli_inside",
+     0.0
+    ]
+   ],
+   "start": 302.911,
+   "dur": 9.787
+  },
+  {
+   "s": "camp",
+   "a": "reunion",
+   "light": "dawn",
+   "t": "And waiting at that camp, holding a little radio, were Tess and her brother.",
+   "fx": [
+    [
+     "fire_crackle",
+     0.0
+    ]
+   ],
+   "start": 312.699,
+   "dur": 5.71
+  },
+  {
+   "s": "card",
+   "card": "end",
+   "t": "Remi spent eighteen days in that tower. He never fought a single infected. He survived by watching, thinking\u2026 and talking.",
+   "fx": [],
+   "start": 318.409,
+   "dur": 8.992
+  },
+  {
+   "s": "endcard",
+   "t": "",
+   "fx": [
+    [
+     "static",
+     0.2
+    ]
+   ],
+   "start": 327.4,
+   "dur": 4.0
+  }
+ ]
+}

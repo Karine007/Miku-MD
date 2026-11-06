@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>18 Days in the Radio Tower — brick film</title>
+    <script src="assets/gsap.min.js"></script>
+    <script src="assets/timeline.js"></script>
+    <script src="assets/scene.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #101114; }
+      #root { position: relative; width: 1920px; height: 1080px; }
+      #film, #overlay { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="331.4" data-width="1920" data-height="1080">
+      <canvas id="film" class="clip" data-start="0" data-duration="331.4" data-track-index="0" width="1920" height="1080"></canvas>
+      <canvas id="overlay" class="clip" data-start="0" data-duration="331.4" data-track-index="1" width="1920" height="1080"></canvas>
+      <!-- Gemini TTS narration (voice "Charon") + synthesized music/effects, shared with the stick-figure cut -->
+      <audio id="a-mix" src="assets/soundtrack.wav" data-start="0" data-duration="331.4" data-volume="0.45" data-track-index="10"></audio>
+      <audio id="a-voice" src="assets/voiceover.wav" data-start="0" data-duration="331.4" data-volume="1" data-track-index="11"></audio>
+    </div>
+    <script>
+      const film = window.BrickFilm.create(document.getElementById('film'), document.getElementById('overlay'));
+      const clock = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(clock, { t: window.FILM.total, duration: window.FILM.total, ease: 'none', onUpdate: () => film.render(clock.t) }, 0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines['main'] = tl;
+      tl.seek(0); film.render(0);
+    </script>
+  </body>
+</html>
