@@ -206,8 +206,8 @@ export function create(canvas3d, canvas2d) {
     const chunk = Math.floor(cur / 3) * 3, show = words.slice(chunk, chunk + 3);
     const size = l.text === 'WHAT?!' ? 150 : 84;
     g2.save(); g2.font = `900 ${size}px ${F}`; g2.textBaseline = 'middle'; g2.lineJoin = 'round';
-    const full = show.join(' ').toUpperCase(), wFull = g2.measureText(full).width; let x = W / 2 - wFull / 2; const y = H * 0.7;
-    show.forEach((w, k) => { const s = w.toUpperCase() + (k < show.length - 1 ? ' ' : ''); g2.lineWidth = size / 5; g2.strokeStyle = '#000'; g2.strokeText(s, x, y); g2.fillStyle = chunk + k === cur ? '#ffd23c' : '#ffffff'; g2.fillText(s, x, y); x += g2.measureText(s).width; });
+    const full = show.join(' ').toUpperCase(); let fs = size; while (g2.measureText(full).width > 960 && fs > 40) { fs -= 4; g2.font = `900 ${fs}px ${F}`; } const wFull = g2.measureText(full).width; let x = W / 2 - wFull / 2; const y = H * 0.7;
+    show.forEach((w, k) => { const s = w.toUpperCase() + (k < show.length - 1 ? ' ' : ''); g2.lineWidth = fs / 5; g2.strokeStyle = '#000'; g2.strokeText(s, x, y); g2.fillStyle = chunk + k === cur ? '#ffd23c' : '#ffffff'; g2.fillText(s, x, y); x += g2.measureText(s).width; });
     g2.restore();
   }
   function render(t) {
