@@ -1,4 +1,5 @@
 // "Would You Still Love Me?" — a short original toy-brick (Lego-style) comedy sketch, vertical 1080x1920.
+// Ends on the shocked reaction (a reaction clip can be appended afterwards in an editor).
 // render(t) is a pure function of time. Voice timings (seconds in the film) are below in LINES.
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
@@ -149,52 +150,31 @@ export function create(canvas3d, canvas2d) {
 
   const DAN = fig('dan'), MIRA = fig('mira'), RAY = fig('ray');
 
-  // ---------- timing (film seconds) — voice clips placed by src/make_audio.py
-  const LINES = [
-    { who: 'mira', a: 0.63, b: 6.94, text: 'Babe... if I lost all my money tomorrow, would you still love me?' },
-    { who: 'dan', a: 7.6, b: 9.01, text: 'Of course I would.' },
-    { who: 'mira', a: 9.62, b: 11.9, text: 'Aww... really?' },
-    { who: 'dan', a: 12.57, b: 17.02, text: "Yeah. I'd miss you... but I'd still love you." },
-    { who: 'mira', a: 17.64, b: 18.4, text: 'WHAT?!' },
-  ];
-  const LAUGH_AT = 20.0, TOTAL = 26.0;
-  const speaking = (who, t) => LINES.some(l => l.who === who && t > l.a && t < l.b && !(l.who === 'dan' && t > 13.25 && t < 13.6) && !(l.who === 'mira' && t > 3.4 && t < 3.7) && !(l.who === 'mira' && t > 5.25 && t < 5.65));
+  // ---------- timing (film seconds) from src/make_voice.py -> assets/lines.js
+  const SK = window.SKETCH, LINES = SK.lines, TOTAL = SK.total, LAUGH_AT = 1e9;
+  const speaking = (who, t) => LINES.some(l => l.who === who && t > l.a && t < l.b);
+  const T1 = LINES[1].a - 0.2, T2 = LINES[2].a - 0.2, T3 = LINES[3].a - 0.2, T4 = LINES[4].a - 0.12, SMUG = LINES[3].a + 1.0;
 
   function shot(from, look, to, lookTo, k) { cam.position.copy(from).lerp(to, ease(k)); const l = look.clone().lerp(lookTo, ease(k)); cam.lookAt(l); }
   sun.position.set(10, 22, 18); sun.target.position.set(0, 2, -1);
 
   function render3d(t) {
     const SEAT = 2.65;
-    // couple
     const danTalk = speaking('dan', t) ? 1 : 0, miraTalk = speaking('mira', t) ? 1 : 0;
-    const shocked = t > 17.5;
-    sit(DAN, -2.3, SEAT, -1.2, 0.3, { arms: t > 12.4 && t < 17.3 ? [-0.5, -1.1 + Math.sin(t * 2) * 0.1] : [-0.5, -0.5], head: 0, headY: t > 13.6 && t < 17.4 ? -0.15 : 0.12 });
-    sit(MIRA, 2.3, SEAT, -1.2, -0.3, { arms: shocked ? [-2.3, -2.3] : t > 9.5 && t < 12.2 ? [-1.6, -1.6] : [-0.6, -0.5], pitch: shocked ? -0.12 : t < 7 ? 0.08 : 0, head: shocked ? -0.08 : 0, headY: shocked ? 0.25 : -0.12 });
-    face(DAN, t > 13.6 ? 'smug' : 'smile', danTalk, t);
-    face(MIRA, shocked ? 'shocked' : t > 9.4 && t < 12.3 ? 'touched' : 'smile', shocked ? 0 : miraTalk, t);
+    const shocked = t > T4 + 0.1;
+    sit(DAN, -2.3, SEAT, -1.2, 0.3, { arms: t > T3 && t < T4 ? [-0.5, -1.1 + Math.sin(t * 2) * 0.1] : [-0.5, -0.5], headY: t > SMUG && t < T4 ? -0.15 : 0.12 });
+    sit(MIRA, 2.3, SEAT, -1.2, -0.3, { arms: shocked ? [-2.3, -2.3] : t > T2 && t < T3 ? [-1.6, -1.6] : [-0.6, -0.5], pitch: shocked ? -0.12 : t < T1 ? 0.08 : 0, head: shocked ? -0.08 : 0, headY: shocked ? 0.25 : -0.12 });
+    face(DAN, t > SMUG ? 'smug' : 'smile', danTalk, t);
+    face(MIRA, shocked ? 'shocked' : t > T2 && t < T3 + 0.2 ? 'touched' : 'smile', shocked ? 0 : miraTalk, t);
     if (shocked) MIRA.mouthO.visible = true;
-    // reaction guy
-    const lt = Math.max(0, t - LAUGH_AT), rock = Math.sin(lt * 5.2);
-    RAY.root.position.set(100, 2.05, -1.1); RAY.root.rotation.y = 0; RAY.body.position.y = 0.45;
-    RAY.body.rotation.set(lt < 0.4 ? 0 : -0.22 + rock * 0.2 + (lt > 3 ? 0.18 : 0), 0, Math.sin(lt * 2.6) * 0.12);
-    RAY.legs.forEach(l => l.rotation.x = -1.5);
-    RAY.armR.p.rotation.x = lt > 2.6 ? -1.35 + Math.max(0, Math.sin(lt * 10)) * -0.6 : -2.6 + Math.sin(lt * 7) * 0.25; RAY.armL.p.rotation.x = lt > 2.6 ? -2.7 : -2.4 + Math.sin(lt * 7 + 1) * 0.25;
-    RAY.head.rotation.set(-0.3 + rock * 0.12, Math.sin(lt * 1.7) * 0.25, 0);
-    face(RAY, lt < 0.25 ? 'smile' : 'laugh', 0, t);
-    // cameras
-    if (t < LAUGH_AT) {
-      scene.background = new THREE.Color('#e9dcc0');
-      if (t < 7.4) shot(v3(0, 6.2, 17.5), v3(0, 4.1, -1.2), v3(0, 5.8, 15), v3(0, 4.1, -1.2), t / 7.4);
-      else if (t < 9.4) shot(v3(-0.6, 5.0, 7.2), v3(-2.3, 4.4, -1.2), v3(-0.7, 5.0, 6.6), v3(-2.3, 4.4, -1.2), (t - 7.4) / 2);
-      else if (t < 12.2) shot(v3(0.6, 5.0, 7.2), v3(2.3, 4.4, -1.2), v3(0.7, 5.0, 6.6), v3(2.3, 4.4, -1.2), (t - 9.4) / 2.8);
-      else if (t < 17.4) shot(v3(-0.6, 5.0, 7.4), v3(-2.3, 4.4, -1.2), v3(-1.0, 4.9, 5.4), v3(-2.3, 4.5, -1.2), (t - 12.2) / 5.2);
-      else { const k = clamp((t - 17.4) / 0.25); const sh = t > 17.6 ? Math.sin(t * 60) * 0.06 * (1 - clamp((t - 17.6) / 1.5)) : 0; shot(v3(0.7 + sh, 5.0 + sh, 7.4), v3(2.3, 4.3, -1.2), v3(1.3 + sh, 4.9, 5.6), v3(2.3, 4.4, -1.2), k); }
-    } else {
-      scene.background = new THREE.Color('#1e2436');
-      const k = clamp(lt / 6), sh = Math.sin(t * 23) * 0.04;
-      shot(v3(100.6 + sh, 5.6, 9.5), v3(100, 3.9, -1.1), v3(100.3 + sh, 5.2, 7.2), v3(100, 4.1, -1.1), k);
-    }
-    hemi.intensity = t < LAUGH_AT ? 0.7 : 0.35; sun.intensity = t < LAUGH_AT ? 2.4 : 0.5;
+    RAY.root.visible = false;
+    scene.background = new THREE.Color('#e9dcc0');
+    if (t < T1) shot(v3(0, 6.2, 17.5), v3(0, 4.1, -1.2), v3(0, 5.8, 15), v3(0, 4.1, -1.2), t / T1);
+    else if (t < T2) shot(v3(-0.6, 5.0, 7.2), v3(-2.3, 4.4, -1.2), v3(-0.7, 5.0, 6.6), v3(-2.3, 4.4, -1.2), (t - T1) / (T2 - T1));
+    else if (t < T3) shot(v3(0.6, 5.0, 7.2), v3(2.3, 4.4, -1.2), v3(0.7, 5.0, 6.6), v3(2.3, 4.4, -1.2), (t - T2) / (T3 - T2));
+    else if (t < T4) shot(v3(-0.6, 5.0, 7.4), v3(-2.3, 4.4, -1.2), v3(-1.0, 4.9, 5.6), v3(-2.3, 4.5, -1.2), (t - T3) / (T4 - T3));
+    else { const k = clamp((t - T4) / 0.25); const sh = t > T4 + 0.2 ? Math.sin(t * 60) * 0.06 * (1 - clamp((t - T4 - 0.2) / 1.2)) : 0; shot(v3(0.7 + sh, 5.0 + sh, 7.4), v3(2.3, 4.3, -1.2), v3(1.3 + sh, 4.9, 5.6), v3(2.3, 4.4, -1.2), k); }
+    hemi.intensity = 0.7; sun.intensity = 2.4;
   }
 
   // ---------- captions (bold, word-by-word highlight)
@@ -215,7 +195,7 @@ export function create(canvas3d, canvas2d) {
     g2.setTransform(1, 0, 0, 1, 0, 0); g2.clearRect(0, 0, W, H);
     if (t < LAUGH_AT) captions(t);
     // flash cut into the reaction, fade at the very start and end
-    let fade = 0; if (t < 0.3) fade = 1 - t / 0.3; if (t > TOTAL - 0.4) fade = (t - (TOTAL - 0.4)) / 0.4;
+    let fade = 0; if (t < 0.3) fade = 1 - t / 0.3; 
     if (t > LAUGH_AT && t < LAUGH_AT + 0.18) { g2.fillStyle = `rgba(255,255,255,${1 - (t - LAUGH_AT) / 0.18})`; g2.fillRect(0, 0, W, H); }
     if (fade > 0) { g2.fillStyle = `rgba(0,0,0,${fade})`; g2.fillRect(0, 0, W, H); }
   }
