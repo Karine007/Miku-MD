@@ -1,0 +1,6 @@
+*-raw.mp4
+.*.hf-transaction-*/
+.hyperframes/
+node_modules/
+renders/
+work-*/
