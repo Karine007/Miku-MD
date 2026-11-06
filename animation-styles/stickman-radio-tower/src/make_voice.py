@@ -60,14 +60,19 @@ def align(path, lines, out):
     body = {'contents': [{'parts': [{'inlineData': {'mimeType': 'audio/wav', 'data': audio}}, {'text': 'This audio is a narrator reading these lines in order:\n' + listing +
             '\nReturn JSON: a list of objects {"line": n, "start": seconds, "end": seconds} giving exactly when each line is spoken, precise to 0.1 s.'}]}],
             'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0}}
-    for attempt in range(16):
+    for attempt in range(8):
         model = TEXT_MODELS[attempt % len(TEXT_MODELS)]
         try:
             res = json.loads(api(model, body)['candidates'][0]['content']['parts'][0]['text'])
             assert len(res) == len(lines); json.dump(res, open(out, 'w')); print('   aligned', os.path.basename(path), 'with', model, flush=True); return res
         except Exception as e:
             print('   align retry', model, e, flush=True); time.sleep(15)
-    raise SystemExit('alignment failed')
+    # fallback: estimate line boundaries from text length (the rate-balanced splitter does the rest)
+    x, r = read(path); dur = len(x) / r; tot = sum(len(l) for l in lines); acc, res = 0.0, []
+    for k, l in enumerate(lines):
+        a = acc / tot * dur; acc += len(l); res.append({'line': k, 'start': round(a, 2), 'end': round(acc / tot * dur, 2)})
+    print('   alignment unavailable, using text-length estimate for', os.path.basename(path), flush=True)
+    return res
 
 def read(p):
     with wave.open(p) as w: return np.frombuffer(w.readframes(w.getnframes()), '<i2').astype(np.float32) / 32768, w.getframerate()
