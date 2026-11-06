@@ -1,0 +1,30 @@
+{
+ "title": "Le Piège Photo",
+ "narrator": "Charon",
+ "beats": [
+  {"s": "photo", "n": 27, "clock": "02:40", "fig": "side", "hook": 1, "t": "Cette photo a été prise par une caméra de chasse, à trois heures du matin. Regarde bien ce qu'il y a à côté de la tente."},
+  {"s": "campfire", "a": "wide", "hud": "NUIT 2 · LE LAC NOIR", "clock": "22:41", "t": "Deuxième nuit au bord du lac Noir. Inès, Malik et Théo faisaient griller des chamallows autour du feu."},
+  {"s": "campfire", "a": "malik", "clock": "22:46", "t": "Malik avait apporté un nouveau jouet : une caméra de chasse. Elle prend une photo dès que quelque chose bouge."},
+  {"s": "tree", "a": "strap", "clock": "22:52", "t": "« On va voir des renards », disait-il, en l'attachant à un arbre, face à la tente."},
+  {"s": "campfire", "a": "ines", "clock": "22:58", "t": "« Ou un sanglier », a lancé Inès en riant."},
+  {"s": "tentout", "a": "glow", "clock": "00:04", "t": "Vers minuit, ils ont éteint le feu et se sont glissés dans la tente."},
+  {"s": "tentout", "a": "dark", "clock": "00:31", "t": "Le silence est tombé sur le lac."},
+  {"s": "tentin", "a": "wake", "hud": "NUIT 2 · LA TENTE", "clock": "03:04", "t": "À trois heures, Théo s'est réveillé. Sans savoir pourquoi. Juste... une impression."},
+  {"s": "tentin", "a": "phone", "clock": "03:05", "t": "Il a pris son téléphone et ouvert l'application de la caméra. Juste pour voir les renards."},
+  {"s": "photo", "n": 1, "clock": "00:10", "fig": "none", "t": "Photo de minuit dix. La tente. Les arbres. Rien."},
+  {"s": "photo", "n": 9, "clock": "01:00", "fig": "far", "t": "Photo d'une heure. Au fond, entre les arbres... une silhouette pâle."},
+  {"s": "face", "a": "doubt", "clock": "03:06", "t": "Théo s'est dit que c'était un tronc. Ou un reflet."},
+  {"s": "photo", "n": 18, "clock": "02:00", "fig": "lake", "t": "Photo de deux heures. La silhouette était au bord de l'eau. Plus près."},
+  {"s": "photo", "n": 27, "clock": "02:40", "fig": "side", "t": "Deux heures quarante. Elle était juste à côté de la tente. Penchée... comme si elle écoutait."},
+  {"s": "tentin", "a": "frozen", "clock": "03:07", "t": "Théo n'osait plus respirer. À côté de lui, Inès et Malik dormaient."},
+  {"s": "photo", "n": 28, "clock": "02:50", "fig": "none", "t": "Deux heures cinquante. Plus personne. La silhouette avait disparu."},
+  {"s": "face", "a": "relief", "clock": "03:08", "t": "Il a soufflé. Elle était partie."},
+  {"s": "face", "a": "buzz", "clock": "03:09", "t": "Et puis le téléphone a vibré. Une nouvelle photo. Trois heures pile."},
+  {"s": "photo", "n": 29, "clock": "03:00", "fig": "lens", "t": "Sur la photo, il n'y avait plus la tente. Juste un visage. Collé à l'objectif."},
+  {"s": "face", "a": "fear", "clock": "03:09", "t": "Quelqu'un avait décroché la caméra de l'arbre."},
+  {"s": "photo", "n": 30, "clock": "03:10", "fig": "door", "t": "Trois heures dix. Une dernière photo. Prise de tout près... juste devant la porte de la tente."},
+  {"s": "zip", "a": "open", "clock": "03:10", "t": "Et dans le noir, juste au-dessus de sa tête, Théo a entendu la fermeture éclair... commencer à s'ouvrir."},
+  {"s": "card", "a": "end", "t": "La caméra n'a jamais été retrouvée. Seulement les photos, sur le téléphone de Théo. Trente et une."},
+  {"s": "endcard", "t": ""}
+ ]
+}

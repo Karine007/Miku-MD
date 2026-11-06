@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Le Piège Photo</title>
+    <script src="assets/gsap.min.js"></script>
+    <script src="assets/timeline.js"></script>
+    <script src="assets/scene.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #050607; }
+      #root { position: relative; width: 1080px; height: 1920px; }
+      #film { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="126.267" data-width="1080" data-height="1920">
+      <canvas id="film" class="clip" data-start="0" data-duration="126.267" data-track-index="0" width="1080" height="1920"></canvas>
+      <!-- Gemini TTS narration (voice "Charon", French) + synthesized ambience/effects -->
+      <audio id="a-mix" src="assets/soundtrack.wav" data-start="0" data-duration="126.267" data-volume="0.6" data-track-index="10"></audio>
+      <audio id="a-voice" src="assets/voiceover.wav" data-start="0" data-duration="126.267" data-volume="1" data-track-index="11"></audio>
+    </div>
+    <script>
+      const film = window.PiegeFilm.create(document.getElementById('film'));
+      const clock = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(clock, { t: window.FILM.total, duration: window.FILM.total, ease: 'none', onUpdate: () => film.render(clock.t) }, 0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines['main'] = tl;
+      tl.seek(0); film.render(0);
+    </script>
+  </body>
+</html>
