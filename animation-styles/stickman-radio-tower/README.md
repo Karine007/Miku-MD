@@ -22,5 +22,6 @@ python3 src/make_sounds.py
 npx esbuild src/scene.js --bundle --format=iife --outfile=assets/scene.js
 npx hyperframes snapshot --at 5,60,180
 npx hyperframes render -o 18-days-radio-tower.mp4 -q delivery -w 4
+ffmpeg -i 18-days-radio-tower.mp4 -c:v libx264 -preset slow -crf 22 -tune animation -c:a aac -b:a 192k -movflags +faststart 18-days-radio-tower-1080p.mp4
 ```
 Fonts: Kalam and Patrick Hand (SIL Open Font License), bundled in `assets/fonts/`.
