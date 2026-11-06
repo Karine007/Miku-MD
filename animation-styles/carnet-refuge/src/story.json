@@ -1,0 +1,29 @@
+{
+ "title": "Le Carnet du Refuge",
+ "narrator": "Charon",
+ "beats": [
+  {"s": "carnet", "a": "hook", "t": "« Nous sommes trois. Il est trois heures douze. Il frappe encore. N'ouvrez pas. » Cette phrase était écrite au crayon, dans un vieux carnet."},
+  {"s": "outside", "a": "arrive", "hud": "NUIT 1 · REFUGE DU COL", "clock": "19:42", "t": "Nora, Jules et Sami ont atteint le refuge du col juste avant la tempête, après six heures de marche."},
+  {"s": "inside", "a": "enter", "clock": "19:50", "t": "À l'intérieur : un poêle, six couchettes, et sur la table, le carnet du refuge."},
+  {"s": "inside", "a": "read", "clock": "20:31", "t": "Chaque randonneur y laisse un mot. Jules les lisait à voix haute. « Merci pour le bois. » « Vue magnifique. »"},
+  {"s": "carnet", "a": "flip", "t": "Puis il est arrivé à la dernière page."},
+  {"s": "carnet", "a": "warning", "t": "« Nous sommes trois. Il est trois heures douze. Il frappe encore. N'ouvrez pas. »"},
+  {"s": "inside", "a": "sami", "clock": "20:33", "t": "« Quelqu'un s'est bien amusé », a dit Sami en riant."},
+  {"s": "face", "a": "nora", "clock": "20:33", "t": "Mais Nora ne riait pas. Elle reconnaissait l'écriture. C'était la sienne."},
+  {"s": "carnet", "a": "date", "t": "Et la date, en haut de la page... c'était celle de cette nuit."},
+  {"s": "bunks", "a": "sleep", "clock": "23:58", "t": "Ils se sont couchés sans un mot. Dehors, le vent hurlait contre les volets."},
+  {"s": "bunks", "a": "knock", "hud": "NUIT 1 · LES COUCHETTES", "clock": "03:04", "t": "À trois heures, Jules s'est réveillé. Quelqu'un frappait à la porte. Trois coups."},
+  {"s": "window", "a": "prints", "clock": "03:05", "t": "Par la fenêtre, il a vu des traces de pas dans la neige. Elles allaient jusqu'à la porte."},
+  {"s": "window", "a": "none", "clock": "03:05", "t": "Mais aucune ne repartait."},
+  {"s": "bunks", "a": "walls", "clock": "03:08", "t": "Les coups ont recommencé. Sur un mur. Puis sur l'autre. Ça faisait le tour du refuge."},
+  {"s": "inside", "a": "write", "clock": "03:10", "t": "Nora s'est levée. Elle a pris le carnet. Et sans savoir pourquoi... elle s'est mise à écrire."},
+  {"s": "carnet", "a": "writing", "t": "« Nous sommes trois. Il est trois heures douze. Il frappe encore. »"},
+  {"s": "watch", "a": "312", "clock": "03:12", "t": "Jules a regardé sa montre. Trois heures douze."},
+  {"s": "bunks", "a": "silence", "clock": "03:12", "t": "Et d'un coup... plus rien. Le silence."},
+  {"s": "carnet", "a": "turn", "t": "Nora a tourné la page. Il y avait déjà quelque chose d'écrit. L'encre était encore humide."},
+  {"s": "carnet", "a": "thanks", "t": "« Merci de m'avoir ouvert. »"},
+  {"s": "door", "a": "open", "clock": "03:13", "t": "Derrière eux, un courant d'air glacé. La porte du refuge était grande ouverte."},
+  {"s": "card", "a": "end", "t": "Le lendemain, les secours ont trouvé le refuge vide. Sur la table, le carnet. Avec une nouvelle page."},
+  {"s": "endcard", "t": ""}
+ ]
+}
