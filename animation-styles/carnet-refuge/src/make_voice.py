@@ -21,7 +21,7 @@ STYLE = 'Say in French, like a calm, chilling horror storyteller, low and suspen
 SR, SPEED, MAX_PAUSE = 44100, 1.0, 0.45
 GROUP = 8
 # the TTS model improvised a few seconds of its own narration before groups 1 and 2; skip it (checked by transcription)
-TRIM = {1: 8.8, 2: 7.9}  # the TTS read part of the style prompt / improvised before these groups (checked by transcription)
+TRIM = {0: 8.0, 1: 8.8, 2: 7.9}  # the TTS read part of the style prompt / improvised before these groups (checked by transcription)
 SILENT_BEAT = {'endcard': 3.5}
 KEY = os.environ.get('GEMINI_API_KEY', '')
 
