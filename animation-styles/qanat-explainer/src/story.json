@@ -1,0 +1,23 @@
+{
+ "title": "The Qanat",
+ "narrator": "Puck",
+ "beats": [
+  {"s": "village_dry", "t": "This village is in the middle of a desert, and it hasn't rained here in months."},
+  {"s": "village_water", "t": "But the people here have fresh, cold water every single day. Without a single pump."},
+  {"s": "pan_mountains", "t": "The secret starts way over there, at the foot of those mountains."},
+  {"s": "mother_well", "t": "First, they dig a deep well, until they hit groundwater. This is called the mother well."},
+  {"s": "tunnel_dig", "t": "Then, starting from the village, they dig a tunnel all the way toward it."},
+  {"s": "shafts", "t": "Digging a tunnel that long is a nightmare. So every few dozen meters, they dig a vertical shaft."},
+  {"s": "shafts_use", "t": "The shafts bring in fresh air, let the diggers haul out the dirt, and keep the tunnel on track."},
+  {"s": "slope", "t": "Now here's the clever part. The tunnel slopes down very gently, just enough for water to flow by gravity."},
+  {"s": "slope_bad", "t": "Too steep, and the rushing water would tear the tunnel apart. Too flat, and the water would just sit there."},
+  {"s": "breakthrough", "t": "Once the tunnel reaches the mother well, the water starts to flow."},
+  {"s": "underground", "t": "It travels deep underground, where the desert sun can't evaporate it."},
+  {"s": "outlet", "t": "And it comes out right in the middle of the village, cold and clean."},
+  {"s": "green", "t": "From there, it fills the pools, waters the fields, and turns the whole village green."},
+  {"s": "aerial", "t": "This is called a qanat. People in ancient Persia were building them thousands of years ago."},
+  {"s": "aerial_far", "t": "Some are still running today. The Persian qanat is even a UNESCO World Heritage site."},
+  {"s": "final", "t": "All of that, from a few holes in the ground and the perfect slope."},
+  {"s": "endcard", "t": ""}
+ ]
+}
