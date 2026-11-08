@@ -70,3 +70,14 @@ python3 voiceover.py voice_kevin cues.json silent.mp4 out_voiceover_pro.mp4
 | Profile picture | `branding/avatar_pin.png` (recommended). Alternatives: `avatar_island.png`, `avatar_1eq1.png` |
 
 The avatars are rendered from the same 3D island as the videos (`node avatar.js && node compose.js`), so the channel and the episodes look like one brand. `branding/avatar_preview.png` shows how each looks inside TikTok's circular crop.
+
+### Episode covers
+
+`branding/cover_day1.png` (1080×1920) is the cover for Day 1. `cover_day1_grid.png` shows the 3:4 area TikTok shows in the profile grid; all the text sits inside it. To make the next cover, run:
+
+```bash
+node avatar.js cover   # renders the island background (av_cover.png)
+node cover.js 2        # writes cover_day2.png with "DAY 2"
+```
+
+To upload it in TikTok: **Edit cover → Upload from gallery** (on mobile), or **Cover → Upload** on TikTok Studio desktop.
