@@ -59,3 +59,14 @@ python3 voiceover.py en_US-ryan-high.onnx cues.json silent.mp4 out_voiceover.mp4
 # or with pre-generated takes (line_0..line_10 as .wav/.flac):
 python3 voiceover.py voice_kevin cues.json silent.mp4 out_voiceover_pro.mp4
 ```
+
+## Channel branding
+
+| Item | Suggestion |
+|---|---|
+| Username | **@followerisland** (backups: `@followers.island`, `@buildanation.daily`, `@islandbyvotes`) |
+| Display name | **Follower Island 🌋 Day 1** (update the day number with each episode) |
+| Bio | `An island built by YOU 🏝️ 1 follower = 1 citizen 🗳️ Vote in the comments · New day every day` |
+| Profile picture | `branding/avatar_pin.png` (recommended). Alternatives: `avatar_island.png`, `avatar_1eq1.png` |
+
+The avatars are rendered from the same 3D island as the videos (`node avatar.js && node compose.js`), so the channel and the episodes look like one brand. `branding/avatar_preview.png` shows how each looks inside TikTok's circular crop.

@@ -386,7 +386,7 @@ window.setTime = function(t){
  // flash on cuts
  let fl=0; for(const c of window.CUTS){ if(c>0&&t>=c&&t<c+.12) fl=.5*(1-(t-c)/.12);} $('flash').style.opacity=fl;
 };
-window.DUR=DUR;
+window.DUR=DUR; window.__T={THREE,camera,renderer,scene,V,H,SITE_A,SITE_B,siteA,siteB,flagGrp,clouds,SEA};
 document.fonts.ready.then(()=>{window.setTime(0);window.READY=true;});
 </script>
 </body>
