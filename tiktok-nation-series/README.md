@@ -7,7 +7,9 @@ Everything is generated from code: Three.js renders the scene, Playwright captur
 | File | What it is |
 |---|---|
 | `output/nation_day1_en.mp4` | Final video, English |
+| `output/nation_day1_en_voiceover.mp4` | Final video, English **with voiceover** (recommended) |
 | `output/nation_day1_fr.mp4` | Final video, French |
+| `voiceover.py` | Scene-synced English voiceover (Piper TTS, offline and free) mixed over the music, which drops under the voice |
 | `index.html` | The 3D scene, HUD, captions and full timeline (`setTime(t)`) |
 | `render.js` | Renders stills or the full video (`node render.js video en out.mp4 30`) |
 | `audio.py` | Music bed plus pop/whoosh SFX synced to captions and cuts |
@@ -41,4 +43,15 @@ node render.js stills en 2,10,20          # quick preview frames
 node render.js video en silent.mp4 30     # full render (writes cues.json)
 python3 audio.py cues.json music.wav
 ffmpeg -i silent.mp4 -i music.wav -c:v copy -c:a aac -b:a 192k -shortest out.mp4
+```
+
+### Voiceover
+
+Edit the `LINES` list in `voiceover.py`. Each entry has a start time, the end of its scene and the text; a line that runs too long is sped up to fit. Then run:
+
+```bash
+pip install piper-tts
+curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/high/en_US-ryan-high.onnx
+curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/high/en_US-ryan-high.onnx.json
+python3 voiceover.py en_US-ryan-high.onnx music.wav silent.mp4 out_voiceover.mp4
 ```
