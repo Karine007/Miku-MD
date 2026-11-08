@@ -1,0 +1,10 @@
+{
+  "name": "tiktok-nation-series",
+  "private": true,
+  "description": "Renders the 'Let's build a nation together' TikTok episodes",
+  "dependencies": {
+    "@fontsource/lilita-one": "5.0.8",
+    "@fontsource/nunito": "5.0.8",
+    "three": "0.160.0"
+  }
+}

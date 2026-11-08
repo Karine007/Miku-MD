@@ -1,0 +1,44 @@
+# "Let's build a nation together": TikTok series generator
+
+This is a vertical (1080×1920, 51 s) TikTok video in the style of the viral "on crée un pays tous ensemble" format. It uses a low‑poly 3D world, a game HUD (Day / Population / Unnamed nation) and bold white and yellow captions, and the audience runs the story through follows and comments.
+
+Everything is generated from code: Three.js renders the scene, Playwright captures it frame by frame, and ffmpeg encodes the video. A synthesized royalty‑free soundtrack is included.
+
+| File | What it is |
+|---|---|
+| `output/nation_day1_en.mp4` | Final video, English |
+| `output/nation_day1_fr.mp4` | Final video, French |
+| `index.html` | The 3D scene, HUD, captions and full timeline (`setTime(t)`) |
+| `render.js` | Renders stills or the full video (`node render.js video en out.mp4 30`) |
+| `audio.py` | Music bed plus pop/whoosh SFX synced to captions and cuts |
+
+## Why this format gets views (and how the video uses each lever)
+
+1. **Hook in the first second.** The opening is a question ("What if we built a nation... together?") over a satisfying aerial shot, and the HUD tells viewers immediately that this is a game.
+2. **The viewer becomes part of the content.** "1 follower = 1 citizen" turns *following* into *participating*, and the population counter gives followers a reason to come back.
+3. **"Will you be the first?"** This line plays on FOMO and being early, which is the main reason people follow at Day 1.
+4. **Comments drive the story.** The name and flag are decided by the most‑liked comment, so people comment *and* like other comments, and every interaction pushes the video in the algorithm.
+5. **A/B vote with a debatable option.** "B · at the volcano: super fertile... but risky" is chosen to start arguments in the comments. Debate = comments = reach.
+6. **Series format.** "Tomorrow: Day 2" builds a habit. Each episode should show the results of the previous vote: the population number, the winning name/flag (drawn by AI), and the capital being built.
+7. **Retention.** There's a cut every 3–5 s, a pop sound on every caption, counters animating and cards popping in. Nothing on screen stays still for long.
+
+## Posting checklist
+
+- **Caption:** `What if we built a nation together? 🌋🏝️ 1 follower = 1 citizen #nation #simulation #vote #worldbuilding`
+  - FR: `Et si on créait une nation tous ensemble ? 🌋🏝️ 1 abonné = 1 habitant #nation #simulation #vote #pays`
+- **Pin your own first comment:** "Vote A or B 👇 + suggest the name & flag (most liked wins)".
+- **Reply to top comments with video replies** in the next episodes ("You chose the volcano... here's what happened").
+- **Sound:** the video ships with its own music. You can also lower it and add a trending sound in the TikTok editor at low volume.
+- Post **every day at the same hour** and keep the HUD numbers real (Day N, actual follower count).
+
+## Making Day 2+
+
+All on‑screen text lives in the `TXT` object at the top of `index.html` (English and French). Change the texts, the `DAY` number and the population value, adjust shots in `SH`, then run:
+
+```bash
+npm install three@0.160.0 @fontsource/lilita-one@5.0.8 @fontsource/nunito@5.0.8
+node render.js stills en 2,10,20          # quick preview frames
+node render.js video en silent.mp4 30     # full render (writes cues.json)
+python3 audio.py cues.json music.wav
+ffmpeg -i silent.mp4 -i music.wav -c:v copy -c:a aac -b:a 192k -shortest out.mp4
+```
