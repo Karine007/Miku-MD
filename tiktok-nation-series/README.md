@@ -7,7 +7,9 @@ Everything is generated from code: Three.js renders the scene, Playwright captur
 | File | What it is |
 |---|---|
 | `output/nation_day1_en.mp4` | Final video, English |
-| `output/nation_day1_en_voiceover.mp4` | Final video, English **with voiceover** (recommended) |
+| `output/nation_day1_en_voiceover_pro.mp4` | Final video, English, **expressive Higgsfield voice "Kevin"** (recommended, 53 s) |
+| `output/nation_day1_en_voiceover.mp4` | English with the free offline Piper voice |
+| `voice_kevin/` | The 11 Higgsfield voice takes (one per scene), reusable with `voiceover.py` |
 | `output/nation_day1_fr.mp4` | Final video, French |
 | `voiceover.py` | Scene-synced English voiceover (Piper TTS, offline and free) mixed over the music, which drops under the voice |
 | `index.html` | The 3D scene, HUD, captions and full timeline (`setTime(t)`) |
@@ -53,5 +55,7 @@ Edit the `LINES` list in `voiceover.py`. Each entry has a start time, the end of
 pip install piper-tts
 curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/high/en_US-ryan-high.onnx
 curl -LO https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/ryan/high/en_US-ryan-high.onnx.json
-python3 voiceover.py en_US-ryan-high.onnx music.wav silent.mp4 out_voiceover.mp4
+python3 voiceover.py en_US-ryan-high.onnx cues.json silent.mp4 out_voiceover.mp4
+# or with pre-generated takes (line_0..line_10 as .wav/.flac):
+python3 voiceover.py voice_kevin cues.json silent.mp4 out_voiceover_pro.mp4
 ```
