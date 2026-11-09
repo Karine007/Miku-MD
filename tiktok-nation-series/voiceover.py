@@ -1,5 +1,5 @@
 # Generates a scene-synced English voiceover with Piper TTS and mixes it over the music.
-# usage: python3 voiceover.py <voice.onnx | dir-of-line_N.wav> <cues.json> <silent.mp4> <out.mp4>
+# usage: python3 voiceover.py <voice.onnx | dir-of-line_N.wav> <cues.json> <silent.mp4> <out.mp4> [lines.json]
 #   - a .onnx path synthesizes each line locally with Piper TTS
 #   - a directory uses pre-generated takes named line_0.wav, line_1.wav, ... (e.g. Higgsfield voices)
 # The music is regenerated (audio.py) to the final length, and the last frame is held if the voice runs long.
@@ -25,6 +25,10 @@ LINES = [
     (41.6, 45.6, "Or B: right next to the volcano. Super fertile... but risky!"),
     (45.8, 50.6, "Comment A or B, follow, and come live here. See you tomorrow, for day two!"),
 ]
+
+# optional 5th argument: a JSON file with [[start, scene_end, text], ...] for another episode
+if len(sys.argv) > 5:
+    LINES = [tuple(x) for x in json.load(open(sys.argv[5]))]
 
 def read_wav(p):
     with wave.open(p) as w:

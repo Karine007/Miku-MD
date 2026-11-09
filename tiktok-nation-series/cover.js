@@ -2,9 +2,10 @@
 const { chromium } = require('playwright');
 const fs = require('fs'), path = require('path');
 const root = __dirname;
-const day = process.argv[2] || '1';
+// usage: node cover.js <day> [bg.png] [line1] [BIG] [line3] [pill] [pinOff]
+const [day = '1', bg = 'av_cover.png', l1 = "Let's build a", big = 'nation', l3 = 'together', pill = '1 FOLLOWER = 1 CITIZEN', pinOff] = process.argv.slice(2);
 const b64 = (p, t) => `data:${t};base64,` + fs.readFileSync(path.join(root, p)).toString('base64');
-const img = b64('av_cover.png', 'image/png');
+const img = b64(bg, 'image/png');
 const lil = b64('node_modules/@fontsource/lilita-one/files/lilita-one-latin-400-normal.woff2', 'font/woff2');
 const nun = b64('node_modules/@fontsource/nunito/files/nunito-latin-900-normal.woff2', 'font/woff2');
 const html = `<!doctype html><html><head><style>
@@ -19,11 +20,11 @@ body{margin:0;width:1080px;height:1920px;overflow:hidden;position:relative}
 </style></head><body>
 <div class="bg"></div><div class="sky"></div>
 <div class="day">DAY ${day}</div>
-<div class="t" style="top:430px;font-size:104px">Let's build a</div>
-<div class="t" style="top:536px;font-size:236px"><b>nation</b></div>
-<div class="t" style="top:776px;font-size:104px">together</div>
-<svg style="position:absolute;left:600px;top:1080px;width:150px;height:190px;filter:drop-shadow(0 12px 8px rgba(0,0,0,.35))" viewBox="0 0 38 48"><path d="M19 47C19 47 3 29 3 18a16 16 0 0 1 32 0c0 11-16 29-16 29z" fill="#f08a24" stroke="#fff" stroke-width="2.6"/><circle cx="19" cy="13.5" r="4.6" fill="#fff"/><path d="M10.5 27c0-5 3.8-7.6 8.5-7.6s8.5 2.6 8.5 7.6z" fill="#fff"/></svg>
-<div class="pill" style="top:1500px"><svg width="54" height="54" viewBox="0 0 24 24"><circle cx="12" cy="7" r="5" fill="#15191f"/><path d="M2 23c0-6 4.5-9 10-9s10 3 10 9z" fill="#15191f"/></svg>1 FOLLOWER = 1 CITIZEN</div>
+<div class="t" style="top:430px;font-size:104px">${l1}</div>
+<div class="t" style="top:536px;font-size:${big.length > 7 ? Math.floor(1700 / big.length) : 236}px"><b>${big}</b></div>
+<div class="t" style="top:776px;font-size:104px">${l3}</div>
+${pinOff ? '' : `<svg style="position:absolute;left:600px;top:1080px;width:150px;height:190px;filter:drop-shadow(0 12px 8px rgba(0,0,0,.35))" viewBox="0 0 38 48"><path d="M19 47C19 47 3 29 3 18a16 16 0 0 1 32 0c0 11-16 29-16 29z" fill="#f08a24" stroke="#fff" stroke-width="2.6"/><circle cx="19" cy="13.5" r="4.6" fill="#fff"/><path d="M10.5 27c0-5 3.8-7.6 8.5-7.6s8.5 2.6 8.5 7.6z" fill="#fff"/></svg>`}
+<div class="pill" style="top:1500px"><svg width="54" height="54" viewBox="0 0 24 24"><circle cx="12" cy="7" r="5" fill="#15191f"/><path d="M2 23c0-6 4.5-9 10-9s10 3 10 9z" fill="#15191f"/></svg>${pill}</div>
 </body></html>`;
 (async () => {
   const browser = await chromium.launch();

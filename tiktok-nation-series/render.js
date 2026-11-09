@@ -17,12 +17,12 @@ const server = http.createServer((req, res) => {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   page.on('console', m => { if (m.type() === 'error') console.error('PAGE', m.text()); });
   page.on('pageerror', e => console.error('PAGEERR', e.message));
-  await page.goto(`http://localhost:8765/index.html?lang=${lang}`);
+  await page.goto(`http://localhost:8765/${process.env.PAGE || 'index.html'}?lang=${lang}`);
   await page.waitForFunction('window.READY === true', null, { timeout: 120000 });
   if (mode === 'stills') {
     for (const t of arg.split(',').map(Number)) {
       await page.evaluate(t => window.setTime(t), t);
-      await page.screenshot({ path: path.join(root, `still_${lang}_${t}.jpg`), type: 'jpeg', quality: 80 });
+      await page.screenshot({ path: path.join(root, `still_${process.env.PAGE ? path.basename(process.env.PAGE, '.html') + '_' : ''}${lang}_${t}.jpg`), type: 'jpeg', quality: 80 });
     }
   } else {
     const fps = Number(fpsArg || 30);
