@@ -3,3 +3,4 @@ cues.json
 *.wav
 still_*.jpg
 silent*.mp4
+comments_*.json
