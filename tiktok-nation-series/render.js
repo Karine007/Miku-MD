@@ -32,11 +32,12 @@ const server = http.createServer((req, res) => {
     const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
       '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', arg], { stdio: ['pipe', 'inherit', 'inherit'] });
     const n = Math.round(dur * fps); const t0 = Date.now();
-    for (let i = 0; i < n; i++) {
+    const i0 = Number(process.env.START || 0), i1 = Math.min(n, Number(process.env.END || n));
+    for (let i = i0; i < i1; i++) {
       await page.evaluate(t => window.setTime(t), i / fps);
       const buf = await page.screenshot({ type: 'jpeg', quality: 92 });
       if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
-      if (i % 60 === 0) console.log(`frame ${i}/${n}  ${((Date.now() - t0) / 1000).toFixed(0)}s`);
+      if (i % 60 === 0) console.log(`frame ${i}/${n} [${i0}-${i1}]  ${((Date.now() - t0) / 1000).toFixed(0)}s`);
     }
     ff.stdin.end(); await new Promise(r => ff.on('close', r));
   }
