@@ -14,13 +14,16 @@ words = [(norm(w.word), w.start, w.end) for s in segs for w in s.words]
 words = [w for w in words if w[0]]
 lines = [l[2] if isinstance(l, list) else l for l in json.load(open(LINES))]
 
+NUMW = set('zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand'.split())
+def same(line_tok, stt_tok):  # the recognizer writes numbers as digits ("one hundred" -> "100")
+    return line_tok == stt_tok or (stt_tok.isdigit() and (line_tok in NUMW or any(line_tok.startswith(n) for n in NUMW)))
 starts, pos = [0.0], 0
 for k in range(1, len(lines)):
     key = [norm(t) for t in lines[k].split()[:2]]
     key = [t for t in key if t]
     found = None
     for j in range(pos + 1, len(words) - len(key) + 1):
-        if [words[j + i][0] for i in range(len(key))] == key:
+        if all(same(key[i], words[j + i][0]) for i in range(len(key))):
             found = j; break
     if found is None:  # fall back to text proportion
         frac = sum(len(l) for l in lines[:k]) / sum(len(l) for l in lines)
