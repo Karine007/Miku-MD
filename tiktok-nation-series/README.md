@@ -81,3 +81,17 @@ node cover.js 2        # writes cover_day2.png with "DAY 2"
 ```
 
 To upload it in TikTok: **Edit cover → Upload from gallery** (on mobile), or **Cover → Upload** on TikTok Studio desktop.
+
+### Gemini voice (natural, free tier)
+
+Day 2's narration uses Google Gemini TTS (voice **Puck**, `gemini-2.5-flash-preview-tts`). Each model's free tier allows about 10 requests per day, so the whole script is generated in **one** take and then split into scene lines with local word timestamps:
+
+```bash
+export GEMINI_API_KEY=...            # from aistudio.google.com
+pip install faster-whisper
+python3 gemini_tts.py day2_lines.json gem Puck gemini-2.5-flash-preview-tts --single   # -> gem/take.wav
+python3 split_take.py gem/take.wav day2_lines.json gem/lines                          # -> gem/lines/line_N.wav
+python3 voiceover.py gem/lines cues_day2.json silent_day2.mp4 out.mp4 day2_lines.json
+```
+
+`voice_gemini_day2/take.flac` is the saved Day 2 take.
