@@ -19,7 +19,7 @@ body{margin:0;width:1080px;height:1920px;overflow:hidden;position:relative}
 .pill{position:absolute;left:50%;transform:translateX(-50%);background:#fff;border:7px solid #15191f;border-radius:60px;box-shadow:0 10px 0 rgba(0,0,0,.3);font-family:N;font-weight:900;color:#15191f;font-size:50px;padding:10px 34px;white-space:nowrap;display:flex;align-items:center;gap:16px}
 </style></head><body>
 <div class="bg"></div><div class="sky"></div>
-<div class="day">DAY ${day}</div>
+<div class="day">${/^\d/.test(day) ? `DAY ${day}` : day}</div>
 <div class="t" style="top:430px;font-size:104px">${l1}</div>
 <div class="t" style="top:536px;font-size:${big.length > 7 ? Math.floor(1700 / big.length) : 236}px"><b>${big}</b></div>
 <div class="t" style="top:776px;font-size:104px">${l3}</div>
@@ -30,7 +30,7 @@ ${pinOff ? '' : `<svg style="position:absolute;left:600px;top:1080px;width:150px
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   await page.setContent(html); await page.evaluate(() => document.fonts.ready);
-  await page.screenshot({ path: path.join(root, `cover_day${day}.png`) });
-  await page.screenshot({ path: path.join(root, `cover_day${day}_grid.png`), clip: { x: 0, y: 240, width: 1080, height: 1440 } });
+  await page.screenshot({ path: path.join(root, `${process.env.OUT || "cover_day" + day}.png`) });
+  await page.screenshot({ path: path.join(root, `${process.env.OUT || "cover_day" + day}_grid.png`), clip: { x: 0, y: 240, width: 1080, height: 1440 } });
   await browser.close();
 })();
