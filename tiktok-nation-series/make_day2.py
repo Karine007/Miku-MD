@@ -2,7 +2,7 @@
 import re, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 s = open(os.path.join(HERE, 'index.html'), encoding='utf8').read()
-parts = open(os.path.join(HERE, 'day2_parts.js'), encoding='utf8').read()
+parts = open(os.path.join(HERE, 'city_day2.js'), encoding='utf8').read() + open(os.path.join(HERE, 'day2_parts.js'), encoding='utf8').read()
 
 def sub(pattern, repl, flags=re.S):
     global s

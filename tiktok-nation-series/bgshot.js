@@ -16,13 +16,13 @@ const server = http.createServer((req, res) => {
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
   await page.goto(`http://localhost:8767/${pageName}`);
   await page.waitForFunction('window.READY === true', null, { timeout: 120000 });
-  await page.evaluate(({ P, Lk, fov }) => {
-    window.setTime(57.9);
+  await page.evaluate(({ P, Lk, fov, T }) => {
+    window.setTime(T);
     const { camera, renderer, scene, L } = window.__T2;
     document.getElementById('ui').style.display = 'none';
-    camera.position.copy(L(...P)); camera.lookAt(L(...Lk)); camera.fov = fov; camera.updateProjectionMatrix();
+    camera.position.copy(L(...P)); if (Lk.length === 4) camera.lookAt(Lk[0], Lk[1], Lk[2]); else camera.lookAt(L(...Lk));  // 4 values = world coords camera.fov = fov; camera.updateProjectionMatrix();
     renderer.render(scene, camera);
-  }, { P: JSON.parse(P), Lk: JSON.parse(Lk), fov: Number(fov) });
+  }, { P: JSON.parse(P), Lk: JSON.parse(Lk), fov: Number(fov), T: Number(process.env.T || 57.9) });
   await page.screenshot({ path: path.join(root, out) });
   await browser.close(); server.close();
 })();

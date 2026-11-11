@@ -65,6 +65,11 @@ for c in cues['cuts'][1:]:
     w = np.sin(np.pi * tt / tt[-1]) ** 2
     add(.22 * k * w, c - .2)
 
+# deep rumbles (e.g. volcano eruption)
+for c in cues.get('booms', []):
+    L = int(2.2 * SR); tt = np.arange(L) / SR
+    rum = (np.sin(2 * np.pi * (38 + 25 * np.exp(-tt * 3)) * tt) + .5 * np.convolve(rng.standard_normal(L), np.ones(60) / 60, 'same') * 4) * np.exp(-tt * 1.6)
+    add(.55 * rum, c)
 # fade out last 1.5s
 fo = int(1.5 * SR); mix[-fo:] *= np.linspace(1, 0, fo)
 mix /= max(1e-9, np.abs(mix).max()) / .89

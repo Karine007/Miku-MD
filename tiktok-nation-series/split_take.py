@@ -14,16 +14,29 @@ words = [(norm(w.word), w.start, w.end) for s in segs for w in s.words]
 words = [w for w in words if w[0]]
 lines = [l[2] if isinstance(l, list) else l for l in json.load(open(LINES))]
 
-NUMW = set('zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand'.split())
-def same(line_tok, stt_tok):  # the recognizer writes numbers as digits ("one hundred" -> "100")
-    return line_tok == stt_tok or (stt_tok.isdigit() and (line_tok in NUMW or any(line_tok.startswith(n) for n in NUMW)))
+NUMW = set('zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety hundred thousand million'.split())
+def isnum(tok): return tok.isdigit() or tok in NUMW or any(tok.startswith(n) and tok[len(n):] in NUMW | {''} for n in NUMW)
+def group(toks):
+    """Collapse runs of number words / digits into one 'NUM' token ('five hundred seventy' == '570')."""
+    out = []
+    for i, t in enumerate(toks):
+        if isnum(t) or (t == 'and' and out and out[-1] == 'NUM' and i + 1 < len(toks) and isnum(toks[i + 1])):
+            if not out or out[-1] != 'NUM': out.append('NUM')
+        else: out.append(t)
+    return out
+# group the recognised words, remembering where each group starts
+gw = []
+for w in words:
+    g = group([w[0]])[0]
+    if g == 'NUM' and gw and gw[-1][0] == 'NUM': gw[-1] = ('NUM', gw[-1][1], w[2])
+    else: gw.append((g, w[1], w[2]))
+words = gw
 starts, pos = [0.0], 0
 for k in range(1, len(lines)):
-    key = [norm(t) for t in lines[k].split()[:2]]
-    key = [t for t in key if t]
+    key = group([t for t in (norm(x) for x in lines[k].split()) if t])[:2]
     found = None
     for j in range(pos + 1, len(words) - len(key) + 1):
-        if all(same(key[i], words[j + i][0]) for i in range(len(key))):
+        if all(key[i] == words[j + i][0] for i in range(len(key))):
             found = j; break
     if found is None:  # fall back to text proportion
         frac = sum(len(l) for l in lines[:k]) / sum(len(l) for l in lines)

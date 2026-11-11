@@ -284,7 +284,7 @@ const flag=new THREE.Mesh(flagG,new THREE.MeshStandardMaterial({map:new THREE.Ca
 const flagBase=flagG.attributes.position.array.slice();
 const flagGrp=new THREE.Group();flagGrp.add(pole,knob,flag);flagGrp.visible=false;scene.add(flagGrp);
 
-// ===== DAY 2 SCENE ADDITIONS (spliced into day2.html by make_day2.py) =====
+// ===== CAPITAL CITY (Day 2 build) — shared by Day 2+ episodes =====
 // ---------- Herberg flag (tricolor by @radamel.falcao98: orange top = volcano, blue = ocean, green bottom = forests)
 function tricolor(w=512,h=340){const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');
  [['#f08a24',0],['#2f8fe0',1],['#4fbf3a',2]].forEach(([col,i])=>{x.fillStyle=col;x.fillRect(0,i*h/3,w,h/3+1);});return new THREE.CanvasTexture(c);}
