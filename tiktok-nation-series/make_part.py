@@ -5,7 +5,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 N = sys.argv[1]
 rd = lambda f: open(os.path.join(HERE, f), encoding='utf8').read()
 s = rd('index.html')
-parts = rd('city_day2.js') + rd('world_day3.js') + rd('requests_engine.js') + rd(f'part{N}_parts.js') + '\nstartEngine();\n'
+def assets(k):  # a part file without its SEGS timeline
+    src = rd(f'part{k}_parts.js'); return src[:src.index('const SEGS=[')]
+# earlier parts' buildings already stand (block-scoped so names don't clash)
+prior = ''.join('{\n' + assets(k) + '\n}\nNEW.forEach(g=>g.userData.t=-1);NEW.length=0;window.LEVEL=(window.LEVEL||0)+1;\n' for k in range(1, int(N)))
+parts = rd('city_day2.js') + rd('world_day3.js') + rd('requests_engine.js') + prior + rd(f'part{N}_parts.js') + '\nstartEngine();\n'
 def sub(pattern, repl):
     global s
     s2, n = re.subn(pattern, lambda m: repl, s, count=1, flags=re.S); assert n == 1, pattern; s = s2
@@ -19,7 +23,8 @@ SETUP = """const $ = id => document.getElementById(id);
 $('t_day').textContent='DAY'; $('t_pop').textContent='POPULATION'; $('t_nation').textContent='HERBERG'; $('tag').textContent='';
 """
 sub(r"const LANG = .*?\$\('steps'\)\.innerHTML = [^\n]*\n", SETUP)
-sub(r'Math\.hypot\(x-SITE_A\.x,z-SITE_A\.y\)<14\)', 'Math.hypot(x-SITE_A.x,z-SITE_A.y)<44)')   # the capital has grown
+TREE_CLEAR = {'1': 44}.get(N, 66)   # the capital keeps growing (part 2 adds an airport inland)
+sub(r'Math\.hypot\(x-SITE_A\.x,z-SITE_A\.y\)<14\)', f'Math.hypot(x-SITE_A.x,z-SITE_A.y)<{TREE_CLEAR})')
 sub(r'// ---------- timeline ----------.*?(?=</script>\s*</body>)', parts + '\n')
 open(os.path.join(HERE, f'part{N}.html'), 'w', encoding='utf8').write(s)
 print(f'wrote part{N}.html', len(s))

@@ -1,4 +1,5 @@
 // ===== REQUESTS PART 1: faith & public services =====
+const PRIOR=(()=>{const lv=window.LEVEL||0;return ()=>lv<(window.LEVEL||0);})();  // true when included in a later part
 function sign(text,bg,fg,w=3,h=.8){const c=document.createElement('canvas');c.width=512;c.height=Math.round(512*h/w);const x=c.getContext('2d');x.fillStyle=bg;x.fillRect(0,0,c.width,c.height);
  x.fillStyle=fg;x.font=`bold ${Math.round(c.height*.62)}px Nunito, sans-serif`;x.textAlign='center';x.textBaseline='middle';x.fillText(text,c.width/2,c.height/2+4);
  return new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c)}));}
@@ -57,7 +58,7 @@ const treasury=placeAt((()=>{const g=new THREE.Group();g.add(box(6,4,4.5,MT.ston
 ANIM.push(t=>{
  kids.forEach(k=>{const i=k.userData.i;k.position.y=.2+Math.abs(Math.sin(t*6+i))*.35;k.position.x=1+((i*37)%7)+Math.sin(t*1.5+i)*.8;});
  police.userData.lt.material.color.set(Math.sin(t*12)>0?'#e8334f':'#2f7de1');
- const r=clamp((t-29.0)/1.2); statue.position.y=statue.userData.y0??=statue.position.y; statue.position.y=statue.userData.y0+1.2*ease(r);
+ const r=PRIOR()?1:clamp((t-29.0)/1.2); statue.position.y=statue.userData.y0??=statue.position.y; statue.position.y=statue.userData.y0+1.2*ease(r);
  fountain.userData.jets.forEach((j,i)=>{const a=i/10*Math.PI*2,ph=((t*1.2+i*.1)%1);j.position.set(Math.cos(a)*(1.4+ph*1.6),1+ph*2.4-ph*ph*2.4,Math.sin(a)*(1.4+ph*1.6));});
 });
 

@@ -14,11 +14,11 @@ const TXT = {
   s7b:'The eruption revealed<br><b>ancient ruins</b> !<span class="sub">discovered by <b>@nikolozi6327</b></span>',
   s8:'And you sent us<br><b>228 requests</b>...',
   s8b:'We build them <b>all</b><span class="sub">parts 1 to 4 this week · follow so you don\'t miss yours</span>',
-  s9:'Day 4 vote:<br>what do we build <b>first</b>?',
-  s9b:'Comment <b>A</b> or <b>B</b><span class="sub">2,000 likes = a <b>second city</b> 🏙️</span>',
+  s9:'Day 4 vote: name our<br><b>second city</b> 🏙️',
+  s9b:'Comment <b>A</b> or <b>B</b><span class="sub">2,000 likes = we <b>build it</b> 🏗️</span>',
   tags:[['🍕 PIZZERIA','idea: @nikothecatty'],['👨‍🍳 PIZZA BAKER','@mizomin52'],['🛕 TEMPLE ISLAND','@leclercsleftmirror'],['☕ CAFÉ ISLAND','@yunrxi'],['🏛️ ANCIENT COLOSSEUM','@orangutan_lover1'],['🏰 OLD CASTLE','@mr_toca13460']],
   bubbles:[['“please add a church” ⛪','@gellie96'],['“a football stadium named Club FC Herbegus” ⚽','@milinkovicbird'],['“add a airport” ✈️','@000000biggycheese000000'],['“add a school”','@jairus_is_bro2'],['“can I own a roller coaster” 🎢','@worship_on_god']],
-  laws:[['⚽','FOOTBALL STADIUM','#2f7de1'],['✈️','AIRPORT','#f08a24']],
+  laws:[['🏙️','VELLERA · @23_octber2','#2f7de1'],['🌆','SAN VISTA · @imfireylolihatecoiny','#f08a24']],
 };
 const $ = id => document.getElementById(id);
 $('t_day').textContent=TXT.day; $('t_pop').textContent=TXT.pop; $('t_nation').textContent=TXT.nation; $('tag').textContent='';
