@@ -28,7 +28,7 @@ for(let i=0;i<60000&&CROWD.length<N;i++){const x=(rnd()-.5)*200,z=(rnd()-.5)*200
 CROWD.forEach((p,i)=>{bodies.setColorAt(i,p.c);heads.setColorAt(i,p.c);});
 bodies.castShadow=heads.castShadow=true;scene.add(bodies,heads);
 const _m=new THREE.Matrix4(),_q=new THREE.Quaternion(),_s=new THREE.Vector3(),_p=new THREE.Vector3();
-function crowdAt(t){let landed=0;for(let i=0;i<CROWD.length;i++){const p=CROWD[i],d=t-p.t;let y,sc=1.9;
+function crowdAt(t){let landed=0;for(let i=0;i<CROWD.length;i++){const p=CROWD[i],d=t-p.t;let y,sc=window.CROWD_SCALE||1.9;
   if(p.hide||d<-.5){sc=0;y=p.y;} else if(d<0){y=p.y+(-d)*60;} else {landed++;y=p.y+Math.abs(Math.sin(d*9))*Math.exp(-d*5)*1.2;}
   _s.set(sc,sc,sc);_q.identity();_p.set(p.x,y+.7*sc-.1,p.z);_m.compose(_p,_q,_s);bodies.setMatrixAt(i,_m);_p.y=y+1.55*sc-.1;_m.compose(_p,_q,_s);heads.setMatrixAt(i,_m);}
  bodies.instanceMatrix.needsUpdate=heads.instanceMatrix.needsUpdate=true;return landed;}
