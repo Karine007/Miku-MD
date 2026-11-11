@@ -25,6 +25,15 @@ $('t_day').textContent='DAY'; $('t_pop').textContent='POPULATION'; $('t_nation')
 sub(r"const LANG = .*?\$\('steps'\)\.innerHTML = [^\n]*\n", SETUP)
 TREE_CLEAR = {'1': 44}.get(N, 66)   # the capital keeps growing (part 2 adds an airport inland)
 sub(r'Math\.hypot\(x-SITE_A\.x,z-SITE_A\.y\)<14\)', f'Math.hypot(x-SITE_A.x,z-SITE_A.y)<{TREE_CLEAR})')
+# extra forest clearings declared by parts up to N ('// CLEAR: [[x,z,r],...]' in world coordinates)
+import json
+clear = []
+for k in range(1, int(N) + 1):
+    mm = re.search(r'^// CLEAR: (\[.*\])$', rd(f'part{k}_parts.js'), re.M)
+    if mm: clear += json.loads(mm.group(1))
+if clear:
+    s, n = re.subn(r'(if\(Math\.hypot\(x-SITE_A\.x,z-SITE_A\.y\)<\d+\) continue;)', lambda mm: mm.group(1) + ' if(' + json.dumps(clear) + '.some(c=>Math.hypot(x-c[0],z-c[1])<c[2])) continue;', s, count=1)
+    assert n == 1
 sub(r'// ---------- timeline ----------.*?(?=</script>\s*</body>)', parts + '\n')
 open(os.path.join(HERE, f'part{N}.html'), 'w', encoding='utf8').write(s)
 print(f'wrote part{N}.html', len(s))

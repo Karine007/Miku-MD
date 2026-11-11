@@ -48,6 +48,6 @@ function startEngine(){
   if(window.UI) window.UI(t);
   let fl=0; for(const c of window.CUTS){ if(c>0&&t>=c&&t<c+.12) fl=.5*(1-(t-c)/.12);} $('flash').style.opacity=fl;
  };
- window.DUR=DUR; window.__T2={camera,renderer,scene,L};
+ window.DUR=DUR; window.__T2={camera,renderer,scene,L,LW,H,V,CITY,SITE_A,SITE_B,SEA,riverDist,awayAng};
  document.fonts.ready.then(()=>{window.setTime(0);window.READY=true;});
 }
