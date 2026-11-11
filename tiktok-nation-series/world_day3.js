@@ -3,7 +3,7 @@ const STATS={views:17300,likes:570,shares:23,saves:112,followers:1160,votesA:32,
 city.forEach(g=>g.userData.t=-1);                 // the capital already exists on day 3
 
 // ---------- helpers
-function swapTownHouse(u,v){let best=null,bd=1e9;for(const g of city){if(!g.userData.uv)continue;const d=Math.hypot(g.userData.uv[0]-u,g.userData.uv[1]-v);if(d<bd){bd=d;best=g;}}
+function swapTownHouse(u,v){let best=null,bd=1e9;for(const g of city){if(!g.userData.uv||g.userData.gone)continue;const d=Math.hypot(g.userData.uv[0]-u,g.userData.uv[1]-v);if(d<bd){bd=d;best=g;}}
  if(best){best.userData.gone=true;return best.userData.uv;}return [u,v];}
 const glow=(c)=>new THREE.MeshBasicMaterial({color:c});
 
