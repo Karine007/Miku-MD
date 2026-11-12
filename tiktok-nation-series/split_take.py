@@ -31,13 +31,21 @@ for w in words:
     if g == 'NUM' and gw and gw[-1][0] == 'NUM': gw[-1] = ('NUM', gw[-1][1], w[2])
     else: gw.append((g, w[1], w[2]))
 words = gw
+def score(key, j):
+    """How many of the line's first words match the recognised words at j (also tries joining two
+    recognised words, e.g. 'water mill' == 'watermill')."""
+    best = 0
+    for merge in (None, 0, 1, 2):
+        toks = [w[0] for w in words[j:j + 4]]
+        if merge is not None and merge + 1 < len(toks): toks[merge:merge + 2] = [toks[merge] + toks[merge + 1]]
+        best = max(best, sum(1 for i in range(min(len(key), len(toks))) if key[i] == toks[i]))
+    return best
 starts, pos = [0.0], 0
 for k in range(1, len(lines)):
-    key = group([t for t in (norm(x) for x in lines[k].split()) if t])[:2]
-    found = None
-    for j in range(pos + 1, len(words) - len(key) + 1):
-        if all(key[i] == words[j + i][0] for i in range(len(key))):
-            found = j; break
+    key = group([t for t in (norm(x) for x in lines[k].split()) if t])[:3]
+    need = min(2, len(key))
+    found = next((j for j in range(pos + 1, len(words)) if words[j][0] == key[0] and score(key, j) >= need), None)
+    if found is None: found = next((j for j in range(pos + 1, len(words)) if score(key, j) >= need), None)
     if found is None:  # fall back to text proportion
         frac = sum(len(l) for l in lines[:k]) / sum(len(l) for l in lines)
         found = max(pos + 1, min(len(words) - 1, round(frac * len(words))))
