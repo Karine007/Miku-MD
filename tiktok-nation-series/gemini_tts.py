@@ -8,7 +8,7 @@ import base64, json, os, sys, time, urllib.request, urllib.error, wave
 LINES, OUT = sys.argv[1], sys.argv[2]
 VOICE = sys.argv[3] if len(sys.argv) > 3 else 'Puck'
 MODEL = sys.argv[4] if len(sys.argv) > 4 else 'gemini-3.8-flash-tts'
-STYLE = "Say in an upbeat, excited storyteller voice: "
+STYLE = os.environ.get('STYLE', "Say in an upbeat, excited storyteller voice: ")
 KEY = os.environ['GEMINI_API_KEY']
 os.makedirs(OUT, exist_ok=True)
 

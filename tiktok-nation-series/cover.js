@@ -12,10 +12,10 @@ const html = `<!doctype html><html><head><style>
 @font-face{font-family:L;src:url(${lil})} @font-face{font-family:N;font-weight:900;src:url(${nun})}
 body{margin:0;width:1080px;height:1920px;overflow:hidden;position:relative}
 .bg{position:absolute;inset:0;background:url(${img}) center/cover}
-.sky{position:absolute;inset:0;background:linear-gradient(180deg,#5fb4ec 0,rgba(95,180,236,0) 38%),radial-gradient(ellipse at 50% 64%,rgba(150,235,255,.38) 0,rgba(150,235,255,0) 50%),linear-gradient(0deg,rgba(0,30,70,.35) 0,rgba(0,30,70,0) 22%)}
+.sky{position:absolute;inset:0;background:${process.env.SKY || 'linear-gradient(180deg,#5fb4ec 0,rgba(95,180,236,0) 38%),radial-gradient(ellipse at 50% 64%,rgba(150,235,255,.38) 0,rgba(150,235,255,0) 50%),linear-gradient(0deg,rgba(0,30,70,.35) 0,rgba(0,30,70,0) 22%)'}}
 .t{position:absolute;left:0;right:0;text-align:center;font-family:L;color:#fff;-webkit-text-stroke:18px #15191f;paint-order:stroke fill;text-shadow:0 12px 0 rgba(0,0,0,.35);text-transform:uppercase;line-height:1}
 .t b{color:#ffcc2e;font-weight:400}
-.day{position:absolute;top:262px;left:50%;transform:translateX(-50%) rotate(-4deg);background:#ffcc2e;border:8px solid #15191f;border-radius:30px;box-shadow:0 12px 0 rgba(0,0,0,.3);font-family:N;font-weight:900;color:#15191f;font-size:84px;padding:6px 40px 10px;letter-spacing:2px}
+.day{position:absolute;top:262px;left:50%;transform:translateX(-50%) rotate(-4deg);background:${process.env.BADGE || '#ffcc2e'};color:${process.env.BADGE_FG || '#15191f'} !important;border:8px solid #15191f;border-radius:30px;box-shadow:0 12px 0 rgba(0,0,0,.3);font-family:N;font-weight:900;color:#15191f;font-size:84px;padding:6px 40px 10px;letter-spacing:2px}
 .pill{position:absolute;left:50%;transform:translateX(-50%);background:#fff;border:7px solid #15191f;border-radius:60px;box-shadow:0 10px 0 rgba(0,0,0,.3);font-family:N;font-weight:900;color:#15191f;font-size:50px;padding:10px 34px;white-space:nowrap;display:flex;align-items:center;gap:16px}
 </style></head><body>
 <div class="bg"></div><div class="sky"></div>

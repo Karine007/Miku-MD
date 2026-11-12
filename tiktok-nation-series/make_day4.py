@@ -97,8 +97,10 @@ sub(r'</style>', """#before{position:absolute;top:590px;left:50%;width:480px;mar
 #before .stamp{position:absolute;top:18px;left:18px;background:#1d232b;color:#fff;font-family:Nunito;font-weight:900;font-size:38px;padding:6px 18px;border-radius:10px}
 #before .xmark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:Nunito;font-weight:900;font-size:340px;color:#e8334f;-webkit-text-stroke:14px #fff;paint-order:stroke fill;opacity:0}
 </style>""")
-sub(r"const LANG = .*?\$\('steps'\)\.innerHTML = [^\n]*\n", rd('day4_text.js'))
-parts = rd('v2_world.js') + rd('day4_parts.js')
+# usage: python3 make_day4.py [text.js parts.js out.html]  (defaults: the Day 4 episode)
+TEXT, PARTS, OUT = (sys.argv[1:4] + ['day4_text.js', 'day4_parts.js', 'day4.html'][len(sys.argv) - 1:])[:3]
+sub(r"const LANG = .*?\$\('steps'\)\.innerHTML = [^\n]*\n", rd(TEXT))
+parts = rd('v2_world.js') + rd(PARTS)
 sub(r'// ---------- timeline ----------.*?(?=</script>\s*</body>)', parts + '\n')
-open(os.path.join(HERE, 'day4.html'), 'w', encoding='utf8').write(s)
-print('wrote day4.html', len(s))
+open(os.path.join(HERE, OUT), 'w', encoding='utf8').write(s)
+print('wrote', OUT, len(s))

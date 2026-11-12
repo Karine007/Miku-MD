@@ -28,7 +28,7 @@ const server = http.createServer((req, res) => {
     const fps = Number(fpsArg || 30);
     const dur = await page.evaluate('window.DUR');
     const caps = await page.evaluate('window.CAPTION_TIMES');
-    fs.writeFileSync(path.join(root, process.env.CUES || 'cues.json'), JSON.stringify({ caps, cuts: await page.evaluate('window.CUTS'), booms: await page.evaluate('window.BOOMS || []'), dur }));
+    fs.writeFileSync(path.join(root, process.env.CUES || 'cues.json'), JSON.stringify({ caps, cuts: await page.evaluate('window.CUTS'), booms: await page.evaluate('window.BOOMS || []'), mood: await page.evaluate('window.MOOD || null'), dur }));
     const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
       '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', arg], { stdio: ['pipe', 'inherit', 'inherit'] });
     const n = Math.round(dur * fps); const t0 = Date.now();

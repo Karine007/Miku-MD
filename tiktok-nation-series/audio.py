@@ -22,6 +22,9 @@ def add(sig, start):
 bpm = 112; beat = 60 / bpm
 # I - V - vi - IV in C major (bright "adventure" feel)
 chords = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]]
+if cues.get('mood') == 'tense':  # disaster episodes: minor key, driving pulse (i - VI - iv - V in A minor)
+    bpm = 120; beat = 60 / bpm
+    chords = [[57, 60, 64], [53, 57, 60], [50, 53, 57], [52, 56, 59]]
 bars = int(dur / (beat * 4)) + 1
 for b in range(bars):
     ch = chords[b % 4]; t0 = b * 4 * beat
