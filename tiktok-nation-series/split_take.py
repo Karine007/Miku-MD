@@ -33,16 +33,18 @@ for w in words:
 words = gw
 def score(key, j):
     """How many of the line's first words match the recognised words at j (also tries joining two
-    recognised words, e.g. 'water mill' == 'watermill')."""
+    words on either side, e.g. 'water mill' == 'watermill', 'fire trucks' == 'firetrucks')."""
     best = 0
-    for merge in (None, 0, 1, 2):
-        toks = [w[0] for w in words[j:j + 4]]
-        if merge is not None and merge + 1 < len(toks): toks[merge:merge + 2] = [toks[merge] + toks[merge + 1]]
-        best = max(best, sum(1 for i in range(min(len(key), len(toks))) if key[i] == toks[i]))
+    keys = [key] + [key[:m] + [key[m] + key[m + 1]] + key[m + 2:] for m in range(len(key) - 1)]
+    for k in keys:
+        for merge in (None, 0, 1, 2):
+            toks = [w[0] for w in words[j:j + 4]]
+            if merge is not None and merge + 1 < len(toks): toks[merge:merge + 2] = [toks[merge] + toks[merge + 1]]
+            best = max(best, sum(1 for i in range(min(len(k), len(toks))) if k[i] == toks[i]))
     return best
 starts, pos = [0.0], 0
 for k in range(1, len(lines)):
-    key = group([t for t in (norm(x) for x in lines[k].split()) if t])[:3]
+    key = group([t for t in (norm(x) for x in lines[k].split()) if t])[:4]
     need = min(2, len(key))
     found = next((j for j in range(pos + 1, len(words)) if words[j][0] == key[0] and score(key, j) >= need), None)
     if found is None: found = next((j for j in range(pos + 1, len(words)) if score(key, j) >= need), None)
