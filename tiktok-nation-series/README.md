@@ -95,3 +95,8 @@ python3 voiceover.py gem/lines cues_day2.json silent_day2.mp4 out.mp4 day2_lines
 ```
 
 `voice_gemini_day2/take.flac` is the saved Day 2 take.
+
+## Post kit (every episode)
+Each episode ships with its cover (`branding/cover_*.png`) and a post kit in `posts/<episode>_post.md`:
+caption, @mentions of the commenters credited in the video, hashtags, the voiceover script and a pinned-comment idea.
+The narration names every requester ("X asked for Y") and is recorded as one continuous take that drives the scene timing.
