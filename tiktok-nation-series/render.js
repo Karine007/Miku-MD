@@ -30,12 +30,12 @@ const server = http.createServer((req, res) => {
     const caps = await page.evaluate('window.CAPTION_TIMES');
     fs.writeFileSync(path.join(root, process.env.CUES || 'cues.json'), JSON.stringify({ caps, cuts: await page.evaluate('window.CUTS'), booms: await page.evaluate('window.BOOMS || []'), mood: await page.evaluate('window.MOOD || null'), dur }));
     const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
-      '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', arg], { stdio: ['pipe', 'inherit', 'inherit'] });
+      '-c:v', 'libx264', '-preset', 'medium', '-crf', '16', '-pix_fmt', 'yuv420p', arg], { stdio: ['pipe', 'inherit', 'inherit'] });
     const n = Math.round(dur * fps); const t0 = Date.now();
     const i0 = Number(process.env.START || 0), i1 = Math.min(n, Number(process.env.END || n));
     for (let i = i0; i < i1; i++) {
       await page.evaluate(t => window.setTime(t), i / fps);
-      const buf = await page.screenshot({ type: 'jpeg', quality: 92 });
+      const buf = await page.screenshot({ type: 'jpeg', quality: 96 });
       if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
       if (i % 60 === 0) console.log(`frame ${i}/${n} [${i0}-${i1}]  ${((Date.now() - t0) / 1000).toFixed(0)}s`);
     }

@@ -54,6 +54,8 @@ for k in range(1, len(lines)):
         print(f'  line {k}: anchor not found, using proportional cut')
     starts.append((words[found - 1][2] + words[found][1]) / 2); pos = found
 
+if os.environ.get('STARTS_OUT'):  # also save the line start times + the recognised text (to check nothing is missing)
+    json.dump({'starts': starts, 'end': words[-1][2], 'text': ' '.join(w[0] for w in words)}, open(os.environ['STARTS_OUT'], 'w'))
 with wave.open(TAKE) as w:
     sr, ch, sw = w.getframerate(), w.getnchannels(), w.getsampwidth(); audio = w.readframes(w.getnframes())
 bpf = ch * sw; total = len(audio) / bpf / sr
