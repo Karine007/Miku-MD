@@ -252,7 +252,7 @@ S('k_moral', () => {
 S('k_follow', () => {
   const g = stage('#2a2f55', '#1d2244'); const a = CAST.anna({ smile: true }); a.position.set(-.55, 0, 0); a.rotation.y = .3; g.add(a); const r = CAST.rachel({ smile: true }); r.position.set(.55, 0, 0); r.rotation.y = -.3; g.add(r);
   const tt = label('MORE TRUE STORIES', { fg: '#fff', size: 80 }); tt.scale.setScalar(.42); tt.position.set(0, 2.95, 0); g.add(tt);
-  const fb = sign('+ FOLLOW', { bg: '#fe2c55', fg: '#fff', size: 90, radius: 60, frame: '#fe2c55' }); fb.scale.setScalar(.42); fb.position.set(0, .55, .9); g.add(fb);
+  const fb = sign(window.YT ? 'SUBSCRIBE' : '+ FOLLOW', { bg: window.YT ? '#ff0033' : '#fe2c55', fg: '#fff', size: 90, radius: 60, frame: window.YT ? '#ff0033' : '#fe2c55' }); fb.scale.setScalar(.42); fb.position.set(0, .55, .9); g.add(fb);
   return { g, bg: ['#141a3a', '#5a4a8a'], focus: V(0, 1.5, 0), cam: dolly(V(0, 2.1, 5.0), V(0, 2.1, 4.6), V(0, 1.7, 0), V(0, 1.7, 0)),
     upd: lt => { idle(a, lt); idle(r, lt); pop(tt, lt, .2); pop(fb, lt, .8); fb.scale.setScalar(.42 * (1 + Math.max(0, Math.sin(lt * 4)) * .06) * (lt > .8 ? 1 : .001)); } };
 });

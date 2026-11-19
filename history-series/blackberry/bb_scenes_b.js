@@ -279,7 +279,7 @@ S('s_love', () => {
 S('s_follow', () => {
   const g = stage('#1e2650', '#151c3f'); const a = blackberry(); a.position.set(-.55, 1.6, 0); a.rotation.y = .3; const b = touchPhone(); b.position.set(.55, 1.6, 0); b.rotation.y = -.3; g.add(a, b);
   const t = label('MORE TECH STORIES', { size: 90, fg: '#ffffff' }); t.scale.setScalar(.42); t.position.set(0, 2.7, 0); g.add(t);
-  const btn = label('+  FOLLOW', { bg: '#fe2c55', fg: '#fff', size: 90, radius: 60 }); btn.scale.setScalar(.6); btn.position.set(0, .55, .7); g.add(btn);
+  const btn = label(window.YT ? 'SUBSCRIBE' : '+  FOLLOW', { bg: window.YT ? '#ff0033' : '#fe2c55', fg: '#fff', size: 90, radius: 60 }); btn.scale.setScalar(.6); btn.position.set(0, .55, .7); g.add(btn);
   return { g, bg: ['#0c1330', '#3a2a5e'], focus: V(0, 1.5, 0), cam: dolly(V(0, 1.8, 5), V(0, 1.8, 4.4), V(0, 1.7, 0), V(0, 1.7, 0)),
     upd: lt => { pop(t, lt, .2); pop(btn, lt, .7); btn.scale.multiplyScalar(1 + Math.sin(lt * 5) * .03 * (lt > 1.2)); a.position.y = b.position.y = 1.6 + Math.sin(lt * 1.5) * .05; } };
 });

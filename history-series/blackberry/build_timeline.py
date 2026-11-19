@@ -6,7 +6,7 @@ import numpy as np
 os.environ.setdefault('HF_HUB_OFFLINE', '1')
 from faster_whisper import WhisperModel
 TK, OUT = sys.argv[1], sys.argv[2]; HERE = os.path.dirname(os.path.abspath(__file__))
-script = json.load(open(os.path.join(HERE, 'script.json'))); anchors = json.load(open(os.path.join(HERE, 'anchors.json')))
+script = json.load(open(os.path.join(HERE, os.environ.get('SCRIPT', 'script.json')))); anchors = json.load(open(os.path.join(HERE, os.environ.get('ANCHORS', 'anchors.json'))))
 LEAD, GAP, TAIL = .5, .55, 3.0
 groups = [('A', script[0:3]), ('B', script[3:6]), ('C', script[6:10])]
 model = WhisperModel('base.en', device='cpu', compute_type='int8')
@@ -51,5 +51,5 @@ for sid, ph in anchors:
         if wn[i:i + len(pn)] == pn: scenes[sid] = round(words[i][0] - .12, 3); pos = i + 1; break
     else: print('ANCHOR NOT FOUND', sid, ph)
 json.dump({'words': words, 'scenes': scenes, 'dur': dur}, open(f'{OUT}/tl.json', 'w'))
-open(os.path.join(HERE, 'timeline.js'), 'w').write('window.TL=' + json.dumps({'words': words, 'scenes': scenes, 'dur': dur}) + ';\n')
+open(os.path.join(HERE, os.environ.get('TL_OUT', 'timeline.js')), 'w').write('window.TL=' + json.dumps({'words': words, 'scenes': scenes, 'dur': dur}) + ';\n')
 print('dur', dur, 'scenes', len(scenes))

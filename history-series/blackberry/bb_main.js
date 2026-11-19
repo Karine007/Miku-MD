@@ -4,11 +4,12 @@ await document.fonts.load(FONT(72, 900)); await document.fonts.load(FONT(72, 800
 const { SCENES } = await import('./bb_scenes.js');
 
 const R = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
-R.setPixelRatio(1); R.setSize(1080, 1920); R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.05;
+const YT = !!window.YT, WW = YT ? 1920 : 1080, HH = YT ? 1080 : 1920; // YT = 16:9 YouTube layout
+R.setPixelRatio(1); R.setSize(WW, HH); R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.05;
 R.outputColorSpace = THREE.SRGBColorSpace; R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.prepend(R.domElement);
 const scene = new THREE.Scene();
-const cam = new THREE.PerspectiveCamera(40, 1080 / 1920, .05, 400);
+const cam = new THREE.PerspectiveCamera(40, WW / HH, .05, 400);
 const hemi = new THREE.HemisphereLight('#e4ecff', '#4b3a55', 1.2); scene.add(hemi);
 const key = new THREE.DirectionalLight('#fff1dc', 2.4); key.castShadow = true; key.shadow.mapSize.set(2048, 2048);
 Object.assign(key.shadow.camera, { left: -9, right: 9, top: 9, bottom: -9, near: .5, far: 60 }); key.shadow.bias = -.0004; key.shadow.normalBias = .02;
@@ -54,7 +55,7 @@ window.setTime = t => {
   key.position.set(f.x + 5, f.y + 9, f.z + 6); key.target.position.copy(f);
   if (r.light) r.light({ hemi, key, fill }, lt, u);
   if (r.upd) r.upd(lt, u, t);
-  const c = r.cam(u, lt); cam.position.copy(c.p); cam.fov = (c.fov || 40) * 1.38; cam.setViewOffset(1080, 1920, 0, -(r.shift ?? 170), 1080, 1920); cam.updateProjectionMatrix(); cam.lookAt(c.l);
+  const c = r.cam(u, lt); cam.position.copy(c.p); cam.fov = (c.fov || 40) * (YT ? (r.ytFov ?? 1.26) : 1.38); cam.setViewOffset(WW, HH, 0, YT ? (r.ytShift ?? 10) : -(r.shift ?? 170), WW, HH); cam.updateProjectionMatrix(); cam.lookAt(c.l);
   if (c.roll) cam.rotateZ(c.roll);
   scene.background = bgTex(...(r.bg || ['#121a3a', '#3a2d56']));
   scene.fog = r.fog || null;
