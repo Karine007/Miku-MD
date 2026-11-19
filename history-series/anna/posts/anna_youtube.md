@@ -24,7 +24,9 @@ Chapters:
 4:19 The trial
 4:49 The strangest ending
 
-Animated in low-poly 3D. Subscribe for more stories like this.
+Animated in 3D. Narration voice is AI-generated. New story every week on Rise & Ruin: subscribe so you don't miss the next one.
+
+#RiseAndRuin #TrueStory #Documentary
 
 ## Tags
 anna delvey, anna sorokin, inventing anna, fake heiress, true crime, true story, scam, new york, documentary, 3d animation

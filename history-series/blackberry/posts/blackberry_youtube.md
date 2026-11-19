@@ -23,7 +23,9 @@ Chapters:
 4:11 The end of the classic BlackBerry
 4:51 Where BlackBerry is today
 
-Animated in low-poly 3D. Subscribe for more stories like this.
+Animated in 3D. Narration voice is AI-generated. New story every week on Rise & Ruin: subscribe so you don't miss the next one.
+
+#RiseAndRuin #TrueStory #Documentary
 
 ## Tags
 blackberry, blackberry history, rise and fall of blackberry, iphone vs blackberry, steve jobs, bbm, crackberry, tech history, business story, 3d animation, documentary
