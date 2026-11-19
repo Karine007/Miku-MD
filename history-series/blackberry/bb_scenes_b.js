@@ -26,11 +26,11 @@ S('s_jobs', () => {
     upd: lt => { const k = ease((lt - 1.2) / .8); p.userData.armR.rotation.x = -lerp(.1, 2.5, k); ph.rotation.x = lerp(0, -.3, k); pop(d, lt, .3); pop(kb, lt, 3.4); } };
 });
 S('s_tread', () => {
-  const g = stage('#c9cbd8', '#4a5a8a'); const tm = grp(box(1, .18, 2.2, '#2b2f3a', 0, .09, 0), box(.86, .02, 2.0, '#15161a', 0, .19, 0), box(.06, 1.2, .06, '#555', -.45, .7, -.95), box(.06, 1.2, .06, '#555', .45, .7, -.95), box(1, .3, .2, '#2b2f3a', 0, 1.3, -.95)); g.add(tm);
+  const g = stage('#c9cbd8', '#4a5a8a', { z: -6.5 }); const tm = grp(box(1, .18, 2.2, '#2b2f3a', 0, .09, 0), box(.86, .02, 2.0, '#15161a', 0, .19, 0), box(.06, 1.2, .06, '#555', -.45, .7, -.95), box(.06, 1.2, .06, '#555', .45, .7, -.95), box(1, .3, .2, '#2b2f3a', 0, 1.3, -.95)); g.add(tm);
   const p = person({ shirt: '#d9d9d9', pants: '#2b2f3a', skin: SKINS[0], hair: '#7a6a5a', glasses: true }); p.position.set(0, .2, 0); g.add(p);
   const tv = tvSet(screen(glassScreen, 480, 270), 2.2); tv.position.set(0, 2.6, 3.2); tv.rotation.y = Math.PI; g.add(tv);
   const nm = sign('MIKE LAZARIDIS · FOUNDER', { bg: '#ffd23f', size: 50 }); nm.scale.setScalar(.34); nm.position.set(0, 2.9, -.2); nm.rotation.y = Math.PI; g.add(nm);
-  const th = bubble('it will crush the network!', '#ffffff', '#1d2433', 1.5); th.position.set(0, 4.0, 2.4); th.rotation.y = Math.PI; th.scale.setScalar(.8); g.add(th);
+  const th = bubble('it will crush the network!', '#ffffff', '#1d2433', 1.5); th.position.set(.3, 3.7, 2.0); th.rotation.y = Math.PI; th.scale.setScalar(1.6); g.add(th);
   return { g, bg: ['#26336a', '#d9b2bd'], focus: V(0, 1, 0), cam: dolly(V(-1.9, 3.0, -4.6), V(-1.5, 2.8, -4.0), V(0, 2.2, 2.2), V(0, 2.2, 2.2)),
     upd: lt => { walk(p, lt, 7, .45); p.userData.legL.rotation.x *= 1; pop(nm, lt, .8); pop(th, lt, 3.4); } };
 });
