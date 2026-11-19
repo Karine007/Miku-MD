@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Nunito;font-weight:900;src:url(node_modules/@fontsource/nunito/files/nunito-latin-900-normal.woff2) format('woff2');}
+@font-face{font-family:Nunito;font-weight:800;src:url(node_modules/@fontsource/nunito/files/nunito-latin-800-normal.woff2) format('woff2');}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#0d1226}
+canvas{display:block}
+#vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 55%,rgba(0,0,0,0) 55%,rgba(0,0,0,.38) 100%)}
+#cap{position:absolute;left:60px;right:60px;top:300px;text-align:center;font-family:Nunito;font-weight:900;font-size:76px;line-height:90px;color:#fff;
+ text-shadow:0 4px 0 rgba(0,0,0,.35),0 0 18px rgba(0,0,0,.45);letter-spacing:.5px}
+#cap span{opacity:.38;transition:none;display:inline-block;margin:0 10px}
+#cap span.on{opacity:1}
+#cap span.cur{opacity:1;color:#ffffff}
+#cap span.hl{color:#ffd23f}
+</style></head><body>
+<div id="vig"></div><div id="cap"></div>
+<script src="timeline.js"></script>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+<script type="module" src="main.js"></script>
+</body></html>
