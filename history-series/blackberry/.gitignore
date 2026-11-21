@@ -1,0 +1,6 @@
+node_modules
+seg_*
+still_*
+*.log
+cues_*.json
+/*.mp4

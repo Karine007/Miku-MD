@@ -2,7 +2,7 @@ import { THREE, canvasTex, FONT, clamp, backOut, ease } from './kit.js';
 const TL = window.TL;
 await document.fonts.load(FONT(72, 900)); await document.fonts.load(FONT(30, 800));
 const { SCENES } = await import('./scenes.js');
-const W = 1920, H = 1080;
+const VERT = !!window.VERT, W = VERT ? 1080 : 1920, H = VERT ? 1920 : 1080;
 const R = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
 R.setPixelRatio(1); R.setSize(W, H); R.outputColorSpace = THREE.SRGBColorSpace; R.toneMapping = THREE.NoToneMapping;
 R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap; document.body.prepend(R.domElement);
@@ -47,7 +47,7 @@ window.setTime = t => {
   if (r.dim) { hemi.intensity *= r.dim; key.intensity *= r.dim; amb.intensity *= r.dim; }
   const f = r.focus || new THREE.Vector3(0, 1, 0); const sd = r.sun || [4, 9, 6]; key.position.set(f.x + sd[0], f.y + sd[1], f.z + sd[2]); key.target.position.copy(f);
   if (r.upd) r.upd(lt, u, t);
-  const c = r.cam(u, lt); cam.position.copy(c.p); cam.fov = c.fov || 38; cam.updateProjectionMatrix(); cam.lookAt(c.l);
+  const c = r.cam(u, lt); cam.position.copy(c.p); cam.fov = (c.fov || 38) * (VERT ? ((window.VFOV || {})[r.id] ?? r.vFov ?? 1.62) : 1); cam.updateProjectionMatrix(); cam.lookAt(c.l);
   const s = r.sky || ['#cfd8ea', '#ece9ef', '#f6efe8']; scene.background = sky(...s);
   caption(t); overlays(r, lt);
   R.render(scene, cam);
