@@ -59,3 +59,38 @@ The exact narration for each Short is in `<story>_p1.json` / `<story>_p2.json` (
 - `short_timeline.py <name> <take.wav> <out_dir>` aligns the take, picks the scenes whose opening words appear in the script (`<name>_anchors.json`) and writes `../<story>/timeline_<name>.js`.
 - Pages: `../anna/anna_p1.html`, `../blackberry/blackberry_p1.html`, `../holmes/holmes_p1.html` (and `_p2`). Holmes renders in vertical mode (`window.VERT`), with a wider camera on text-heavy shots (`window.VFOV`).
 - Rendered with each story's `par_chunks.sh` at 1080×1920, with music from `../anna/music_doc.py`, mixed at -14 LUFS.
+
+---
+
+# New Shorts: Fyre Festival & Blockbuster
+
+| Short | Video | Cover |
+|---|---|---|
+| Fyre Festival · Part 1 | `output/fyre_p1_short.mp4` | `covers/fyre_p1.png` |
+| Fyre Festival · Part 2 | `output/fyre_p2_short.mp4` | `covers/fyre_p2.png` |
+| Blockbuster · Part 1 | `output/blockbuster_p1_short.mp4` | `covers/blockbuster_p1.png` |
+| Blockbuster · Part 2 | `output/blockbuster_p2_short.mp4` | `covers/blockbuster_p2.png` |
+
+## Fyre Festival · Part 1
+**Title:** The Party of the Century (Part 1) #shorts
+**Description / caption:** A private island, supermodels, private jets, and one orange square on Instagram 🟧 Part 1 of the Fyre Festival story. Follow for Part 2!
+**Hashtags:** #fyrefestival #riseandruin #truestory #scam #influencer #shorts #fyp
+**Pinned comment:** Would you have bought a ticket? 🎟️ Part 2 is coming 👇
+
+## Fyre Festival · Part 2
+**Title:** The Sandwich That Ended Fyre Festival (Part 2) #shorts
+**Description / caption:** Disaster tents, wet mattresses and a cheese sandwich the whole world laughed at 🥪 Part 2 of the Fyre Festival story. Watch Part 1 first!
+**Hashtags:** #fyrefestival #cheesesandwich #riseandruin #truecrime #scam #shorts #fyp
+**Pinned comment:** Who deserves their money back most: the guests or the workers? 👇
+
+## Blockbuster · Part 1
+**Title:** How Blockbuster Ruled Friday Night (Part 1) #shorts
+**Description / caption:** 9,000 stores, popcorn at the counter, and "be kind, rewind" 📼 Then late fees made one customer so angry he started Netflix. Part 1 of the Blockbuster story. Follow for Part 2!
+**Hashtags:** #blockbuster #netflix #riseandruin #90s #nostalgia #shorts #fyp
+**Pinned comment:** Did you ever pay a Blockbuster late fee? 😅 Part 2 is next 👇
+
+## Blockbuster · Part 2
+**Title:** The $50 Million Mistake (Part 2) #shorts
+**Description / caption:** Netflix offered to sell itself for $50 million. Blockbuster laughed 😂 Part 2 of the Blockbuster story. Watch Part 1 first!
+**Hashtags:** #blockbuster #netflix #riseandruin #businesshistory #truestory #shorts #fyp
+**Pinned comment:** Would you have bought Netflix for $50 million? 💸👇
