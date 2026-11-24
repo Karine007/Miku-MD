@@ -20,7 +20,7 @@ list.forEach((r, i) => r.t1 = i + 1 < list.length ? list[i + 1].t0 : TL.dur); li
 
 // captions: chunks of up to 5 words, broken at punctuation / pauses
 const WD = TL.words; const chunks = []; let cur = [];
-WD.forEach((w, i) => { cur.push(i); const nx = WD[i + 1]; if (!nx || cur.length >= 5 || /[.,?!:;]$/.test(w[2]) || nx[0] - w[1] > .35) { chunks.push(cur); cur = []; } });
+WD.forEach((w, i) => { cur.push(i); const nx = WD[i + 1]; if (!nx || cur.length >= (window.CAP_WORDS || 5) || /[.,?!:;]$/.test(w[2]) || nx[0] - w[1] > .35) { chunks.push(cur); cur = []; } });
 const capEl = document.getElementById('cap'); let lastChunk = -2;
 function caption(t) {
   let ci = -1;
@@ -50,9 +50,10 @@ window.setTime = t => {
   const c = r.cam(u, lt); cam.position.copy(c.p); cam.fov = (c.fov || 38) * (VERT ? ((window.VFOV || {})[r.id] ?? r.vFov ?? 1.62) : 1); cam.updateProjectionMatrix(); cam.lookAt(c.l);
   const s = r.sky || ['#cfd8ea', '#ece9ef', '#f6efe8']; scene.background = sky(...s);
   caption(t); overlays(r, lt);
+  if (window.HOOK) { const h = document.getElementById('hook'); const [a, b] = window.HOOK; const k = t < a || t > b ? 0 : Math.min(1, (t - a) / .15, (b - t) / .2); h.style.opacity = k; h.style.transform = `translateX(-50%) scale(${.8 + .2 * Math.min(1, k * 1.2)}) rotate(-3deg)`; if (k > 0) pillEl.style.transform = 'translateX(-50%) scale(0)'; }
   R.render(scene, cam);
 };
-if (location.search.includes('clean')) for (const id of ['cap', 'name', 'pill', 'title']) document.getElementById(id).style.visibility = 'hidden';
+if (location.search.includes('clean')) for (const id of ['cap', 'name', 'pill', 'title', 'hook', 'part']) { const e = document.getElementById(id); if (e) e.style.visibility = 'hidden'; }
 window.DUR = TL.dur; window.CAPTION_TIMES = []; window.CUTS = list.slice(1).map(r => r.t0); window.MOOD = 'doc';
 window.SCENE_LIST = list.map(r => [r.id, +r.t0.toFixed(2), +r.t1.toFixed(2)]);
 window.setTime(0); window.READY = true;
