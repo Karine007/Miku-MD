@@ -1,0 +1,68 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Nunito;font-weight:900;src:url(fonts/nunito-latin-900-normal.woff2) format('woff2');}
+@font-face{font-family:Nunito;font-weight:800;src:url(fonts/nunito-latin-800-normal.woff2) format('woff2');}
+@font-face{font-family:Nunito;font-weight:700;src:url(fonts/nunito-latin-700-normal.woff2) format('woff2');}
+html,body{margin:0;background:transparent;font-family:Nunito}
+.v{display:none}
+body.profile{background:#0a0d20}
+body.profile #profile, body.banner #banner, body.watermark #watermark, body.trailer #trailer{display:block}
+#profile{width:800px;height:800px}
+#watermark{width:150px;height:150px}
+#banner{width:2560px;height:1440px;position:relative;overflow:hidden;background:#0b0f22}
+#tiles{position:absolute;inset:-60px;display:grid;grid-template-columns:repeat(11,1fr);gap:14px;transform:rotate(-4deg) scale(1.08);filter:saturate(1.1)}
+#tiles img{width:100%;height:440px;object-fit:cover;border-radius:18px}
+#shade{position:absolute;inset:0;background:
+ radial-gradient(ellipse 1050px 420px at 50% 50%,rgba(11,15,34,.97) 45%,rgba(11,15,34,.86) 75%,rgba(11,15,34,.55) 100%),
+ linear-gradient(180deg,rgba(11,15,34,.35),rgba(11,15,34,.35))}
+#safe{position:absolute;left:507px;top:508px;width:1546px;height:423px;display:flex;align-items:center;justify-content:center;gap:56px}
+#safe svg{width:330px;height:330px;flex:none;filter:drop-shadow(0 10px 30px rgba(0,0,0,.5))}
+.name{font-weight:900;font-size:176px;line-height:1;color:#fff;letter-spacing:2px;white-space:nowrap}
+.name b{color:#ffd23f}.name i{font-style:normal;color:#ff3b4e}
+.tag{font-weight:800;font-size:50px;color:#dfe4ff;margin-top:18px;white-space:nowrap}
+.pill{display:inline-block;margin-top:22px;font-weight:900;font-size:38px;color:#0b0f22;background:#ffd23f;border-radius:40px;padding:8px 30px}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+ <radialGradient id="bg" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#26306a"/><stop offset=".6" stop-color="#141a3c"/><stop offset="1" stop-color="#0a0d20"/></radialGradient>
+ <linearGradient id="gold" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ffb326"/><stop offset="1" stop-color="#ffe066"/></linearGradient>
+ <linearGradient id="red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff6b5a"/><stop offset="1" stop-color="#e5193a"/></linearGradient>
+ <symbol id="mark" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="50" fill="url(#bg)"/>
+  <circle cx="50" cy="50" r="47.5" fill="none" stroke="#ffd23f" stroke-opacity=".35" stroke-width="1.2"/>
+  <!-- ground -->
+  <line x1="16" y1="78" x2="84" y2="78" stroke="#ffffff" stroke-opacity=".22" stroke-width="2" stroke-linecap="round"/>
+  <!-- rise -->
+  <polyline points="17,72 31,58 40,63 54,33" fill="none" stroke="url(#gold)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- ruin -->
+  <polyline points="54,33 62,49 67,45 76,70" fill="none" stroke="url(#red)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="69.5,69 82.5,66.5 78.5,79" fill="#e5193a" stroke="#e5193a" stroke-width="2" stroke-linejoin="round"/>
+  <!-- crown at the peak, tipping over -->
+  <g transform="translate(55 23) rotate(14)">
+   <path d="M-10,5 L-10,-5 L-5,0 L0,-8 L5,0 L10,-5 L10,5 Z" fill="url(#gold)" stroke="#b37400" stroke-width="1" stroke-linejoin="round"/>
+   <circle cx="0" cy="1.5" r="1.8" fill="#ff3b4e"/>
+  </g>
+ </symbol>
+</defs></svg>
+
+<div id="profile" class="v"><svg width="800" height="800"><use href="#mark"/></svg></div>
+<div id="watermark" class="v"><svg width="150" height="150"><use href="#mark"/></svg></div>
+
+<div id="banner" class="v">
+ <div id="tiles"></div><div id="shade"></div>
+ <div id="safe">
+  <svg><use href="#mark"/></svg>
+  <div>
+   <div class="name"><b>RISE</b> &amp; <i>RUIN</i></div>
+   <div class="tag">True stories of how they rose, and how it all fell apart.</div>
+   <div class="pill">NEW STORY EVERY WEEK</div>
+  </div>
+ </div>
+</div>
+<script>
+const mode=location.hash.slice(1)||'profile'; document.body.className=mode;
+const t=document.getElementById('tiles'); const names=[];
+for(let i=0;i<10;i++)names.push('b'+i); for(let i=0;i<11;i++)names.push('a'+i);
+for(let r=0;r<3;r++)for(let c=0;c<11;c++){const im=document.createElement('img'); im.src='tiles/'+names[(r*7+c*2+r)%names.length]+'.jpg'; t.appendChild(im);}
+window.READY=false; document.fonts.ready.then(()=>Promise.all([...document.images].map(i=>i.complete?1:new Promise(r=>{i.onload=i.onerror=r})))).then(()=>window.READY=true);
+</script>
+</body></html>

@@ -1,0 +1,8 @@
+node_modules/
+cues.json
+*.wav
+still_*.jpg
+silent*.mp4
+comments_*.json
+seg_*/
+output/tmp_*.mp4

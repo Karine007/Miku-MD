@@ -1,0 +1,30 @@
+const TXT = {
+  f0:'Day 4: the lava<br>is <b>still coming</b> 🌋',
+  f1:'You asked to be<br><b>firefighters</b> 🚒',
+  f2:'<b>Fire trucks</b><br>to the lava!',
+  f3:'<b>Water</b> on<br>the lava! 💦',
+  f4:'It\'s working...<br>a <b>little</b>',
+  f5:'BUT it\'s <b>NOT</b><br>enough 😰',
+  f5b:'<span class="sub">water can\'t stop lava</span>',
+  f6:'We need to <b>build</b><br>a lava wall 🧱',
+  f6b:'<span class="sub">unlocks at <b>1,000 shares</b> 🔁</span>',
+  f7:'Keep <b>sharing</b> &<br>keep <b>liking</b>!',
+  f8:'Help the<br><b>firefighters</b>! 🚒',
+  f8b:'<span class="sub">1,000 shares = we build the wall</span>',
+  s0:'🚨 <b>Breaking news</b><br>from Herberg',
+  s1:'The volcano<br><b>erupted!</b> 🌋',
+  s2:'Lava is heading<br>to the <b>city</b>!',
+  s3:'<b>1,354</b> citizens<br>in danger 😱',
+  s4:'It hits the city<br>in <b>24 hours</b> ⏳',
+  s5:'If it gets there...<br><b>everything</b> is gone',
+  s5b:'<span class="sub">houses, parliament, port... all of it</span>',
+  s6:'<b>You</b> can<br>save Herberg!',
+  s6b:'<span class="sub">reach <b>ONE</b> goal = city saved ✅</span>',
+  s7:'We build a giant<br><b>lava wall</b> 🧱',
+  s8:'<b>Share</b> now 🔁<br>before it\'s too late!',
+  s8b:'<span class="sub">Day 5 only comes if Herberg survives</span>',
+  goals:[['🔁','1,000 SHARES','= we build the lava wall','GOAL','','#2f7de1'],['❤️','KEEP LIKING','every like helps the firefighters','💪','','#e8334f']],
+};
+const $ = id => document.getElementById(id);
+$('t_day').textContent='DAY'; $('t_pop').textContent='POPULATION'; $('t_nation').textContent='HERBERG'; $('tag').textContent='';
+$('goals').innerHTML=TXT.goals.map(g=>`<div class="goal"><div class="ge">${g[0]}</div><div class="gb"><div class="gt">${g[1]}</div><div class="gs">${g[2]}</div><div class="bar"><i style="background:${g[5]}"></i></div></div><div class="gn">${g[3]}</div></div>`).join('');
